@@ -6,7 +6,11 @@ Object Discovery Algorithm on Egocentric Images.
 Usage:
 
 	Use the functions inside "Objects Recognition", modify the parameters 
-	in loadParameters.m and then execute main.m
+	in loadParameters.m and then execute main.m.
+	
+	If you want to use the Multiscale Combinatorial Grouping (MCG) 
+	Objectness [4], it must be downloaded from the authors page and 
+	configured adding its path in loadParameters.m.
    
 
 Explanation and additional features:
