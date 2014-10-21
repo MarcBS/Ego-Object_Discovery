@@ -4,7 +4,7 @@ volume_path = 'D:';
 % volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
-tests_path = '../../../../../Video Summarization Tests';
+tests_path = [volume_path '/Video Summarization Tests'];
 
 % rate used when choosing easy instances
 %   1st -> times std.dev (2)
