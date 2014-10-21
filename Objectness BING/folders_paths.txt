@@ -1,0 +1,4 @@
+workingpath = "D:/Video Summarization Project Data Sets/PASCAL_BING/WkDir/";
+trainpath = "D:/Video Summarization Project Data Sets/PASCAL_BING/Train Data/";
+testpath = "D:/Video Summarization Project Data Sets/PASCAL_BING/Test Data/";
+model_name = "modelTrained.txt";

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>"D:/Video Summarization Tests/BING model/" "D:/Documentos/Vicon Revue Data/0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0/" "modelTrained.txt"</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommandArguments>"D:/Video Summarization Tests/BING model/" "D:/Documentos/Vicon Revue Data/0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0/" "modelTrained.txt"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>

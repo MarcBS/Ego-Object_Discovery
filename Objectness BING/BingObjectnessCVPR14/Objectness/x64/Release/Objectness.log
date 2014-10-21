@@ -1,0 +1,26 @@
+﻿Build started 06/10/2014 17:09:19.
+     1>Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /openmp /Yu"StdAfx.h" /Fp"x64\Release\Objectness.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt Main.cpp
+         Main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\OpenCV\build\x64\vc10\lib /LIBPATH:C:\boost_1_56_0\stage\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Release\Objectness.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.lib" /MACHINE:X64 x64\Release\CmFile.obj
+         x64\Release\CmShow.obj
+         x64\Release\DataSet.obj
+         x64\Release\DataSetVOC.obj
+         x64\Release\FilterBING.obj
+         x64\Release\Main.obj
+         x64\Release\Objectness.obj
+         x64\Release\stdafx.obj
+         "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\LibLinear.lib"
+            Creating library D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.lib and object D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.exp
+         Generating code
+         Finished generating code
+         Objectness.vcxproj -> D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\Objectness.exe;#1" /manifest x64\Release\Objectness.exe.intermediate.manifest
+     1>Done Building Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:21.38
