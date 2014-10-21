@@ -1,7 +1,7 @@
 %% Initial parameters
 
-volume_path = 'D:';
-% volume_path = '/Volumes/SHARED HD';
+% volume_path = 'D:';
+volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
@@ -16,7 +16,7 @@ easines_rate = [1.25 1/100 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'SelectiveSearch'; 
+objectness.type = 'Ferrari'; 
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
@@ -74,7 +74,8 @@ cluster_params.consider_NoObject = true;
 cluster_params.evaluationPlot = true;
 
 %%%% Only used with Complete-Link clustering
-cluster_params.max_similarity = 1; % (Obj+Evnt = 2, Obj+Evnt+Cntx = 3), maximum similarity achieved by the samples for transforming it into a distance metric.
+cluster_params.max_similarity = 1; % (Obj+Evnt = 2, Obj+Evnt+Cntx = 3), maximum 
+% similarity achieved by the samples for transforming it into a distance metric.
 
 %%%% Used in both LSH and LSH-K-Means
 cluster_params.tLSH = 20; % number of tables created.
@@ -115,12 +116,12 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = true; % Calculates the objectness and the objects candidates
+reload_objectness = false; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
 show_easiest = false; % sets if we want to store the easieast objects from each iteration in a folder
 show_PCA = false; % shows the 2D/3D PCA representation of the samples
-eval_clustering = true; % evaluates the result of the clustering (only possible if ground truth available).
+eval_clustering = false; % evaluates the result of the clustering (only possible if ground truth available).
 show_clustering = false; % shows the result of the clustering
 show_harderInstances = false; % shows the clusters labeled and the corresponding harder instances found with each of them.
 
@@ -136,7 +137,7 @@ classes_scenes = zeros(0);
 histClasses = zeros(0);
 
 %% Features extraction (features location)
-feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_07 BING']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
@@ -154,7 +155,7 @@ feature_params.useContext = false;
 feature_params.useObject = false;
 
 %% PCA options
-feature_params.usePCA = true;
+feature_params.usePCA = false;
 feature_params.minVarPCA = 0.95;
 feature_params.standarizePCA = true;
 feature_params.showPCAdim = 3; % 2 or 3 dimensions allowed (if show_PCA = true)
