@@ -3,14 +3,16 @@ Object_Discovery
 
 Object Discovery Algorithm on Egocentric Images.
 
-In order to execute the algorithm, run the main.m file in the folder Objects Recognition.
-
 Usage:
-	Modify the parameters in loadParameters.m and then execute main.m
+
+	Use the functions inside "Objects Recognition", modify the parameters 
+	in loadParameters.m and then execute main.m
    
-	Explanation and additional features:
-		This function is inspired by the pipeline proposed by 
-       K. Grauman in [1] with the following modifications:
+
+Explanation and additional features:
+
+	This function is inspired by the pipeline proposed by 
+       	K. Grauman in [1] with the following modifications:
            - Added Ferrari's Objectness [2], BING Objectness [3],
                Multiscale Combinatorial Grouping (MCG) [4] and
                Selective Search [6].
