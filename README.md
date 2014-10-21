@@ -29,7 +29,7 @@ Usage:
                and scenes.
            - Added PCA dimensionality reduction on easy objects.
 
-   References:
+References:
        [1] Lee, Yong Jae, and Kristen Grauman. "Learning the easy things 
            first: Self-paced visual category discovery." Computer Vision 
            and Pattern Recognition (CVPR), 2011 IEEE Conference on. IEEE, 
