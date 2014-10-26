@@ -1,16 +1,16 @@
 %% Initial parameters
 
-% volume_path = 'D:';
-volume_path = '/Volumes/SHARED HD';
+volume_path = 'D:';
+% volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
 
 % rate used when choosing easy instances
 %   1st -> times std.dev (2)
-%   2nd -> increased each interation (0.1) (0.01?)
+%   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
-easines_rate = [1.25 1/100 5000];
+easines_rate = [1.25 1/1000 5000];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
@@ -119,11 +119,35 @@ reload_objStruct = false; % Builds the objects structure for executing the whole
 reload_objectness = false; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
+retrain_obj_vs_noobj = true; % Rebuilds the SVM classifier ObjVSNoObj
+apply_obj_vs_noobj = true; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 show_easiest = false; % sets if we want to store the easieast objects from each iteration in a folder
 show_PCA = false; % shows the 2D/3D PCA representation of the samples
 eval_clustering = false; % evaluates the result of the clustering (only possible if ground truth available).
 show_clustering = false; % shows the result of the clustering
 show_harderInstances = false; % shows the clusters labeled and the corresponding harder instances found with each of them.
+
+%% Obj VS NoObj SVM classifier params
+objVSnoobj_params.kernel = 'rbf';
+objVSnoobj_params.C = 10;
+objVSnoobj_params.sigma = 100;
+% -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
+% objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
+objVSnoobj_params.balance = true; % balance or not the classifier samples.
+objVSnoobj_params.labels = [1 -1]; % [Obj NoObj] labels
+objVSnoobj_params.evaluate = true; % show the evaluation of the classification result
+
+%% Select which "AWARE" features are we going to use
+feature_params.useScene = false;
+feature_params.useEvent = false;
+feature_params.useContext = false;
+feature_params.useObject = false;
+
+%% PCA options
+feature_params.usePCA = false;
+feature_params.minVarPCA = 0.95;
+feature_params.standarizePCA = true;
+feature_params.showPCAdim = 3; % 2 or 3 dimensions allowed (if show_PCA = true)
 
 %% Classes of objects
 classes = struct('name', [], 'label', []);
@@ -147,18 +171,6 @@ feature_params.dSIFT = 10; % distance between centers of each neighbouring patch
 feature_params.lHOG = 3; % number of levels used for the P-HOG (2 better 'PASCAL_07 GT', 3 original)
 feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
-
-%% Select which "AWARE" features are we going to use
-feature_params.useScene = false;
-feature_params.useEvent = false;
-feature_params.useContext = false;
-feature_params.useObject = false;
-
-%% PCA options
-feature_params.usePCA = false;
-feature_params.minVarPCA = 0.95;
-feature_params.standarizePCA = true;
-feature_params.showPCAdim = 3; % 2 or 3 dimensions allowed (if show_PCA = true)
 
 %% Scene Awareness version
 feature_params.scene_version = 1; % {1 or 2}
@@ -214,12 +226,15 @@ elseif(strcmp(objectness.type, 'MCG'))
     cd(thispath)
 end
 addpath(objectness.pathMCG);
-addpath('../Objectness Ferrari/objectness-release-v2.2;../libsvm-3.18/windows;FinalClassifiers;../DimensionalityReduction');
+addpath('../Objectness Ferrari/objectness-release-v2.2;FinalClassifiers;../DimensionalityReduction');
 addpath('Utils;SpatialPyramidMatching;../K_Means;../Locality Sensitive Hashing;LocalitySensitiveHashing;Complete-LinkClustering;../Objectness BING');
-addpath('../Objectness SelectiveSearch;../Objectness SelectiveSearch/Dependencies');
+addpath('../Objectness SelectiveSearch;../Objectness SelectiveSearch/Dependencies;ObjVSNoObj SVM');
+
+path_svm = '../libsvm-3.18/windows';
+rmpath('../libsvm-3.18/windows');
 
 %% Results storing folder
-results_folder = 'Execution_CNN_Refill_BING_1';
+results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_4';
 
 results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);
