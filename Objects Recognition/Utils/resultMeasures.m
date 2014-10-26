@@ -106,21 +106,35 @@ function [ record ] = resultMeasures( labels, topCounts, names, showConf )
     disp(out);
     record = [record '\n' out];
     
-    %% total precision
-    if(nClasses == 0)
+    %% total precision (without No Object)
+    % With No Object
+%     if(nClasses == 0)
+%         prec = 0;
+%     else
+%         prec = sum(precisions)/nClasses;
+%     end
+    % Without No Object
+    if(nClasses < 2)
         prec = 0;
     else
-        prec = sum(precisions)/nClasses;
+        prec = sum(precisions(2:end))/(nClasses-1);
     end
     out = ['Average precision: ' sprintf('%.3f', prec)];
     disp(out);
     record = [record '\n' out];
     
-    %% total recall
-    if(nClasses == 0)
+    %% total recall (without 'No Object')
+    % With No Object
+%     if(nClasses == 0)
+%         rec = 0;
+%     else
+%         rec = sum(recalls)/nClasses;
+%     end
+    % Without No Object
+    if(nClasses < 2)
         rec = 0;
     else
-        rec = sum(recalls)/nClasses;
+        rec = sum(recalls(2:end))/(nClasses-1);
     end
     out = ['Average recall: ' sprintf('%.3f', rec)];
     disp(out);
