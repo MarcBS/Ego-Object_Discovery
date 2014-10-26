@@ -47,7 +47,21 @@ end
 if(has_ground_truth)
     %% Get a certain percentage of objects' true labels
     [objects classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
+    if(retrain_obj_vs_noobj)
+        disp('# TRAINING Obj VS NoObj SVM classifier...');
+        tic %%%%%%%%%%%%%%%%%%%%%%%
+        trainObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
+        toc %%%%%%%%%%%%%%%%%%%%%%%
+    end
+    if(apply_obj_vs_noobj)
+        disp('# APPLYING Obj VS NoObj SVM classifier...');
+        tic %%%%%%%%%%%%%%%%%%%%%%%
+        [objects nObj nNoObj] = applyObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
+        disp(['Found ' num2str(nObj) ' Objects and ' num2str(nNoObj) ' No Objects.']);
+        toc %%%%%%%%%%%%%%%%%%%%%%%
+    end
 end
+addpath(path_svm); % add path OneClass-SVM
 
 %% Load scene features for the first time
 if(feature_params.useScene || strcmp(features_type, 'cnn_con'))
@@ -309,99 +323,99 @@ save([results_folder '/classes_scenes_results.mat'], 'classes_scenes');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   START FINAL EVALUATION  SVM/KNN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if(has_ground_truth) % only if has ground truth
-    
-    disp(' ');
-    disp('# RESULTS EVALUATION STARTING!');
-    %% Retrieve train/test final samples information
-    [trainX_ind, trainY_true, ~, testX_ind, testY] = getFinalTestsSamples(objects, classes);
-
-
-    %% Get training samples
-    disp('# RECOVERING APPEARANCE FEATURES for TRAINING instances...');
-    tic %%%%%%%%%%%%%%%%%%%%%%%
-    % ORIGINAL
-    if(strcmp(features_type, 'original'))
-        [trainX, ~] = recoverFeatures(objects, trainX_ind, 1:size(trainX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [1 0]);
-    % CONVOLUTIONAL NEURAL NETWORKS
-    elseif(strcmp(features_type, 'cnn'))
-        [trainX, ~] = recoverFeatures(objects, trainX_ind, 1:size(trainX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [2 0]);
-    % LSH DIM. REDUCED
-    elseif(strcmp(features_type, 'lshDimReduc')) 
-        error(['Features type ' features_type ' not supported!']);
-    end
-    toc %%%%%%%%%%%%%%%%%%%%%%%
-
-    % Normalize
-    [trainX, minX, maxX] = normalize(trainX);
-
-
-    %% Apply clustering on training samples
-    feature_params.useScene = false;
-    feature_params.useEvent = false;
-    feature_params.useContext = false;
-    feature_params.useObject = false;
-    [clusters, ~, ~] = clustering(trainX, [], [], cluster_params, feature_params, objects, []);
-
-    %% Label all clusters found (majority voting)
-    [ objects, classes, foundLabels ] = automaticLabeling(objects, clusters, Inf, trainX_ind, classes);
-    trainY = formatTrainY(foundLabels, trainX_ind);
-
-
-    %% Train Final models
-    disp('# TRAINING FINAL CLASSIFIERS...');
-    tic %%%%%%%%%%%%%%%%%%%%%%%
-    disp('Building clusters SVM (1/4).');
-    modelSVMclusters = trainSVM(trainX, trainY, final_params);
-    disp('Building clusters KNN (2/4).');
-    modelKNNclusters = trainKNN(trainX, trainY, final_params);
-    disp('Building true SVM (3/4).');
-    modelSVMtrue = trainSVM(trainX, trainY_true, final_params);
-    disp('Building true KNN (4/4).');
-    modelKNNtrue = trainKNN(trainX, trainY_true, final_params);
-    toc %%%%%%%%%%%%%%%%%%%%%%%
-    clear trainX;
-
-
-    %% Get test samples
-    disp('# RECOVERING APPEARANCE FEATURES for TEST instances...');
-    tic %%%%%%%%%%%%%%%%%%%%%%%
-    % ORIGINAL
-    if(strcmp(features_type, 'original'))
-        [testX, ~] = recoverFeatures(objects, testX_ind, 1:size(testX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [1 0]);
-    % CONVOLUTIONAL NEURAL NETWORKS
-    elseif(strcmp(features_type, 'cnn'))
-        [testX, ~] = recoverFeatures(objects, testX_ind, 1:size(testX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [2 0]);
-    % LSH DIM. REDUCED
-    elseif(strcmp(features_type, 'lshDimReduc')) 
-        error(['Features type ' features_type ' not supported!']);
-    end
-    toc %%%%%%%%%%%%%%%%%%%%%%%
-
-    % Normalize
-    [testX] = normalize(testX, minX, maxX);
-
-
-    %% Test Final models
-    disp('# TESTING FINAL CLASSIFIERS...');
-    tic %%%%%%%%%%%%%%%%%%%%%%%
-    disp('Testing clusters SVM (1/4).');
-    result_SVM_clus = testSVM(testX, testY, modelSVMclusters);
-    disp('Testing clusters KNN (2/4).');
-    result_KNN_clus = testKNN(testX, testY, modelKNNclusters);
-    disp('Testing true SVM (3/4).');
-    result_SVM_true = testSVM(testX, testY, modelSVMtrue);
-    disp('Testing true KNN (4/4).');
-    result_KNN_true = testKNN(testX, testY, modelKNNtrue);
-    toc %%%%%%%%%%%%%%%%%%%%%%%
-
-
-    %% Save final results
-    save([results_folder '/result_SVM_clus.mat'], 'result_SVM_clus');
-    save([results_folder '/result_KNN_clus.mat'], 'result_KNN_clus');
-    save([results_folder '/result_SVM_true.mat'], 'result_SVM_true');
-    save([results_folder '/result_KNN_true.mat'], 'result_KNN_true');
-end
+% if(has_ground_truth) % only if has ground truth
+%     
+%     disp(' ');
+%     disp('# RESULTS EVALUATION STARTING!');
+%     %% Retrieve train/test final samples information
+%     [trainX_ind, trainY_true, ~, testX_ind, testY] = getFinalTestsSamples(objects, classes);
+% 
+% 
+%     %% Get training samples
+%     disp('# RECOVERING APPEARANCE FEATURES for TRAINING instances...');
+%     tic %%%%%%%%%%%%%%%%%%%%%%%
+%     % ORIGINAL
+%     if(strcmp(features_type, 'original'))
+%         [trainX, ~] = recoverFeatures(objects, trainX_ind, 1:size(trainX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [1 0]);
+%     % CONVOLUTIONAL NEURAL NETWORKS
+%     elseif(strcmp(features_type, 'cnn'))
+%         [trainX, ~] = recoverFeatures(objects, trainX_ind, 1:size(trainX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [2 0]);
+%     % LSH DIM. REDUCED
+%     elseif(strcmp(features_type, 'lshDimReduc')) 
+%         error(['Features type ' features_type ' not supported!']);
+%     end
+%     toc %%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     % Normalize
+%     [trainX, minX, maxX] = normalize(trainX);
+% 
+% 
+%     %% Apply clustering on training samples
+%     feature_params.useScene = false;
+%     feature_params.useEvent = false;
+%     feature_params.useContext = false;
+%     feature_params.useObject = false;
+%     [clusters, ~, ~] = clustering(trainX, [], [], cluster_params, feature_params, objects, []);
+% 
+%     %% Label all clusters found (majority voting)
+%     [ objects, classes, foundLabels ] = automaticLabeling(objects, clusters, Inf, trainX_ind, classes);
+%     trainY = formatTrainY(foundLabels, trainX_ind);
+% 
+% 
+%     %% Train Final models
+%     disp('# TRAINING FINAL CLASSIFIERS...');
+%     tic %%%%%%%%%%%%%%%%%%%%%%%
+%     disp('Building clusters SVM (1/4).');
+%     modelSVMclusters = trainSVM(trainX, trainY, final_params);
+%     disp('Building clusters KNN (2/4).');
+%     modelKNNclusters = trainKNN(trainX, trainY, final_params);
+%     disp('Building true SVM (3/4).');
+%     modelSVMtrue = trainSVM(trainX, trainY_true, final_params);
+%     disp('Building true KNN (4/4).');
+%     modelKNNtrue = trainKNN(trainX, trainY_true, final_params);
+%     toc %%%%%%%%%%%%%%%%%%%%%%%
+%     clear trainX;
+% 
+% 
+%     %% Get test samples
+%     disp('# RECOVERING APPEARANCE FEATURES for TEST instances...');
+%     tic %%%%%%%%%%%%%%%%%%%%%%%
+%     % ORIGINAL
+%     if(strcmp(features_type, 'original'))
+%         [testX, ~] = recoverFeatures(objects, testX_ind, 1:size(testX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [1 0]);
+%     % CONVOLUTIONAL NEURAL NETWORKS
+%     elseif(strcmp(features_type, 'cnn'))
+%         [testX, ~] = recoverFeatures(objects, testX_ind, 1:size(testX_ind,1), V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, false, t+1, path_folders, prop_res, [2 0]);
+%     % LSH DIM. REDUCED
+%     elseif(strcmp(features_type, 'lshDimReduc')) 
+%         error(['Features type ' features_type ' not supported!']);
+%     end
+%     toc %%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     % Normalize
+%     [testX] = normalize(testX, minX, maxX);
+% 
+% 
+%     %% Test Final models
+%     disp('# TESTING FINAL CLASSIFIERS...');
+%     tic %%%%%%%%%%%%%%%%%%%%%%%
+%     disp('Testing clusters SVM (1/4).');
+%     result_SVM_clus = testSVM(testX, testY, modelSVMclusters);
+%     disp('Testing clusters KNN (2/4).');
+%     result_KNN_clus = testKNN(testX, testY, modelKNNclusters);
+%     disp('Testing true SVM (3/4).');
+%     result_SVM_true = testSVM(testX, testY, modelSVMtrue);
+%     disp('Testing true KNN (4/4).');
+%     result_KNN_true = testKNN(testX, testY, modelKNNtrue);
+%     toc %%%%%%%%%%%%%%%%%%%%%%%
+% 
+% 
+%     %% Save final results
+%     save([results_folder '/result_SVM_clus.mat'], 'result_SVM_clus');
+%     save([results_folder '/result_KNN_clus.mat'], 'result_KNN_clus');
+%     save([results_folder '/result_SVM_true.mat'], 'result_SVM_true');
+%     save([results_folder '/result_KNN_true.mat'], 'result_KNN_true');
+% end
 
 
 %% Test Execution Finished!
