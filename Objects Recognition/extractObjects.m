@@ -26,7 +26,7 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
         elseif(strcmp(type, 'BING'))
             if(~strcmp(prev_folder, objects(i).folder))
                 prev_folder = objects(i).folder;
-                runBINGNoValidation(fold_path, format, workingpath);
+                runBINGNoValidation(fold_path, format, workingpath, prop_res);
             end
             boxes = getBoxesBING(objects(i).imgName, W, workingpath);
         elseif(strcmp(type, 'MCG'))
@@ -51,8 +51,10 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
             objects(i).objects(j).label = 0;
         end
 
-        if(mod(i,50) == 0 || lenImgs == i)
+        if(mod(i,100) == 0 || lenImgs == i)
             disp(['Extracted objects from ' num2str(i) '/' num2str(lenImgs)]);
+            %% TMP LINE, DELETE!!!
+            save(['D:/Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch' '/objects.mat'], 'objects');
         end
         %figure,imshow(img),drawBoxes(boxes);
     end

@@ -4,7 +4,7 @@
 
 %%%% Parameters
 
-mode = 'test'; % 'train' or 'test'
+mode = 'testval'; % 'train' or 'testval'
 
 % workingpath = 'D:/Video Summarization Project Data Sets/PASCAL_BING/WkDir/';
 workingpath = 'D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING/WkDir/';
@@ -19,7 +19,7 @@ path_exe = 'D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BI
 
 if(strcmp(mode, 'train'))
     path_fold = trainpath;
-elseif(strcmp(mode, 'test'))
+elseif(strcmp(mode, 'testval'))
     path_fold = testpath;
 else
     error(['Wrong mode "' mode '" !']);
