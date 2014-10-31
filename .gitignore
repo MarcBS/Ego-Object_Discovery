@@ -3,3 +3,5 @@ Objectness BING/BingObjectnessCVPR14/ipch/*
 .*
 *.asv
 Objects Recognition/ObjVSNoObj SVM/*.mat
+*.log
+*.obj
