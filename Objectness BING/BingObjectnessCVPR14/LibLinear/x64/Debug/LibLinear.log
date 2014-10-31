@@ -1,5 +1,5 @@
-﻿Build started 29/09/2014 19:12:10.
-     1>Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" on node 2 (Build target(s)).
+﻿Build started 30/10/2014 14:39:38.
+     1>Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TC /errorReport:prompt blas\daxpy.c blas\ddot.c blas\dnrm2.c blas\dscal.c train.c
          train.c
@@ -13,16 +13,16 @@
          linear.cpp
          Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib" /NOLOGO x64\Debug\daxpy.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib" /NOLOGO x64\Debug\daxpy.obj
          x64\Debug\ddot.obj
          x64\Debug\dnrm2.obj
          x64\Debug\dscal.obj
          x64\Debug\linear.obj
          x64\Debug\train.obj
          x64\Debug\tron.obj
-         LibLinear.vcxproj -> D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib
-     1>Done Building Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" (Build target(s)).
+         LibLinear.vcxproj -> D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib
+     1>Done Building Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.90
+Time Elapsed 00:00:01.53

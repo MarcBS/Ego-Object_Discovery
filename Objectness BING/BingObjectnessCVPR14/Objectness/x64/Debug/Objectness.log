@@ -1,12 +1,19 @@
-﻿Build started 06/10/2014 16:49:57.
-     1>Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" on node 2 (Build target(s)).
+﻿Build started 30/10/2014 14:39:40.
+     1>Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /openmp- /Yu"StdAfx.h" /Fp"x64\Debug\Objectness.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt Main.cpp Objectness.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /openmp- /Yc"StdAfx.h" /Fp"x64\Debug\Objectness.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /openmp- /Yu"StdAfx.h" /Fp"x64\Debug\Objectness.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt CmFile.cpp CmShow.cpp DataSet.cpp DataSetVOC.cpp FilterBING.cpp Main.cpp Objectness.cpp
          Objectness.cpp
          Main.cpp
+         FilterBING.cpp
+         DataSetVOC.cpp
+         DataSet.cpp
+         CmShow.cpp
+         CmFile.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\OpenCV\build\x64\vc10\lib /LIBPATH:C:\boost_1_56_0\stage\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\Objectness.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.lib" /MACHINE:X64 x64\Debug\CmFile.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\OpenCV\build\x64\vc10\lib /LIBPATH:C:\boost_1_56_0\stage\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\Objectness.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.lib" /MACHINE:X64 x64\Debug\CmFile.obj
          x64\Debug\CmShow.obj
          x64\Debug\DataSet.obj
          x64\Debug\DataSetVOC.obj
@@ -14,13 +21,13 @@
          x64\Debug\Main.obj
          x64\Debug\Objectness.obj
          x64\Debug\stdafx.obj
-         "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib"
-            Creating library D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.lib and object D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exp
-         Objectness.vcxproj -> D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe
+         "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\LibLinear.lib"
+            Creating library D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.lib and object D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exp
+         Objectness.vcxproj -> D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe;#1" /manifest x64\Debug\Objectness.exe.intermediate.manifest
-     1>Done Building Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Debug\Objectness.exe;#1" /manifest x64\Debug\Objectness.exe.intermediate.manifest
+     1>Done Building Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\Objectness\Objectness.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:01:05.77
+Time Elapsed 00:00:50.88

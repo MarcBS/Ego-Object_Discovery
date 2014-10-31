@@ -1,26 +1,9 @@
-﻿Build started 30/09/2014 13:19:09.
-     1>Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TC /errorReport:prompt blas\daxpy.c blas\ddot.c blas\dnrm2.c blas\dscal.c train.c
-         daxpy.c
-         ddot.c
-         dnrm2.c
-         dscal.c
-         train.c
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\OpenCV\build\include /IC:\boost_1_56_0 /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt linear.cpp tron.cpp
-         linear.cpp
-         tron.cpp
-       Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\LibLinear.lib" /NOLOGO /LTCG x64\Release\daxpy.obj
-         x64\Release\ddot.obj
-         x64\Release\dnrm2.obj
-         x64\Release\dscal.obj
-         x64\Release\linear.obj
-         x64\Release\train.obj
-         x64\Release\tron.obj
-         LibLinear.vcxproj -> D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\x64\Release\LibLinear.lib
-     1>Done Building Project "D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" (Build target(s)).
+﻿Build started 30/10/2014 14:39:17.
+     1>Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         LibLinear.vcxproj -> D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\x64\Release\LibLinear.lib
+     1>Done Building Project "D:\GitHub\Object_Discovery\Objectness BING\BingObjectnessCVPR14\LibLinear\LibLinear.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.89
+Time Elapsed 00:00:00.07

@@ -16,7 +16,7 @@ easines_rate = [1.25 1/1000 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'Ferrari'; 
+objectness.type = 'SelectiveSearch'; 
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
@@ -29,7 +29,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 4; % (SenseCam 4, PASCAL 1, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 1; % (SenseCam 4, PASCAL 1, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -116,11 +116,11 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = false; % Calculates the objectness and the objects candidates
+reload_objectness = true; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
-retrain_obj_vs_noobj = true; % Rebuilds the SVM classifier ObjVSNoObj
-apply_obj_vs_noobj = true; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
+retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj
+apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 show_easiest = false; % sets if we want to store the easieast objects from each iteration in a folder
 show_PCA = false; % shows the 2D/3D PCA representation of the samples
 eval_clustering = false; % evaluates the result of the clustering (only possible if ground truth available).
@@ -161,7 +161,7 @@ classes_scenes = zeros(0);
 histClasses = zeros(0);
 
 %% Features extraction (features location)
-feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_07 BING']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
@@ -234,7 +234,7 @@ path_svm = '../libsvm-3.18/windows';
 rmpath('../libsvm-3.18/windows');
 
 %% Results storing folder
-results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_4';
+results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
 
 results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);
@@ -246,20 +246,20 @@ mkdir(results_folder);
 % path_labels = '';
 
 %%% WINDOWS & MAC
-path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-% path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL'];
+% path_folders = [volume_path '/Documentos/Vicon Revue Data'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 
 
 %%%%%% Datasets
 
-%%% All My SenseCam
-folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
-    '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
-    '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
-    'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
-    'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
-format = '.JPG';
+% %%% All My SenseCam
+% folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
+%     '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
+%     '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
+%     'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
+%     'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
+% format = '.JPG';
 
 % %%% Narrative
 % folders = {'Narrative Samples'};
@@ -269,6 +269,10 @@ format = '.JPG';
 % folders = {%'VOCtrainval_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages', ...
 %     'VOCtest_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages'};
 % format = '.jpg';
+
+%% PASCAL_12
+folders = {'JPEGImages'};
+format = '.jpg';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

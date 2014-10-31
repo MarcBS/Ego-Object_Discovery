@@ -2,6 +2,10 @@
 %% This script builds a Ground Truth file with all the true labels assigned
 %   to the "objects" structure.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PARAMETERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % volume_path = '/Volumes/SHARED HD/';
 volume_path = 'D:/';
 
@@ -10,19 +14,23 @@ volume_path = 'D:/';
 %             'VOCtest_06-Nov-2007\VOCdevkit\VOC2007\Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_07']};
 
-path_folders = [volume_path 'Video Summarization Objects/Features'];
-folders = {'Data SenseCam 0BC25B01 SelectiveSearch/Annotations'};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch']};
+path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+folders = {'Annotations'};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 BING']};
 
-threshold_detection = 0.4;
+threshold_detection = 0.5;
 
 % selects if the annotation files are from PASCAL or from the custom labeling
 % app.
-annoType = 'CUSTOM'; % 'PASCAL' or 'CUSTOM'
+annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM'
 
 % list of allowed GT labels
-limitAllowed = true;
+limitAllowed = false;
 allowed = {'hand', 'mobilephone', 'tvmonitor', 'person'};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% EXECUTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Load objects file
 disp('# LOADING OBJECTS file...');

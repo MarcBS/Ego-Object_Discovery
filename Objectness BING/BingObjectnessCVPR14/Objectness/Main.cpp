@@ -18,7 +18,7 @@
 void mainTrain(CStr &workingpath, CStr &trainpath, CStr &model_name);
 void mainTest(CStr &workingpath, CStr &testpath, CStr &model_name);
 
-void noValidationTest(CStr &workingpath, CStr &testpath, CStr &model_name);
+void noValidationTest(CStr &workingpath, CStr &testpath, CStr &model_name, int resize_img);
 
 void saveModel(Objectness obj, string path);
 void loadModel(Objectness &obj, string path, string modelName);
@@ -31,31 +31,34 @@ void currentDateTime(string path, string txt);
 /**
  *	Training/Test+Validation
  *
- *	argv[1] = "test"   or   "train"
+ *	argv[1] = "testval"   or   "train"
  *	argv[2] = workingpath = "new/path/to/results/" (will store results and model file)
  *	argv[3] = trainpath = "path/to/train_data/"   or   testpath = "path/to/test_data/"
  *	argv[4] = model_name = "modelFileName.txt"
  *
  *	Test without Validation
  *
- *	argv[1] = workingpath = "new/path/to/results/" (will store results and model file)
- *	argv[2] = test_path = "path/to/test_data/"
- *	argv[3] = model_name = "modelFileName.txt"
+ *	argv[1] = "test"
+ *	argv[2] = workingpath = "new/path/to/results/" (will store results and model file)
+ *	argv[3] = test_path = "path/to/test_data/"
+ *	argv[4] = model_name = "modelFileName.txt"
+ *	argv[5] = resize_img ---> new_size = old_size/resize_img
  */
 int main(int argc, char* argv[])
 {
 
-	// Training/Test+Validation
 	if(argc == 5){
 		CmFile::MkDir((string)argv[2]);
+		// Training
 		if(!strcmp(argv[1], "train")){
 			cout<<"Start training "+ (string)argv[4] +"..."<<endl;
 			currentDateTime((string)argv[2], "Training start ---> ");
 			mainTrain(argv[2], argv[3], argv[4]);
 			currentDateTime((string)argv[2], "Training end ---> ");
 			cout<<"Training finished."<<endl;
-
-		}else if(!strcmp(argv[1], "test")){
+		
+		// Test + Validation
+		}else if(!strcmp(argv[1], "testval")){
 			cout<<"Start testing on "+ (string)argv[4] +"..."<<endl;
 			currentDateTime((string)argv[2], "Test start ---> ");
 			mainTest(argv[2], argv[3], argv[4]);
@@ -63,22 +66,16 @@ int main(int argc, char* argv[])
 			cout<<"Testing finished."<<endl;
 
 		}else{
-			cout<<"Incorrect first argument. Only 'train' or 'test' valid."<<endl;
+			cout<<"Incorrect first argument. Only 'train' or 'testval' valid."<<endl;
 		}
 
 	// Test without Validation
-	}else if(argc == 4){
-		CmFile::MkDir((string)argv[2]);
-		//cout<<"Start testing without validation on "+ (string)argv[3] +"..."<<endl;
-		//currentDateTime((string)argv[1], "Test start ---> ");
-		noValidationTest(argv[1], argv[2], argv[3]);
-		//currentDateTime((string)argv[1], "Test end ---> ");
-		//cout<<"Testing without validation finished."<<endl;
+	}else if(argc == 6){
+		CmFile::MkDir((string)argv[3]);
+		noValidationTest(argv[2], argv[3], argv[4], atoi(argv[5]));
 
 	} else {
-		cout<<"Incorrect number of arguments, should be:"<<endl;
-		cout<<"Multiple Images ---> mode working_path path_fold model_name"<<endl;
-		cout<<"Single Image ---> working_path path_img model_name"<<endl;
+		cout<<"Incorrect number of arguments!:"<<endl;
 	}
 
 	return 0;
@@ -127,7 +124,7 @@ void mainTest(CStr &workingpath, CStr &testpath, CStr &model_name){
 }
 
 
-void noValidationTest(CStr &workingpath, CStr &imagepath, CStr &model_name){
+void noValidationTest(CStr &workingpath, CStr &imagepath, CStr &model_name, int resize_img){
 
 	// Load model
 	Objectness newObjectness;
@@ -136,7 +133,7 @@ void noValidationTest(CStr &workingpath, CStr &imagepath, CStr &model_name){
 
 	// Test Model
 	vector<vector<Vec4i>> boxesTests;
-	newObjectness._props = 4;
+	newObjectness._props = resize_img;
 	newObjectness.getObjBndBoxesForNoValidationTestFast(imagepath, boxesTests);
 }
 
