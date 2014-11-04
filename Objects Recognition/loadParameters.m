@@ -1,7 +1,7 @@
 %% Initial parameters
 
-volume_path = 'D:';
-% volume_path = '/Volumes/SHARED HD';
+% volume_path = 'D:';
+volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
@@ -16,7 +16,7 @@ easines_rate = [1.25 1/1000 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'SelectiveSearch'; 
+objectness.type = 'MCG'; 
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
@@ -29,7 +29,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 1; % (SenseCam 4, PASCAL 1, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -161,7 +161,7 @@ classes_scenes = zeros(0);
 histClasses = zeros(0);
 
 %% Features extraction (features location)
-feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_12 MCG']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_07 BING']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
@@ -248,6 +248,7 @@ mkdir(results_folder);
 %%% WINDOWS & MAC
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
 path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
 path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 
 
@@ -273,6 +274,10 @@ path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code
 %% PASCAL_12
 folders = {'JPEGImages'};
 format = '.jpg';
+
+% %% MSRC
+% folders = {'JPEGImages'};
+% format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

@@ -6,23 +6,25 @@
 %%% PARAMETERS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% volume_path = '/Volumes/SHARED HD/';
-volume_path = 'D:/';
+volume_path = '/Volumes/SHARED HD/';
+% volume_path = 'D:/';
 
 % path_folders = [volume_path 'Video Summarization Project Data Sets/PASCAL'];
 % folders = { 'VOCtrainval_06-Nov-2007\VOCdevkit\VOC2007\Annotations', ...
 %             'VOCtest_06-Nov-2007\VOCdevkit\VOC2007\Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_07']};
 
-path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 BING']};
+% path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch']};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC SelectiveSearch']};
 
 threshold_detection = 0.5;
 
 % selects if the annotation files are from PASCAL or from the custom labeling
 % app.
-annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM'
+annoType = 'MSRC'; % 'PASCAL' or 'CUSTOM' or 'MSRC'
 
 % list of allowed GT labels
 limitAllowed = false;
@@ -59,7 +61,7 @@ for i = 1:nFolders
             %% Read xml
             xmlContent = fileread([path_folders '/' folders{i} '/' annName{1} '.xml']);
             objs = regexp(xmlContent, '<object>', 'split');
-        else
+        elseif(strcmp(annoType, 'PASCAL') || strcmp(annoType, 'MSRC'))
             annName = regexp(annotations(j).name, '\.', 'split');
             
             %% Read xml
