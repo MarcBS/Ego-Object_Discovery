@@ -35,14 +35,7 @@ if(feature_params.useContext)
 end
 
 %% Get all indices of all objects in a matrix
-all_indices = [];
-nImages = length(objects);
-for i = 1:nImages
-    nObjects = length(objects(i).objects);
-    for j = 1:nObjects
-        all_indices = [all_indices; i j];
-    end
-end
+all_indices = getAllIndices(objects);
 
 if(has_ground_truth)
     %% Get a certain percentage of objects' true labels

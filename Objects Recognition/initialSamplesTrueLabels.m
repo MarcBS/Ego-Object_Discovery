@@ -10,9 +10,7 @@ function [ objects, classes ] = initialSamplesTrueLabels( objects, feature_param
 
     %% Randomly selects the samples to store
     if(type == 1)
-        lenObjects = size(indices,1);
-        nGetObjects = round(lenObjects * feature_params.initialObjectsPercentage);
-        toStore = randsample(1:lenObjects, nGetObjects);
+        toStore = getObjsToSelect(indices, objects, feature_params);
     elseif(type == 2)
         lenScenes = length(objects);
         nGetScenes = round(lenScenes * feature_params.initialScenesPercentage);
