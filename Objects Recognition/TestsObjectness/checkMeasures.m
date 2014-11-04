@@ -7,8 +7,8 @@ volume_path = '/Volumes/SHARED HD/';
 
 % objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
 % objects_path = 'Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch';
-objects_path = 'Video Summarization Objects/Features/Data MSRC SelectiveSearch';
-% objects_path = 'Video Summarization Objects/Features/Data PASCAL_07';
+objects_path = 'Video Summarization Objects/Features/Data MSRC MCG';
+% objects_path = 'Video Summarization Objects/Features/Data PASCAL_07'r;
 
 
 %% Load Objects
