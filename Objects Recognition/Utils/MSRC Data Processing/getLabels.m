@@ -1,4 +1,4 @@
-function [ labels ] = getLabels( gt_im, classes, valid_classes, version )
+function [ labels ] = getLabels( gt_im, classes, valid_classes, version, min_area )
 %GETLABELS Finds the unique object labels from a ground truth segmentation
 %   image of the MSRC Dataset.
 
@@ -24,7 +24,7 @@ function [ labels ] = getLabels( gt_im, classes, valid_classes, version )
             labs = labs(2:end);
 
             for l = labs'
-                labels(count).name = classes{class};
+                name = classes{class};
                 nRows = size(this_gt,1);
                 nCols = size(this_gt,2);
 
@@ -38,16 +38,16 @@ function [ labels ] = getLabels( gt_im, classes, valid_classes, version )
                     if(first)
                         if(sum(lab_gt(i,:)) > 0)
                             % Found minY position
-                            labels(count).ULy = i;
+                            ULy = i;
                             first = false;
                         end
                     elseif(last)
                         if(i >= nRows)
-                            labels(count).BRy = nRows;
+                            BRy = nRows;
                             last = false;
                         elseif(sum(lab_gt(i,:)) == 0)
                             % Found maxY position
-                            labels(count).BRy = i-1;
+                            BRy = i-1;
                             last = false;
                         end
                     end
@@ -62,23 +62,32 @@ function [ labels ] = getLabels( gt_im, classes, valid_classes, version )
                     if(first)
                         if(sum(lab_gt(:,i)) > 0)
                             % Found minY position
-                            labels(count).ULx = i;
+                            ULx = i;
                             first = false;
                         end
                     elseif(last)
                         if(i >= nCols)
-                            labels(count).BRx = nCols;
+                            BRx = nCols;
                             last = false;
                         elseif(sum(lab_gt(:,i)) == 0)
                             % Found maxY position
-                            labels(count).BRx = i-1;
+                            BRx = i-1;
                             last = false;
                         end
                     end
                     i = i+1;
                 end
-
-                count = count+1;
+                
+                % The GT object is only valid if it has a minimum size
+                if((BRx-ULx+1)*(BRy-ULy+1) >= min_area)
+                    labels(count).name = name;
+                    labels(count).BRx = BRx;
+                    labels(count).BRy = BRy;
+                    labels(count).ULx = ULx;
+                    labels(count).ULy = ULy;
+                    
+                    count = count+1;
+                end
             end
         end
     end

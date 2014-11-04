@@ -18,7 +18,7 @@ volume_path = '/Volumes/SHARED HD/';
 path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch']};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC SelectiveSearch']};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC MCG']};
 
 threshold_detection = 0.5;
 

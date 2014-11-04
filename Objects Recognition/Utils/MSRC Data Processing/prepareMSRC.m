@@ -25,8 +25,8 @@
 % window 21     +
 %
 
-% volume_path = '/Volumes/SHARED HD/';
-volume_path = 'D:/';
+volume_path = '/Volumes/SHARED HD/';
+% volume_path = 'D:/';
 
 path_imgs = [volume_path 'Video Summarization Project Data Sets/MSRC_not_processed/msrcorid'];
 path_gt = [volume_path 'Video Summarization Project Data Sets/MSRC_not_processed/MSRCv0_GT'];
@@ -50,6 +50,8 @@ valid_classes = [8 8 4 4 5 5 15 11 11 14 14 1 10 10 10 10 19 20 12 12 18 3 ...
     16 13 3 3 21];
 
 format = '.JPG';
+prop_res = 1.25;
+min_size = 0.0032; % minimum GT object area 0.32% of the whole image (~25x25 pixels)
 
 version = 2;
 
@@ -75,6 +77,8 @@ for i = 1:nFolders
         
         % Load GT segmentation
         load([this_path_gt files_gt(j).name]); % gt_im
+        gt_im = imresize(gt_im, [size(gt_im,1)/prop_res size(gt_im,2)/prop_res]);
+        min_area = size(gt_im,1)*size(gt_im,2) * min_size;
         
         % Copy image and create annotations file
 %         copyfile(img, [path_result_imgs '/' file_name{1} format]);
@@ -82,9 +86,9 @@ for i = 1:nFolders
         
         % Get list of labels and write them to annotation file
         if(version == 1)
-            labels = getLabels(gt_im, classes, valid_classes, version);
+            labels = getLabels(gt_im, classes, valid_classes, version, min_area);
         elseif(version == 2)
-            labels = getLabels(gt_im, classes, valid_classes(i), version);
+            labels = getLabels(gt_im, classes, valid_classes(i), version, min_area);
         end
         nLabels = length(labels);
         for k = 1:nLabels
