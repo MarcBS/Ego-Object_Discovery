@@ -28,7 +28,7 @@ function [ toSelect ] = getObjsToSelect( indices, objects, feature_params )
     nGetObjects = min(nGetObjects, nSelObjects);
     
     %% Gets final samples selection
-    toSelect = randsample(sel_objects, nGetObjects);
+    toSelect = randsample(sel_objects, nGetObjects)';
 
 end
 
