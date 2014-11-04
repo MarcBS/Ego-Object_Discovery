@@ -4,6 +4,7 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
 
     W = objectness.W;
     type = objectness.type;
+    selsearch_params = objectness.selectiveSearch;
     % type = 'Ferrari' ONLY VALID ON LINUX!
     % type = 'BING' ONLY VALID ON WINDOWS!
     % type = 'MCG' ONLY VALID ON LINUX or MAC!
@@ -12,10 +13,22 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
     %% Extract object candidates and objectness from each of them
     lenImgs = length(objects);
     disp(['Starting extraction of objects from ' num2str(lenImgs) ' images.']);
-    prev_folder = '';
-    for i = 1:lenImgs
+    
+    %%% Pre-extraction for BING objectness
+    if(strcmp(type, 'BING'))
+        prev_folder = '';
+        for i = 1:lenImgs
+            fold_path = [path_folders '/' objects(i).folder '/'];
+            if(~strcmp(prev_folder, objects(i).folder))
+                prev_folder = objects(i).folder;
+                runBINGNoValidation(fold_path, format, workingpath, prop_res);
+            end
+        end
+    end
+    
+    %%% Start extraction image by image
+    parfor i = 1:lenImgs
         img_path = [path_folders '/' objects(i).folder '/' objects(i).imgName];
-        fold_path = [path_folders '/' objects(i).folder '/'];
         
         % Extract W objects from this image and their objectness
         if(strcmp(type, 'Ferrari'))
@@ -24,10 +37,6 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
             img = imresize(img,[size(img,1)/prop_res size(img,2)/prop_res]);
             boxes = runObjectness(img,W);
         elseif(strcmp(type, 'BING'))
-            if(~strcmp(prev_folder, objects(i).folder))
-                prev_folder = objects(i).folder;
-                runBINGNoValidation(fold_path, format, workingpath);
-            end
             boxes = getBoxesBING(objects(i).imgName, W, workingpath);
         elseif(strcmp(type, 'MCG'))
             % Load image
@@ -37,7 +46,7 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
         elseif(strcmp(type, 'SelectiveSearch'))
             img = imread(img_path);
             img = imresize(img,[size(img,1)/prop_res size(img,2)/prop_res]);
-            boxes = runObjectnessSelectiveSearch(img, W, objectness.selectiveSearch);
+            boxes = runObjectnessSelectiveSearch(img, W, selsearch_params);
         end
 %         boxes = [1 1 size(img, 2) size(img, 1) 1]; % tmp line only for Toy Problem Dataset, uncomment previous!!
         for j = 1:size(boxes,1)
@@ -51,8 +60,10 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
             objects(i).objects(j).label = 0;
         end
 
-        if(mod(i,50) == 0 || lenImgs == i)
+        if(mod(i,100) == 0 || lenImgs == i)
             disp(['Extracted objects from ' num2str(i) '/' num2str(lenImgs)]);
+            %% TMP LINE, DELETE!!!
+%             save(['/Volumes/SHARED HD/Video Summarization Objects/Features/Data MSRC MCG' '/objects.mat'], 'objects');
         end
         %figure,imshow(img),drawBoxes(boxes);
     end

@@ -34,6 +34,8 @@ Explanation and additional features:
            - Added CNN features [5] extraction for object candidates 
                and scenes.
            - Added PCA dimensionality reduction on easy objects.
+		   - Added initial ObjVsNoObj RBF-SVM classifier for discarding
+			   the majority of No Objects.
 
 References:
 

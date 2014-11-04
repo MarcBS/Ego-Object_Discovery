@@ -1,11 +1,15 @@
-function runBINGNoValidation( img_path, format, workingpath )
+function runBINGNoValidation( img_path, format, workingpath, prop_res )
 %RUNBING Interface for running BING Objectness.
 %   Runs the BInarized Normed Gradients Objectness measure on set of
 %   samples in "img_path".
 %%
 
     model_name = 'modelTrained.txt';
-    path_exe = 'D:/Documentos/Dropbox/Video Summarization Project/Code/Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe';
+    local_path = regexp(pwd, '\', 'split'); root_path = '';
+    for i = 1:length(local_path)-1
+        root_path = [root_path local_path{i} '/'];
+    end
+    path_exe = [root_path 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
 
     % Get all images
     images = dir([img_path '*' format]);
@@ -19,7 +23,7 @@ function runBINGNoValidation( img_path, format, workingpath )
     end
     fclose(f);
     
-    system(['"' path_exe '" "' workingpath '" "' img_path '" "' model_name '"']);
+    system(['"' path_exe '" "test" "' workingpath '" "' img_path '" "' model_name '" "' num2str(prop_res) '"']);
     
 end
 

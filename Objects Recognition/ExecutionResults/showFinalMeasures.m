@@ -2,7 +2,7 @@
 %% This script plots the final measures obtained by each method
 
 % Location where all the tests results will be stored
-tests_path = '../../../../../../Video Summarization Tests';
+tests_path = 'D:/Video Summarization Tests';
 
 %% Parameters 
 
@@ -17,11 +17,14 @@ CNN = {'Execution_CNN_NoScene_1', 'Execution_CNN_NoScene_2', ...
 Original = {'Execution_Original_NoScene_1', 'Execution_Original_NoScene_2', ...
     'Execution_Original_NoScene_3','Execution_Original_NoScene_4', 'Execution_Original_NoScene_5'};
 CNN_Refill = {'Execution_CNN_NoScene_1_refill02', 'Execution_CNN_NoScene_2_refill02',...
-    'Execution_CNN_NoScene_3_refill03', 'Execution_CNN_NoScene_4_refill04'}; 
+    'Execution_CNN_NoScene_3_refill03', 'Execution_CNN_NoScene_4_refill04'};
+% CNN_Refill_ObjVSNoObj = {'Exec_CNN_Refill_Ferrari_ObjVSNoObj_1', ...
+%     'Exec_CNN_Refill_Ferrari_ObjVSNoObj_2', 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_3'};
+CNN_Refill_ObjVSNoObj = {'Exec_CNN_Refill_Ferrari_ObjVSNoObj_4'};
 
 % Test variables
 % tests = {'CNN_Scene', 'CNN_Scene2', 'Original_NoScene', 'CNN_NoScene', 'CNN_NoScene_Refill'};
-tests = {'Original', 'CNN', 'CNN_Refill'};
+tests = {'Original', 'CNN', 'CNN_Refill', 'CNN_Refill_ObjVSNoObj'};
 
 % Iteration intervals for f-measure plot
 iter_intervals = [10 20 40 60 80];
@@ -83,7 +86,7 @@ for test = tests
         % Fill intermediate fmeasures
         iterm_fmeasures{count_test}{count_f} = [];
         for i = 1:length(allIter)
-            load([f{1} '/resultsObjects_' num2str(i) '.mat']); % record
+            load([tests_path '/ExecutionResults/' f{1} '/resultsObjects_' num2str(i) '.mat']); % record
             record = regexp(record, '\\n', 'split');
             part = record{end-2}; part = regexp(part, ': ', 'split');
             iterm_fmeasures{count_test}{count_f} = [iterm_fmeasures{count_test}{count_f} str2num(part{2})];
@@ -93,7 +96,7 @@ for test = tests
         iterations{count_test} = [iterations{count_test} length(allIter)];
         
         % Load record
-        load([f{1} '/resultsObjects_' num2str(length(allIter)) '.mat']); % record
+        load([tests_path '/ExecutionResults/' f{1} '/resultsObjects_' num2str(length(allIter)) '.mat']); % record
         record = regexp(record, '\\n', 'split');
         
         % F-measure
@@ -110,10 +113,10 @@ for test = tests
         
         % Fill final SVM/KNN tests
         try
-            load([f{1} '/result_SVM_clus.mat']); % result_SVM_clus
-            load([f{1} '/result_KNN_clus.mat']); % result_KNN_clus
-            load([f{1} '/result_SVM_true.mat']); % result_SVM_true
-            load([f{1} '/result_KNN_true.mat']); % result_KNN_true
+            load([tests_path '/ExecutionResults/' f{1} '/result_SVM_clus.mat']); % result_SVM_clus
+            load([tests_path '/ExecutionResults/' f{1} '/result_KNN_clus.mat']); % result_KNN_clus
+            load([tests_path '/ExecutionResults/' f{1} '/result_SVM_true.mat']); % result_SVM_true
+            load([tests_path '/ExecutionResults/' f{1} '/result_KNN_true.mat']); % result_KNN_true
             final_SVM_clus{count_test} = [final_SVM_clus{count_test} result_SVM_clus.accuracy];
             final_KNN_clus{count_test} = [final_KNN_clus{count_test} result_KNN_clus.accuracy];
             final_SVM_true{count_test} = [final_SVM_true{count_test} result_SVM_true.accuracy];

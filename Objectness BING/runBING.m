@@ -21,7 +21,7 @@ function runBING( path_fold, model_name, mode, workingpath )
 %   model_name --> name of the file where the trained model will be or is
 %                   stored.
 %
-%   mode --> 'train' or 'test'.
+%   mode --> 'train' or 'testval'.
 %
 %   workingpath --> folder where both the model and the results will be
 %                   stored. If workingpath == '' a new folder 'WkDir' will
@@ -33,7 +33,7 @@ function runBING( path_fold, model_name, mode, workingpath )
         workingpath = 'D:\Documentos\Dropbox\Video Summarization Project\Code\Objectness BING/WkDir/';
     end
     
-    if(~strcmp(mode, 'train') && ~strcmp(mode, 'test'))
+    if(~strcmp(mode, 'train') && ~strcmp(mode, 'testval'))
         error(['Wrong mode "' mode '" !']);
     end
 

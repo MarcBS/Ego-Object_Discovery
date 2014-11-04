@@ -8,24 +8,43 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easines_rate, all_in
 
     %% Get all scores for all objects
     obj_scores = zeros(1, lenObjs);
-    U = []; % stores the indices for the unlabeled samples
     count = 1;
+    countUnlabeled = 0;
     for ind = all_indices' % for each index
-        try
-            lab = objects(ind(1)).objects(ind(2)).label;
-        catch % no label assigned
+        this_scn = objects(ind(1));
+        this_obj = objects(ind(1)).objects(ind(2));
+        if(isfield(this_obj, 'label'))
+            lab = this_obj.label;
+        else % no label assigned
             lab = 0;
         end
         if(lab == 0) % Unlabeled sample
-            U = [U; count];
+            countUnlabeled = countUnlabeled+1;
         end
         % Get its score
-        try
-            sceneAwareScore = objects(ind(1)).sceneAwareScore;
-        catch
+        if(isfield(this_scn, 'sceneAwareScore'))
+            sceneAwareScore = this_scn.sceneAwareScore;
+        else
             sceneAwareScore = 0;
         end
-        obj_scores(count) = objects(ind(1)).objects(ind(2)).objScore + objects(ind(1)).objects(ind(2)).eventAwareScore + sceneAwareScore;
+        obj_scores(count) = this_obj.objScore + this_obj.eventAwareScore + sceneAwareScore;
+        count = count+1;
+    end
+    
+    %% get positions of unlabeled samples
+    U = zeros(countUnlabeled, 1); % stores the indices for the unlabeled samples
+    count = 1; countFound = 1;
+    for ind = all_indices' % for each index
+        this_obj = objects(ind(1)).objects(ind(2));
+        if(isfield(this_obj, 'label'))
+            lab = this_obj.label;
+        else % no label assigned
+            lab = 0;
+        end
+        if(lab == 0) % Unlabeled sample
+            U(countFound) = count;
+            countFound = countFound+1;
+        end
         count = count+1;
     end
     
@@ -51,7 +70,7 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easines_rate, all_in
     %% Show how many elements returns
     disp(['Returning top ' num2str(length(v)) ' easiest samples.']);
     
-    if(length(v) > 0)
+    if(~isempty(v))
         hasEasy = true;
     else
         hasEasy = false;

@@ -1,16 +1,17 @@
 %% Initial parameters
 
 % volume_path = 'D:';
-volume_path = '/Volumes/SHARED HD';
+volume_path = 'C:';
+% volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
 
 % rate used when choosing easy instances
 %   1st -> times std.dev (2)
-%   2nd -> increased each interation (0.1) (0.01?)
+%   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
-easines_rate = [1.25 1/100 5000];
+easines_rate = [1.25 1/1000 5000];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
@@ -29,7 +30,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 4; % (SenseCam 4, PASCAL 1, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 4; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -119,11 +120,35 @@ reload_objStruct = false; % Builds the objects structure for executing the whole
 reload_objectness = false; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
+retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj
+apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 show_easiest = false; % sets if we want to store the easieast objects from each iteration in a folder
 show_PCA = false; % shows the 2D/3D PCA representation of the samples
 eval_clustering = false; % evaluates the result of the clustering (only possible if ground truth available).
 show_clustering = false; % shows the result of the clustering
 show_harderInstances = false; % shows the clusters labeled and the corresponding harder instances found with each of them.
+
+%% Obj VS NoObj SVM classifier params
+objVSnoobj_params.kernel = 'rbf';
+objVSnoobj_params.C = 10;
+objVSnoobj_params.sigma = 100;
+% -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
+% objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
+objVSnoobj_params.balance = true; % balance or not the classifier samples.
+objVSnoobj_params.labels = [1 -1]; % [Obj NoObj] labels
+objVSnoobj_params.evaluate = true; % show the evaluation of the classification result
+
+%% Select which "AWARE" features are we going to use
+feature_params.useScene = false;
+feature_params.useEvent = false;
+feature_params.useContext = false;
+feature_params.useObject = false;
+
+%% PCA options
+feature_params.usePCA = false;
+feature_params.minVarPCA = 0.95;
+feature_params.standarizePCA = true;
+feature_params.showPCAdim = 3; % 2 or 3 dimensions allowed (if show_PCA = true)
 
 %% Classes of objects
 classes = struct('name', [], 'label', []);
@@ -137,7 +162,7 @@ classes_scenes = zeros(0);
 histClasses = zeros(0);
 
 %% Features extraction (features location)
-feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_07 BING']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
@@ -147,18 +172,6 @@ feature_params.dSIFT = 10; % distance between centers of each neighbouring patch
 feature_params.lHOG = 3; % number of levels used for the P-HOG (2 better 'PASCAL_07 GT', 3 original)
 feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
-
-%% Select which "AWARE" features are we going to use
-feature_params.useScene = false;
-feature_params.useEvent = false;
-feature_params.useContext = false;
-feature_params.useObject = false;
-
-%% PCA options
-feature_params.usePCA = false;
-feature_params.minVarPCA = 0.95;
-feature_params.standarizePCA = true;
-feature_params.showPCAdim = 3; % 2 or 3 dimensions allowed (if show_PCA = true)
 
 %% Scene Awareness version
 feature_params.scene_version = 1; % {1 or 2}
@@ -176,6 +189,7 @@ feature_params.maxObjectAwarenessSamples = 100;
 %% Percentage of samples used for the initial Scene/Context/Event/Object awareness samples
 feature_params.initialScenesPercentage = 1; % value between 0 and 1
 feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1
+feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection
 
 %% OneClass SVM parameters (see LIBSVM README)
 % -s  SVM type (2 = one-class SVM)
@@ -214,12 +228,15 @@ elseif(strcmp(objectness.type, 'MCG'))
     cd(thispath)
 end
 addpath(objectness.pathMCG);
-addpath('../Objectness Ferrari/objectness-release-v2.2;../libsvm-3.18/windows;FinalClassifiers;../DimensionalityReduction');
+addpath('../Objectness Ferrari/objectness-release-v2.2;FinalClassifiers;../DimensionalityReduction');
 addpath('Utils;SpatialPyramidMatching;../K_Means;../Locality Sensitive Hashing;LocalitySensitiveHashing;Complete-LinkClustering;../Objectness BING');
-addpath('../Objectness SelectiveSearch;../Objectness SelectiveSearch/Dependencies');
+addpath('../Objectness SelectiveSearch;../Objectness SelectiveSearch/Dependencies;ObjVSNoObj SVM');
+
+path_svm = '../libsvm-3.18/windows';
+rmpath('../libsvm-3.18/windows');
 
 %% Results storing folder
-results_folder = 'Execution_CNN_Refill_BING_1';
+results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
 
 results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);
@@ -231,20 +248,21 @@ mkdir(results_folder);
 % path_labels = '';
 
 %%% WINDOWS & MAC
-path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-% path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL'];
+% path_folders = [volume_path '/Documentos/Vicon Revue Data'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
 path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 
 
 %%%%%% Datasets
 
-%%% All My SenseCam
-folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
-    '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
-    '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
-    'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
-    'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
-format = '.JPG';
+% %%% All My SenseCam
+% folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
+%     '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
+%     '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
+%     'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
+%     'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
+% format = '.JPG';
 
 % %%% Narrative
 % folders = {'Narrative Samples'};
@@ -254,6 +272,14 @@ format = '.JPG';
 % folders = {%'VOCtrainval_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages', ...
 %     'VOCtest_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages'};
 % format = '.jpg';
+
+%% PASCAL_12
+folders = {'JPEGImages'};
+format = '.jpg';
+
+% %% MSRC
+% folders = {'JPEGImages'};
+% format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

@@ -2,11 +2,13 @@
 %% Extracts some measures for evaluating the performance of any objectness 
 %   measure applied on a dataset with a defined ground truth.
 
-% volume_path = '/Volumes/SHARED HD/';
-volume_path = 'D:/';
+volume_path = '/Volumes/SHARED HD/';
+% volume_path = 'D:/';
 
-objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
-% objects_path = 'Video Summarization Objects/Features/Data PASCAL_07';
+% objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
+% objects_path = 'Video Summarization Objects/Features/Data PASCAL_12 SelectiveSearch';
+objects_path = 'Video Summarization Objects/Features/Data MSRC MCG';
+% objects_path = 'Video Summarization Objects/Features/Data PASCAL_07'r;
 
 
 %% Load Objects
