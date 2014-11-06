@@ -130,8 +130,11 @@ show_harderInstances = false; % shows the clusters labeled and the corresponding
 
 %% Obj VS NoObj SVM classifier params
 objVSnoobj_params.kernel = 'rbf';
-objVSnoobj_params.C = 10;
-objVSnoobj_params.sigma = 100;
+%           <<< SenseCam >>>
+%   All Classes In:     C=10, Sigma=100
+%   Half Classes Out:   C=1000, Sigma=0.5
+objVSnoobj_params.C = 1000;
+objVSnoobj_params.sigma = 0.5;
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
 % objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
 objVSnoobj_params.balance = true; % balance or not the classifier samples.
