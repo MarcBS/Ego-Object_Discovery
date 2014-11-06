@@ -39,6 +39,7 @@ all_indices = getAllIndices(objects);
 
 if(has_ground_truth)
     %% Get a certain percentage of objects' true labels
+    disp('# INITIAL SAMPLES SELECTION...');
     [objects classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
     if(retrain_obj_vs_noobj)
         disp('# TRAINING Obj VS NoObj SVM classifier...');
@@ -49,7 +50,7 @@ if(has_ground_truth)
     if(apply_obj_vs_noobj)
         disp('# APPLYING Obj VS NoObj SVM classifier...');
         tic %%%%%%%%%%%%%%%%%%%%%%%
-        [objects nObj nNoObj] = applyObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
+        [objects, nObj, nNoObj] = applyObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
         disp(['Found ' num2str(nObj) ' Objects and ' num2str(nNoObj) ' No Objects.']);
         toc %%%%%%%%%%%%%%%%%%%%%%%
     end

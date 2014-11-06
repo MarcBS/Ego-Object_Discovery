@@ -29,6 +29,11 @@ function [ toSelect ] = getObjsToSelect( indices, objects, feature_params )
     
     %% Gets final samples selection
     toSelect = randsample(sel_objects, nGetObjects)';
-
+    
+    classes = unique_classes{sel_classes(1)};
+    for i = 2:length(sel_classes)
+        classes = [classes ', ' unique_classes{sel_classes(i)}];
+    end
+    disp(['Classes selected: {' classes '}']);
 end
 
