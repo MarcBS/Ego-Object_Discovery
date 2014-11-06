@@ -5,4 +5,4 @@ Objectness BING/BingObjectnessCVPR14/ipch/*
 Objects Recognition/ObjVSNoObj SVM/*.mat
 *.log
 *.obj
-
+*~
