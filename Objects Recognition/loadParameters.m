@@ -1,11 +1,12 @@
 %% Initial parameters
 
-% volume_path = 'D:';
-volume_path = 'C:';
+volume_path = 'D:';
+% volume_path = 'C:';
 % volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
+% tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
 %   1st -> times std.dev (2)
@@ -120,8 +121,8 @@ reload_objStruct = false; % Builds the objects structure for executing the whole
 reload_objectness = false; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
-retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj
-apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
+retrain_obj_vs_noobj = true; % Rebuilds the SVM classifier ObjVSNoObj
+apply_obj_vs_noobj = true; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 show_easiest = false; % sets if we want to store the easieast objects from each iteration in a folder
 show_PCA = false; % shows the 2D/3D PCA representation of the samples
 eval_clustering = false; % evaluates the result of the clustering (only possible if ground truth available).
@@ -132,9 +133,9 @@ show_harderInstances = false; % shows the clusters labeled and the corresponding
 objVSnoobj_params.kernel = 'rbf';
 %           <<< SenseCam >>>
 %   All Classes In:     C=10, Sigma=100
-%   Half Classes Out:   C=1000, Sigma=0.5
-objVSnoobj_params.C = 1000;
-objVSnoobj_params.sigma = 0.5;
+%   Half Classes Out:   C=1000, Sigma=0.5       NOT WORKING!!
+objVSnoobj_params.C = 10;
+objVSnoobj_params.sigma = 100;
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
 % objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
 objVSnoobj_params.balance = true; % balance or not the classifier samples.
@@ -192,7 +193,7 @@ feature_params.maxObjectAwarenessSamples = 100;
 %% Percentage of samples used for the initial Scene/Context/Event/Object awareness samples
 feature_params.initialScenesPercentage = 1; % value between 0 and 1
 feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1
-feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection
+feature_params.initialObjectsClassesOut = 0.25; % percentage of classes out of the initial selection
 
 %% OneClass SVM parameters (see LIBSVM README)
 % -s  SVM type (2 = one-class SVM)
@@ -239,7 +240,8 @@ path_svm = '../libsvm-3.18/windows';
 rmpath('../libsvm-3.18/windows');
 
 %% Results storing folder
-results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
+% results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
+results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_OneClassOut_2';
 
 results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);

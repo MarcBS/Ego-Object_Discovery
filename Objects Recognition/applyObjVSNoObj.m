@@ -1,4 +1,4 @@
-function [ objects nObj nNoObj ] = applyObjVSNoObj( objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res )
+function [ objects, nObj, nNoObj ] = applyObjVSNoObj( objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res )
 %APPLYOBJVSNOOBJ Applies the build ObjVSNoObj classifier using the initial
 % selection samples on the rest of the samples.
 
