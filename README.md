@@ -5,8 +5,11 @@ Object Discovery Algorithm on Egocentric Images.
 
 Usage:
 
-	Use the functions inside "Objects Recognition", modify the parameters 
-	in loadParameters.m and then execute main.m.
+	For a single object discovery execution: modify the parameters 
+	in loadParameters.m and then run main.m.
+	
+	For a battery of tests: comment the first line in main.m, change
+	the parameters in tests_battery.m and run it.
 	
 	If you want to use the Multiscale Combinatorial Grouping (MCG) 
 	Objectness [4], it must be downloaded from the authors page and 
@@ -34,8 +37,8 @@ Explanation and additional features:
            - Added CNN features [5] extraction for object candidates 
                and scenes.
            - Added PCA dimensionality reduction on easy objects.
-		   - Added initial ObjVsNoObj RBF-SVM classifier for discarding
-			   the majority of No Objects.
+	   - Added initial ObjVsNoObj RBF-SVM classifier for discarding
+		the majority of No Objects.
 
 References:
 
