@@ -1,4 +1,4 @@
-function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easines_rate, all_indices)
+function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easiness_rate, all_indices)
 %GETEASYOBJECTS Gets the easiest objects wrt their scores for the current
 %iteration t.
 %   Gets only the objects with a high enought score for being considered
@@ -52,7 +52,7 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easines_rate, all_in
     [v,p] = sort(obj_scores, 2, 'descend');
     
     %% Get only the "easiest" objects, selecting them by a threshold
-    easy = v >= (mean(v) + easines_rate(1)*std(v)- abs(std(v))*easines_rate(2)*t);
+    easy = v >= (mean(v) + easiness_rate(1)*std(v)- abs(std(v))*easiness_rate(2)*t);
     p = p(easy);
     v = v(easy);
     
@@ -62,9 +62,9 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easines_rate, all_in
     v = v(ind);
 
     %% Get only the first easines_rate(3) instances if too many
-    if(length(v) > easines_rate(3))
-        v = v(1:easines_rate(3));
-        p = p(1:easines_rate(3));
+    if(length(v) > easiness_rate(3))
+        v = v(1:easiness_rate(3));
+        p = p(1:easiness_rate(3));
     end
     
     %% Show how many elements returns

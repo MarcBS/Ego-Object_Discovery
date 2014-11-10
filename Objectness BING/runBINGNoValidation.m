@@ -5,11 +5,12 @@ function runBINGNoValidation( img_path, format, workingpath, prop_res )
 %%
 
     model_name = 'modelTrained.txt';
-    local_path = regexp(pwd, '\', 'split'); root_path = '';
-    for i = 1:length(local_path)-1
-        root_path = [root_path local_path{i} '/'];
-    end
-    path_exe = [root_path 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
+%     local_path = regexp(pwd, '\', 'split'); root_path = '';
+%     for i = 1:length(local_path)-1
+%         root_path = [root_path local_path{i} '/'];
+%     end
+%     path_exe = [root_path 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
+    path_exe = [pwd 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
 
     % Get all images
     images = dir([img_path '*' format]);
