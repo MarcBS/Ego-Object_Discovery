@@ -1,5 +1,5 @@
 
-addpath('../../');
+addpath('../../Utils/');
 % Location where all the tests results will be stored
 tests_path = '../../../../../../Video Summarization Tests';
 
