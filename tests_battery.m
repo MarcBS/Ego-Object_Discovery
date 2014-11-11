@@ -2,7 +2,7 @@
 % object discovery algorithm.
 %
 % INSTRUCTIONS:
-%   - In order to make in work, the first line from the 
+%   - In order to make it work, the first line from the 
 %       main.m file: "loadParameters;" must be commented!
 %   - Wherever a parameters is NaN then the default configuration 
 %       will be used.
@@ -43,7 +43,7 @@ reload_objStruct__ = {false, false};
 reload_objectness__ = {false, false};
 reload_features__ = {false, false};
 reload_features_scenes__ = {false, false};
-retrain_obj_vs_noobj__ = {false, false};
+% retrain_obj_vs_noobj__ = {false, false}; (DEPRECATED)
 apply_obj_vs_noobj__ = {false, false};
 do_discovery__ = {false, false};
 do_final_evaluation__ = {false, false};
@@ -51,17 +51,19 @@ do_final_evaluation__ = {false, false};
 %%% Others
 feature_params__usePCA__ = {false, false};
 refill__ = {0.2, 0.2};
+objVSnoobj_params__SVMpath__ = {'PASCAL_12', 'MSRC'};
+cluster_params__similDist__ = {'cosine', 'euclidean'};
+
 
 %%% List of parameters defined in this section
-
 parameters_list__ = {'easiness_rate__', 'objectness__type__', 'prop_res__', ...
     'volume_path__', 'results_folder__', 'folders__', 'format__', 'path_folders__', ...
     'feat_path__', 'features_type__', 'feature_params__initialScenesPercentage__', ...
     'feature_params__initialObjectsPercentage__', 'feature_params__initialObjectsClassesOut__', ...
     'reload_objStruct__', 'reload_objectness__', 'reload_features__', ...
-    'reload_features_scenes__', 'retrain_obj_vs_noobj__', 'apply_obj_vs_noobj__', ...
-    'do_discovery__', 'do_final_evaluation__', 'feature_params__usePCA__', ...
-    'refill__'};
+    'reload_features_scenes__', 'apply_obj_vs_noobj__', 'do_discovery__', ...
+    'do_final_evaluation__', 'feature_params__usePCA__', 'refill__', ...
+    'objVSnoobj_params__SVMpath__', 'cluster_params__similDist__'};
 
 
 %% Tests Run (DO NOT MODIFY THIS PART)

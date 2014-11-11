@@ -33,8 +33,8 @@ nObjs = sum(objs);
 [nObjs, p] = sort(nObjs, 'descend');
 
 if(doNormalize)
-%     objs = normalizeHistograms(objs(:,p));
-    objs = normalize(objs(:,p));
+    objs = normalizeHistograms(objs(:,p));
+%     objs = normalize(objs(:,p));
 end
 
 %% Define plot colors

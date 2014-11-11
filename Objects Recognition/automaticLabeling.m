@@ -1,4 +1,4 @@
-function [ objects, classes, found_labels ] = automaticLabeling(objects, clusters, nMaxLabelClusters, indices, classes)
+function [ objects, classes, found_labels ] = automaticLabeling(objects, clusters, nMaxLabelClusters, indices, classes, t)
 %AUTOMATICLABELING Automatically labels the first "nMaxLabelClusters"
 %clusters assigning them the majority label.
     
@@ -73,6 +73,8 @@ function [ objects, classes, found_labels ] = automaticLabeling(objects, cluster
             % (see doRefill.m)
             if(isempty(objects(k).objects(j).initialSelection))
                 objects(k).objects(j).label = labelId;
+                objects(k).objects(j).iteration = t;
+                objects(k).objects(j).iterationCluster = i;
             end
             try
                 found_labels{labelId} = [found_labels{labelId}; el];

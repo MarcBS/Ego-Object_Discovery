@@ -1,6 +1,6 @@
 
 %% Load parameters
-% loadParameters;
+loadParameters;
 
 %% Go through each folder getting list of images and labels
 disp('# PARSING FOLDERS looking for all images...');
@@ -41,12 +41,13 @@ if(has_ground_truth)
     %% Get a certain percentage of objects' true labels
     disp('# INITIAL SAMPLES SELECTION...');
     [objects classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
-    if(retrain_obj_vs_noobj)
-        disp('# TRAINING Obj VS NoObj SVM classifier...');
-        tic %%%%%%%%%%%%%%%%%%%%%%%
-        trainObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
-        toc %%%%%%%%%%%%%%%%%%%%%%%
-    end
+%     % DEPRECATED function
+%     if(retrain_obj_vs_noobj)
+%         disp('# TRAINING Obj VS NoObj SVM classifier...');
+%         tic %%%%%%%%%%%%%%%%%%%%%%%
+%         trainObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
+%         toc %%%%%%%%%%%%%%%%%%%%%%%
+%     end
     if(apply_obj_vs_noobj)
         disp('# APPLYING Obj VS NoObj SVM classifier...');
         tic %%%%%%%%%%%%%%%%%%%%%%%
@@ -94,216 +95,219 @@ end
     
 %% Iterate for discovering all the object classes until no easy instances available
 t = 1; hasEasyObjects = true;
-while(hasEasyObjects && do_discovery)
-    %% Start Scenes labeling
-    disp(' ');disp(' ');
-    disp('===============================================');
-    disp(['        STARTING ITERATION ' num2str(t) ' [SCENES]']);
-    disp('===============================================');
-    
-    %% Check if still exists some unlabeled scene
-    pos_scn = getUnlabeledScenes(objects);
-    
-    % Only continue if there is still any unlabeled samples
-    if(~isempty(pos_scn))
-        %% Get features from scenes
-        tic %%%%%%%%%%%%%%%%%%%%%%%
-        % Appearance
-        appearance_feat = sceneFeatures(pos_scn, :);
-        % Object Awareness
-        if(feature_params.useObject)
-%             object_feat = recoverObjectFeatures(pos, ...);
-        else
-            object_feat = [];
-        end
+if(do_discovery)
+    while(hasEasyObjects)
+        %% Start Scenes labeling
+        disp(' ');disp(' ');
+        disp('===============================================');
+        disp(['        STARTING ITERATION ' num2str(t) ' [SCENES]']);
+        disp('===============================================');
 
-        %% Normalize features
-        if(t == 1)
-            [appearance_feat, minAS, maxAS] = normalize(appearance_feat);
-        else
-            [appearance_feat] = normalize(appearance_feat, minAS, maxAS);
-        end
-        [object_feat] = normalizeHistograms(object_feat);
-        toc %%%%%%%%%%%%%%%%%%%%%%%
+        %% Check if still exists some unlabeled scene
+        pos_scn = getUnlabeledScenes(objects);
 
-        %% Clustering of easiest samples
-        [clusters, best_cluster, silhouetteCoeffs] = clusteringScenes(appearance_feat, object_feat, cluster_scn_params, feature_params);
-
-        %% Label best clusters
-        [ objects, classes_scenes, foundLabels ] = automaticLabelingScenes(objects, clusters, cluster_scn_params.nMaxLabelClusters, pos_scn, classes_scenes);
-    
-    
-        %% Check labeled instances
-        record = checkLabeledInstancesScenes(objects, classes_scenes);
-        save(['ExecutionResults/' results_folder '/resultsScenes_' num2str(t) '.mat'], 'record');
-
-    end
-        
-    
-    %% Start Objects labeling
-    disp(' ');disp(' ');
-    disp('===============================================');
-    disp(['        STARTING ITERATION ' num2str(t) ' [OBJECTS]']);
-    disp('===============================================');
-    
-    %% Extract event awareness histograms and scores
-    if(feature_params.useEvent)
-        disp('# EXTRACTING EVENT AWARENESS...');
-        [ histClasses, objects ] = extractEventAwareness( objects, classes, list_event, objectness.W );
-    end
-
-    %% Extract scene awareness features and scores
-    if(feature_params.useScene)
-        disp('# EXTRACTING SCENE AWARENESS...');
-        tic %%%%%%%%%%%%%%%%%%%%%%%
-        if(feature_params.scene_version == 1)
-            if(( t == 1 || ~isempty(pos_scn) ))
-                [ objects ] = extractSceneAwareness( objects, sceneFeatures, feature_params );
-            end
-        elseif(feature_params.scene_version == 2)
-            [ objects ] = extractSceneAwareness2( objects, classes, feature_params );
-        else
-            error(['Unknown scene version ' num2str(scene_version)]);
-        end
-        toc %%%%%%%%%%%%%%%%%%%%%%%
-    end
-
-    %% Extract context awareness scores
-    if(feature_params.useContext)
-        disp('# EXTRACTING CONTEXT AWARENESS...');
-%         [ objects ] = extractContextAwareness( objects, superpixels, context_selection, feature_params, feat_path );
-        error('Context Awareness not implemented yet!');
-    end
-
-    %% Get all scores for all objects, sort them and get only the easiest
-    disp('# GETTING EASY OBJECTS...');
-    [ hasEasyObjects, val, pos ] = getEasyObjects( objects, t, objectness.W, easiness_rate, all_indices);
-    
-    % Only continue if there is any easy object
-    if(hasEasyObjects)
-        
-        %% Refilling pool of unlabeled with some labeled samples
-        [ val, pos ] = doRefill(val, pos, objects, all_indices, refill, classes);
-        
-        %% Get indices from easiest instances
-        indices = zeros(length(val), 2); % image and object indices for each selected object
-        count = 1;
-        for p = pos
-            indices(count, :) = all_indices(p, :);
-            count = count+1;
-        end
-
-        %% Recover images features of easiest objects
-        disp('# RECOVERING FEATURES for easy instances...');
-        tic %%%%%%%%%%%%%%%%%%%%%%%
-        % ORIGINAL
-        if(strcmp(features_type, 'original'))
-            [appearance_feat, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [1 feature_params.useEvent], tests_path);
-            if(feature_params.useScene)
-                scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
-            else
-                scene_feat = [];
-            end
-        % CONVOLUTIONAL NEURAL NETWORKS
-        elseif(strcmp(features_type, 'cnn') || strcmp(features_type, 'cnn_con'))
-            [appearance_feat, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [2 feature_params.useEvent], tests_path);
-            if(feature_params.useScene)
-                scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
-            else
-                scene_feat = [];
-            end
-            % CNN object candidate + CNN scene
-            if(strcmp(features_type, 'cnn_con'))
-                [appearance_feat] = concatenateCNN(appearance_feat, sceneFeatures, indices);
-            end
-        % LSH DIM. REDUCED
-        elseif(strcmp(features_type, 'lshDimReduc')) 
-            % Appearance
-            appearance_feat = features(pos, :);
-            % Event Awareness
-            [~, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [0 feature_params.useEvent], tests_path);
-            % Scene Awareness
-            if(feature_params.useScene)
-                scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
-            else
-                scene_feat = [];
-            end
-        end
-
-        %% Normalize features
-        if(t == 1)
-            [appearance_feat, minAO, maxAO] = normalize(appearance_feat);
-        else
-            [appearance_feat] = normalize(appearance_feat, minAO, maxAO);
-        end
-        [event_feat, minEO, maxEO] = normalize(event_feat);
-        toc %%%%%%%%%%%%%%%%%%%%%%%
-
-        %% PCA representation
-        if(show_PCA)
-            disp('# SHOWING PCA REPRESENTATION of the data...');
-            showPCA(appearance_feat, feature_params, objects, indices, tests_path, cluster_params.clusName);
-        end
-        
-        %% PCA dimensionality reduction
-        if(feature_params.usePCA)
-            disp('# APPLYING PCA...');
+        % Only continue if there is still any unlabeled samples
+        if(~isempty(pos_scn))
+            %% Get features from scenes
             tic %%%%%%%%%%%%%%%%%%%%%%%
-            appearance_feat = applyPCA(appearance_feat, feature_params);
-            disp(['Got ' num2str(size(appearance_feat,2)) ' dimensions covering ' num2str(feature_params.minVarPCA*100) '% of variance.']);
+            % Appearance
+            appearance_feat = sceneFeatures(pos_scn, :);
+            % Object Awareness
+            if(feature_params.useObject)
+    %             object_feat = recoverObjectFeatures(pos, ...);
+            else
+                object_feat = [];
+            end
+
+            %% Normalize features
+            if(t == 1)
+                [appearance_feat, minAS, maxAS] = normalize(appearance_feat);
+            else
+                [appearance_feat] = normalize(appearance_feat, minAS, maxAS);
+            end
+            [object_feat] = normalizeHistograms(object_feat);
+            toc %%%%%%%%%%%%%%%%%%%%%%%
+
+            %% Clustering of easiest samples
+            [clusters, best_cluster, silhouetteCoeffs] = clusteringScenes(appearance_feat, object_feat, cluster_scn_params, feature_params);
+
+            %% Label best clusters
+            [ objects, classes_scenes, foundLabels ] = automaticLabelingScenes(objects, clusters, cluster_scn_params.nMaxLabelClusters, pos_scn, classes_scenes);
+
+
+            %% Check labeled instances
+            record = checkLabeledInstancesScenes(objects, classes_scenes);
+            save(['ExecutionResults/' results_folder '/resultsScenes_' num2str(t) '.mat'], 'record');
+
+        end
+
+
+        %% Start Objects labeling
+        disp(' ');disp(' ');
+        disp('===============================================');
+        disp(['        STARTING ITERATION ' num2str(t) ' [OBJECTS]']);
+        disp('===============================================');
+
+        %% Extract event awareness histograms and scores
+        if(feature_params.useEvent)
+            disp('# EXTRACTING EVENT AWARENESS...');
+            [ histClasses, objects ] = extractEventAwareness( objects, classes, list_event, objectness.W );
+        end
+
+        %% Extract scene awareness features and scores
+        if(feature_params.useScene)
+            disp('# EXTRACTING SCENE AWARENESS...');
+            tic %%%%%%%%%%%%%%%%%%%%%%%
+            if(feature_params.scene_version == 1)
+                if(( t == 1 || ~isempty(pos_scn) ))
+                    [ objects ] = extractSceneAwareness( objects, sceneFeatures, feature_params );
+                end
+            elseif(feature_params.scene_version == 2)
+                [ objects ] = extractSceneAwareness2( objects, classes, feature_params );
+            else
+                error(['Unknown scene version ' num2str(scene_version)]);
+            end
             toc %%%%%%%%%%%%%%%%%%%%%%%
         end
-        
-        %% Clustering of easiest samples
-        [clusters, best_cluster, silhouetteCoeffs] = clustering(appearance_feat, event_feat, scene_feat, cluster_params, feature_params, objects, indices);
 
-        %% Evaluate clustering
-        if(eval_clustering)
-            disp('# EVALUATING CLUSTERING RESULTS...');
-            evalResults = evaluateClustering( objects, indices, clusters, cluster_params );
-        else
-            evalResults = [];
+        %% Extract context awareness scores
+        if(feature_params.useContext)
+            disp('# EXTRACTING CONTEXT AWARENESS...');
+    %         [ objects ] = extractContextAwareness( objects, superpixels, context_selection, feature_params, feat_path );
+            error('Context Awareness not implemented yet!');
         end
 
-        %% Shows clustering result
-        if(show_clustering)
-            disp('# STORING CLUSTERING RESULTS...');
-            showClustering( objects, path_folders, prop_res, indices, clusters, cluster_params, cluster_params.clustering_type{1}, silhouetteCoeffs, evalResults, t, tests_path )
+        %% Get all scores for all objects, sort them and get only the easiest
+        disp('# GETTING EASY OBJECTS...');
+        [ hasEasyObjects, val, pos ] = getEasyObjects( objects, t, objectness.W, easiness_rate, all_indices);
+
+        % Only continue if there is any easy object
+        if(hasEasyObjects)
+
+            %% Refilling pool of unlabeled with some labeled samples
+            [ val, pos ] = doRefill(val, pos, objects, all_indices, refill, classes);
+
+            %% Get indices from easiest instances
+            indices = zeros(length(val), 2); % image and object indices for each selected object
+            count = 1;
+            for p = pos
+                indices(count, :) = all_indices(p, :);
+                count = count+1;
+            end
+
+            %% Recover images features of easiest objects
+            disp('# RECOVERING FEATURES for easy instances...');
+            tic %%%%%%%%%%%%%%%%%%%%%%%
+            % ORIGINAL
+            if(strcmp(features_type, 'original'))
+                [appearance_feat, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [1 feature_params.useEvent], tests_path);
+                if(feature_params.useScene)
+                    scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
+                else
+                    scene_feat = [];
+                end
+            % CONVOLUTIONAL NEURAL NETWORKS
+            elseif(strcmp(features_type, 'cnn') || strcmp(features_type, 'cnn_con'))
+                [appearance_feat, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [2 feature_params.useEvent], tests_path);
+                if(feature_params.useScene)
+                    scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
+                else
+                    scene_feat = [];
+                end
+                % CNN object candidate + CNN scene
+                if(strcmp(features_type, 'cnn_con'))
+                    [appearance_feat] = concatenateCNN(appearance_feat, sceneFeatures, indices);
+                end
+            % LSH DIM. REDUCED
+            elseif(strcmp(features_type, 'lshDimReduc')) 
+                % Appearance
+                appearance_feat = features(pos, :);
+                % Event Awareness
+                [~, event_feat] = recoverFeatures(objects, indices, val, V, V_min_norm, V_max_norm, histClasses, feature_params, feat_path, show_easiest, t, path_folders, prop_res, [0 feature_params.useEvent], tests_path);
+                % Scene Awareness
+                if(feature_params.useScene)
+                    scene_feat = recoverSceneFeatures(objects, indices, classes_scenes, classes, feature_params);
+                else
+                    scene_feat = [];
+                end
+            end
+
+            %% Normalize features
+            if(t == 1)
+                [appearance_feat, minAO, maxAO] = normalize(appearance_feat);
+            else
+                [appearance_feat] = normalize(appearance_feat, minAO, maxAO);
+            end
+            [event_feat, minEO, maxEO] = normalize(event_feat);
+            toc %%%%%%%%%%%%%%%%%%%%%%%
+
+            %% PCA representation
+            if(show_PCA)
+                disp('# SHOWING PCA REPRESENTATION of the data...');
+                showPCA(appearance_feat, feature_params, objects, indices, tests_path, cluster_params.clusName);
+            end
+
+            %% PCA dimensionality reduction
+            if(feature_params.usePCA)
+                disp('# APPLYING PCA...');
+                tic %%%%%%%%%%%%%%%%%%%%%%%
+                appearance_feat = applyPCA(appearance_feat, feature_params);
+                disp(['Got ' num2str(size(appearance_feat,2)) ' dimensions covering ' num2str(feature_params.minVarPCA*100) '% of variance.']);
+                toc %%%%%%%%%%%%%%%%%%%%%%%
+            end
+
+            %% Clustering of easiest samples
+            [clusters, best_cluster, silhouetteCoeffs] = clustering(appearance_feat, event_feat, scene_feat, cluster_params, feature_params, objects, indices);
+
+            %% Evaluate clustering
+            if(eval_clustering)
+                disp('# EVALUATING CLUSTERING RESULTS...');
+                evalResults = evaluateClustering( objects, indices, clusters, cluster_params );
+            else
+                evalResults = [];
+            end
+
+            %% Shows clustering result
+            if(show_clustering)
+                disp('# STORING CLUSTERING RESULTS...');
+                showClustering( objects, path_folders, prop_res, indices, clusters, cluster_params, cluster_params.clustering_type{1}, silhouetteCoeffs, evalResults, t, tests_path )
+            end
+
+
+            if(has_ground_truth)
+                %% Label best clusters
+                [ objects, classes, foundLabels ] = automaticLabeling(objects, clusters, cluster_params.nMaxLabelClusters, indices, classes, t);
+            else
+                %% TODO: Manually label!
+            end
+
+            %% Build OneClass SVM for each label of the newly labeled samples
+            disp('# BUILDING OneClass SVMs...');
+            models = buildOneClassSVM( appearance_feat, foundLabels, svmParameters );
+
+            %% Classify Harder Instances
+            disp('# CLASSIFYING HARDER INSTANCES...');
+            objects = classifyHarderInstances( objects, appearance_feat, foundLabels, indices, models, classes, show_harderInstances, prop_res, path_folders, t, tests_path );
+
         end
 
-        
-        if(has_ground_truth)
-            %% Label best clusters
-            [ objects, classes, foundLabels ] = automaticLabeling(objects, clusters, cluster_params.nMaxLabelClusters, indices, classes);
-        else
-            %% TODO: Manually label!
-        end
-            
-        %% Build OneClass SVM for each label of the newly labeled samples
-        disp('# BUILDING OneClass SVMs...');
-        models = buildOneClassSVM( appearance_feat, foundLabels, svmParameters );
+        %% Check labeled instances
+        record = checkLabeledInstances(objects, classes);
+        save([results_folder '/resultsObjects_' num2str(t) '.mat'], 'record');
 
-        %% Classify Harder Instances
-        disp('# CLASSIFYING HARDER INSTANCES...');
-        objects = classifyHarderInstances( objects, appearance_feat, foundLabels, indices, models, classes, show_harderInstances, prop_res, path_folders, t, tests_path );
+        %% Increment iteration
+        t = t+1;
 
     end
     
-    %% Check labeled instances
-    record = checkLabeledInstances(objects, classes);
-    save([results_folder '/resultsObjects_' num2str(t) '.mat'], 'record');
-    
-    %% Increment iteration
-    t = t+1;
+    %% Save final results
+    disp(' ');
+    disp('# DISCOVERY FINISHED!');
+    save([results_folder '/objects_results.mat'], 'objects');
+    save([results_folder '/classes_results.mat'], 'classes');
+    save([results_folder '/classes_scenes_results.mat'], 'classes_scenes');
     
 end
-
-%% Save final results
-disp(' ');
-disp('# DISCOVERY FINISHED!');
-save([results_folder '/objects_results.mat'], 'objects');
-save([results_folder '/classes_results.mat'], 'classes');
-save([results_folder '/classes_scenes_results.mat'], 'classes_scenes');
 
 
 %% temp testing lines (change "hasEasyObjects = true;" at line 93)
