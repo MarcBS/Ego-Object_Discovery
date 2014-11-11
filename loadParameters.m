@@ -46,6 +46,7 @@ features_type = 'cnn';
 % 'lsh-k-means' = LSH + K-means, 'k-means' = K-Means, 'ward' = agglomerative Ward} 
 % kind of clustering used
 cluster_params.clustering_type = {'ward'};
+cluster_params.similDist = 'euclidean'; % 'cosine' maybe better than 'euclidean'?
 % Appearence features used at each clustering level
 % (1:4925 all, 1:45 LAB, 46:725 PHOG, 726:4925 SPM)
 %  46:85 L1 PHOG, 46:213 L1+L2 PHOGs
@@ -118,10 +119,10 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional MAIN processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = false; % Calculates the objectness and the objects candidates
+reload_objectness = true; % Calculates the objectness and the objects candidates
 reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
-retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj
+% retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 do_discovery = false; % Applies the object discovery algorithm on the data
 do_final_evaluation = false; % Does a final evaluation building SVM/KNN classifiers on the initialSamplesSelection
@@ -140,6 +141,7 @@ objVSnoobj_params.kernel = 'rbf';
 %   Half Classes Out:   C=1000, Sigma=0.5       NOT WORKING!!
 objVSnoobj_params.C = 10;
 objVSnoobj_params.sigma = 100;
+objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
 % objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
 objVSnoobj_params.balance = true; % balance or not the classifier samples.
@@ -170,8 +172,8 @@ classes_scenes = zeros(0);
 histClasses = zeros(0);
 
 %% Features extraction (features location)
-feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
-% feat_path = [volume_path '/Video Summarization Objects/Features/Data PASCAL_07 BING']; % folder where we want to store the features for each object
+% feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
 feature_params.bLAB = 15; % bins per channel of the Lab colormap histogram (15)
@@ -246,6 +248,7 @@ addpath('Objectness SelectiveSearch;Objectness SelectiveSearch/Dependencies');
 addpath('Objectness Ferrari/objectness-release-v2.2;Objectness BING');
 addpath('Objects Recognition/FinalClassifiers;DimensionalityReduction');
 % Add paths Object Recognition folder
+addpath('Objects Recognition');
 addpath('Objects Recognition/Utils');
 addpath('Objects Recognition/ObjVSNoObj SVM');
 addpath('Objects Recognition/SpatialPyramidMatching');
@@ -273,8 +276,8 @@ mkdir(results_folder);
 
 %%% WINDOWS & MAC
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
 path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 
 
@@ -297,13 +300,13 @@ path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code
 %     'VOCtest_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages'};
 % format = '.jpg';
 
-%% PASCAL_12
-folders = {'JPEGImages'};
-format = '.jpg';
-
-% %% MSRC
+% %% PASCAL_12
 % folders = {'JPEGImages'};
-% format = '.JPG';
+% format = '.jpg';
+
+%% MSRC
+folders = {'JPEGImages'};
+format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

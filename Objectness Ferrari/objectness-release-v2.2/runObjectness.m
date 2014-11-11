@@ -27,7 +27,8 @@ function boxes = runObjectness(img,numberSamples,params)
 %boxes - samples windows from the objectness measure
 %      - each row contains a window using the format [xmin ymin xmax ymax score]
 
-dir_root = '/home/marc/Dropbox/Video Summarization Project/Code/Objectness Measure/objectness-release-v2.2';%change 'pwd' to an absolute path
+% dir_root = '/home/marc/Dropbox/Video Summarization Project/Code/Objectness Measure/objectness-release-v2.2';%change 'pwd' to an absolute path
+dir_root = [pwd '/Objectness Ferrari/objectness-release-v2.2'];
 
 img = gray2rgb(img);
 

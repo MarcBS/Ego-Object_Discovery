@@ -4,8 +4,8 @@ function [ objects, nObj, nNoObj ] = applyObjVSNoObj( objects, classes, objVSnoo
 
     classifier = [];
     norm_params = [];
-    load('ObjVSNoObj SVM/classifier.mat'); % load 'classifier'
-    load('ObjVSNoObj SVM/norm_params.mat'); % load 'norm_params'
+    load(['Object Recognition/ObjVSNoObj SVM/' objVSnoobj_params.SVMpath '/classifier.mat']); % load 'classifier'
+    load(['Object Recognition/ObjVSNoObj SVM/' objVSnoobj_params.SVMpath '/norm_params.mat']); % load 'norm_params'
 
     %% Find 'No Object' label in classes
     found = false; i = 1;

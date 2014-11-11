@@ -25,8 +25,8 @@
 % window 21     +
 %
 
-volume_path = '/Volumes/SHARED HD/';
-% volume_path = 'D:/';
+% volume_path = '/Volumes/SHARED HD/';
+volume_path = 'D:/';
 
 path_imgs = [volume_path 'Video Summarization Project Data Sets/MSRC_not_processed/msrcorid'];
 path_gt = [volume_path 'Video Summarization Project Data Sets/MSRC_not_processed/MSRCv0_GT'];
@@ -51,7 +51,7 @@ valid_classes = [8 8 4 4 5 5 15 11 11 14 14 1 10 10 10 10 19 20 12 12 18 3 ...
 
 format = '.JPG';
 prop_res = 1.25;
-min_size = 0.0032; % minimum GT object area 0.32% of the whole image (~25x25 pixels)
+min_size = 0.0081; % minimum GT object area 0.81% of the whole image (50x50 pixels)
 
 version = 2;
 
@@ -81,7 +81,7 @@ for i = 1:nFolders
         min_area = size(gt_im,1)*size(gt_im,2) * min_size;
         
         % Copy image and create annotations file
-%         copyfile(img, [path_result_imgs '/' file_name{1} format]);
+        copyfile(img, [path_result_imgs '/' file_name{1} format]);
         anno_file = fopen([path_result_anno '/' file_name{1} '.xml'], 'w');
         
         % Get list of labels and write them to annotation file

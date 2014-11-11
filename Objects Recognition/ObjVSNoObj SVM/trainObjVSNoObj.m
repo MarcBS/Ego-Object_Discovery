@@ -1,15 +1,18 @@
 function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res )
 %TRAINOBJVSNOOBJ Trains a ObjVsNoObj RBF-SVM classifier
 
-    %% Find 'No Object' label in classes
-    found = false; i = 1;
-    while(~found)
-        if(strcmp(classes(i).name, 'No Object'))
-            noobj_lab = classes(i).label;
-            found = true;
-        end
-        i = i+1;
-    end
+    store_dir = [params.SVMpath];
+    mkdir(store_dir);
+
+%     %% Find 'No Object' label in classes
+%     found = false; i = 1;
+%     while(~found)
+%         if(strcmp(classes(i).name, 'No Object'))
+%             noobj_lab = classes(i).label;
+%             found = true;
+%         end
+%         i = i+1;
+%     end
 
     %% Find initially selected samples indices (and labels)
     nInit = 0;
@@ -17,9 +20,9 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
     for i = 1:nImgs
         nObjs = length(objects(i).objects);
         for j = 1:nObjs
-            if(objects(i).objects(j).initialSelection == true)
+%             if(objects(i).objects(j).initialSelection == true)
                 nInit = nInit+1;
-            end
+%             end
         end
     end
     
@@ -29,15 +32,15 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
     for i = 1:nImgs
         nObjs = length(objects(i).objects);
         for j = 1:nObjs
-            if(objects(i).objects(j).initialSelection == true)
+%             if(objects(i).objects(j).initialSelection == true)
                 indices(count,:) = [i j];
-                if(objects(i).objects(j).label == noobj_lab)
+                if(strcmp(objects(i).objects(j).trueLabel, 'No Object'))
                     labels(count) = params.labels(2);  % No Object
                 else
                     labels(count) = params.labels(1);   % Object
                 end
                 count = count+1;
-            end
+%             end
         end
     end
     
@@ -79,12 +82,10 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
     [features, minVal, maxVal] = normalize(features);
     
     classifier =  svmtrain(features, labels, 'kernel_function', params.kernel, 'rbf_sigma', params.sigma, 'boxconstraint', params.C, 'options', statset('MaxIter', 9999999999));
-    
-%     classifier =  svmtrain(labels', features, params.svmParameters);
 
     norm_params.minValNorm = minVal; norm_params.maxValNorm = maxVal;
-    save('ObjVSNoObj SVM/classifier.mat', 'classifier');
-    save('ObjVSNoObj SVM/norm_params.mat', 'norm_params');
+    save([store_dir '/classifier.mat'], 'classifier');
+    save([store_dir '/norm_params.mat'], 'norm_params');
 
 end
 
