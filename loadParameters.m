@@ -1,8 +1,8 @@
 %% Initial parameters
 
-volume_path = 'D:';
+% volume_path = 'D:';
 % volume_path = 'C:';
-% volume_path = '/Volumes/SHARED HD';
+volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
@@ -255,7 +255,7 @@ addpath('Objects Recognition/SpatialPyramidMatching');
 addpath('Objects Recognition/LocalitySensitiveHashing');
 addpath('Objects Recognition/Complete-LinkClustering');
 % Add paths auxiliar libraries
-addpath('K_Means;Locality Sensitive Hashing');
+addpath('K_Means;Locality Sensitive Hashing;PHOG;SIFTflow/mexDenseSIFT');
 path_svm = 'libsvm-3.18/windows';
 
 
