@@ -22,8 +22,6 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
 %   
 %%%%%
 
-    addpath('../PHOG');
-    addpath('../SIFTflow/mexDenseSIFT');
     if(strcmp(features_type, 'cnn'))
         caffe_path = '/home/marc/Documents/Caffe/caffe/matlab/caffe';
         addpath(caffe_path);
@@ -47,7 +45,8 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     for i = 1:nImages
         img = objects(i);
         %%%%%
-    %     img_all = imread([path_folders '/Datasets/' img.folder '/' img.imgName]); % LINUX
+        % LINUX
+    %     img_all = imread([path_folders '/Datasets/' img.folder '/' img.imgName]);
         % WINDOWS & MAC
         try
             img_all = imread([path_folders '/' img.folder{1} '/' img.imgName]); 
@@ -58,24 +57,7 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
         
         %% Resize image
         img_all = imresize(img_all,[size(img_all,1)/prop_res size(img_all,2)/prop_res]);
-%         if(strcmp(objType, 'Ferrari'))
-%             img_all = imresize(img_all,[size(img_all,1)/prop_res size(img_all,2)/prop_res]);
-%         elseif(strcmp(objType, 'BING'))
-%             max_size = objectness.max_size;
-%             height = size(img_all, 1);
-%             width = size(img_all, 2);
-%             if(height > width)
-%                 if(height > max_size)
-%                     prop = height/max_size;
-%                 end
-%             else
-%                 if(width > max_size)
-%                     prop = width/max_size;
-%                 end
-%             end
-%             img_all = imresize(img_all,[size(img_all,1)/prop size(img_all,2)/prop]);
-%         end
-        
+
         mkdir([feat_path '/img' num2str(i)]);
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,7 +212,7 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
             end
         end
             
-        if(mod(i,10) == 0 || nImages == i)
+        if(mod(i,50) == 0 || nImages == i)
             disp(['Features extracted from ' num2str(i) '/' num2str(nImages) ' images.']);
         end
     end
