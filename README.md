@@ -19,8 +19,9 @@ Usage:
 	
 	If you want to use the CNN features [7] extraction:
 		- Install Caffe: http://caffe.berkeleyvision.org/
-		- Download the "bvlc_reference_caffenet.caffemodel" network model.
 		- Configure installation path in loadParameters.m
+		- Download the "bvlc_reference_caffenet.caffemodel" network model.
+		- Copy network model into Object_Discovery/Caffe Src/bvlc_reference_caffenet
    
 
 Explanation and additional features:
