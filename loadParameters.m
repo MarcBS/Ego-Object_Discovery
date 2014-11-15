@@ -176,12 +176,21 @@ histClasses = zeros(0);
 feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
+% Grauman's features
 feature_params.bLAB = 15; % bins per channel of the Lab colormap histogram (15)
 feature_params.wSIFT = 16; % width of the patch used for SIFT calculation (16)
 feature_params.dSIFT = 10; % distance between centers of each neighbouring patches (10)
 feature_params.lHOG = 3; % number of levels used for the P-HOG (2 better 'PASCAL_07 GT', 3 original)
 feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
+
+% CNN features
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
+feature_params.use_gpu = 1; % determines if we want to use the GPU for the CNN extraction
+feature_params.batch_size = 10; % batch size for CNN extraction (given by the trained network)
+features_params.caffe_path = '/usr/local/caffe-dev/matlab/caffe'; % path to caffe MEX
+% Path to CNN model files (for features extraction)
+features_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_features.prototxt'];
+features_params.model_file = [pwd '/Caffe Src/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel'];
 
 %% Scene Awareness version
 feature_params.scene_version = 1; % {1 or 2}
@@ -256,6 +265,7 @@ addpath('Objects Recognition/LocalitySensitiveHashing');
 addpath('Objects Recognition/Complete-LinkClustering');
 % Add paths auxiliar libraries
 addpath('K_Means;Locality Sensitive Hashing;PHOG;SIFTflow/mexDenseSIFT');
+addpath('Caffe Src');
 path_svm = 'libsvm-3.18/windows';
 
 
