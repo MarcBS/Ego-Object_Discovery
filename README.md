@@ -17,7 +17,7 @@ Usage:
 		- Download from the authors page: http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/mcg/
 		- Configure installation path in loadParameters.m
 	
-	If you want to use the CNN features extraction:
+	If you want to use the CNN features [7] extraction:
 		- Install Caffe: http://caffe.berkeleyvision.org/
 		- Download the "bvlc_reference_caffenet.caffemodel" network model.
 		- Configure installation path in loadParameters.m
@@ -41,7 +41,7 @@ Explanation and additional features:
                		features at each of them.
            	- Adaptable for huge datasets (e.g. SenseCam or Narrative 
                		lifelogging data).
-           	- Added CNN features [5] extraction for object candidates 
+           	- Added CNN features [5,7] extraction for object candidates 
                		and scenes.
            	- Added PCA dimensionality reduction on easy objects.
            	- Added initial ObjVsNoObj RBF-SVM classifier for discarding
@@ -67,3 +67,6 @@ References:
        [6] Uijlings, Jasper RR, et al. "Selective search for object 
            recognition." International journal of computer vision 104.2 
            (2013): 154-171.
+       [7] Jia, Yangqing, et al. "Caffe: Convolutional architecture for 
+           fast feature embedding." Proceedings of the ACM International 
+           Conference on Multimedia. ACM, 2014.
