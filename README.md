@@ -12,8 +12,14 @@ Usage:
 	the parameters in tests_battery.m and run it.
 	
 	If you want to use the Multiscale Combinatorial Grouping (MCG) 
-	Objectness [4], it must be downloaded from the authors page and 
-	configured adding its path in loadParameters.m.
+	Objectness [4]:
+		- Download from the authors page: http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/mcg/
+		- Configure installation path in loadParameters.m
+	
+	If you want to use the CNN features extraction:
+		- Install Caffe: http://caffe.berkeleyvision.org/
+		- Download the "bvlc_reference_caffenet.caffemodel" network model.
+		- Configure installation path in loadParameters.m
    
 
 Explanation and additional features:
