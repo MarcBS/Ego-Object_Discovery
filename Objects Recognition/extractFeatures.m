@@ -17,17 +17,8 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
 %   extractionLevel: describes whether we want to extract the features for 
 %       the objects [0 1], the scenes [1 0] or both [1 1].
 %
-%   objectness: parameters referent to the objectness measure used. 
-%       type = 'Ferrari' || 'BING'
 %   
 %%%%%
-
-    if(strcmp(features_type, 'cnn'))
-        caffe_path = '/home/marc/Documents/Caffe/caffe/matlab/caffe';
-        addpath(caffe_path);
-        cd(caffe_path)
-        this_path = pwd;
-    end
 
     bHOG = feat_params.bHOG;
     lHOG = feat_params.lHOG;
@@ -35,8 +26,15 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     wSIFT = feat_params.wSIFT;
     dSIFT = feat_params.dSIFT;
     lenCNN = feat_params.lenCNN;
+    use_gpu = feat_params.use_gpu;
+    batch_size = feat_params.batch_size;
     
-%     objType = objectness.type;
+    if(strcmp(features_type, 'cnn'))
+        addpath(feat_params.caffe_path);
+        cd(caffe_path)
+        matcaffe_init(use_gpu, feat_params.model_def_file, feat_params.model_file);
+        this_path = pwd;
+    end
 
     features_params = struct('bLAB', bLAB, 'wSIFT', wSIFT, 'dSIFT', dSIFT, 'lHOG', lHOG, 'bHOG', bHOG, 'lenCNN', lenCNN);
     save([feat_path '/features_params.mat'], 'features_params');
@@ -122,7 +120,7 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
             %% EXTRACT CNN FEATURES
             elseif(strcmp(features_type, 'cnn'))
                 %% Generate and Store features
-                [cnn_feat, ~] = matcaffe_demo(scn_img, 0);
+                [cnn_feat, ~] = matcaffe_demo(scn_img, use_gpu);
                 scn_feat.CNN_feat = cnn_feat';
             end
 
@@ -141,17 +139,49 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(extractionLevel(2))
             nObjects = length(objects(i).objects);
-            for j = 1:nObjects 
-                %% Load object image
-                obj = objects(i).objects(j);
-                obj_img = img_all(round(obj.ULy):round(obj.BRy), round(obj.ULx):round(obj.BRx), :);
-                % Load obj_feat if exists
-                try
-                    load([feat_path '/img' num2str(i) '/obj' num2str(j) '.mat']); % obj_feat
+            %% EXTRACT CNN FEATURES
+            if(strcmp(features_type, 'cnn'))
+                for j = 0:batch_size:nObjects
+                    obj = objects(i).objects(j);
+                    this_batch = j+1:min(j+batch_size, nObjects);
+                    batch_images = cell(1,batch_size);
+                    [batch_images{:}] = deal(0);
+                    count_batch = 1;
+                    for k = this_batch
+                        batch_images{count_batch} = img_all(round(obj.ULy):round(obj.BRy), round(obj.ULx):round(obj.BRx), :);
+                        count_batch = count_batch +1;
+                    end
+                    images = {prepare_batch2(batch_images)};
+                    scores = caffe('forward', images);
+                    scores = squeeze(scores{1});
+                    scores = scores(:,1:length(this_batch))';
+                    count_batch = 1;
+                    for k = this_batch
+                        % Load obj_feat if exists
+                        try
+                            load([feat_path '/img' num2str(i) '/obj' num2str(k) '.mat']); % obj_feat
+                        end
+                        %% Generate and Store features
+                        obj_feat.CNN_feat = scores(count_batch,:);
+                        count_batch = count_batch +1;
+                        %% Store the rest of the info
+                        obj_feat.idImg = i;
+                        obj_feat.idObj = k;
+                        save([feat_path '/img' num2str(i) '/obj' num2str(k) '.mat'], 'obj_feat');
+                    end
                 end
+            
+            %% EXTRACT ORIGINAL FEATURES
+            elseif(strcmp(features_type, 'original'))
+                for j = 1:nObjects 
+                    %% Load object image
+                    obj = objects(i).objects(j);
+                    obj_img = img_all(round(obj.ULy):round(obj.BRy), round(obj.ULx):round(obj.BRx), :);
+                    % Load obj_feat if exists
+                    try
+                        load([feat_path '/img' num2str(i) '/obj' num2str(j) '.mat']); % obj_feat
+                    end
 
-                %% EXTRACT ORIGINAL FEATURES
-                if(strcmp(features_type, 'original'))
                     %% Rescale if bigger than max_size
                     s = size(obj_img); prop = 1;
                     if(s(1) > max_size && s(1) >= s(2))
@@ -197,18 +227,12 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
                     obj_feat.PHOG_feat = hog_feat;
                     obj_feat.SIFT_feat = sift_feat;
 
-                %% EXTRACT CNN FEATURES
-                elseif(strcmp(features_type, 'cnn'))
-                    %% Generate and Store features
-                    [cnn_feat, ~] = matcaffe_demo(obj_img, 0);
-                    obj_feat.CNN_feat = cnn_feat';
+                    %% Store the rest of the info
+                    obj_feat.idImg = i;
+                    obj_feat.idObj = j;
+                    save([feat_path '/img' num2str(i) '/obj' num2str(j) '.mat'], 'obj_feat');
+
                 end
-
-                %% Store the rest of the info
-                obj_feat.idImg = i;
-                obj_feat.idObj = j;
-                save([feat_path '/img' num2str(i) '/obj' num2str(j) '.mat'], 'obj_feat');
-
             end
         end
             
