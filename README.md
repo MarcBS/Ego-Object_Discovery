@@ -5,14 +5,15 @@ Object Discovery Algorithm on Egocentric Images.
 
 Usage:
 
-	For a single object discovery execution: modify the parameters 
-	in loadParameters.m and then run main.m.
+	For a single object discovery execution: 
+		- Modify the parameters in loadParameters.m
+		- Run main.m
 	
-	For a battery of tests: comment the first line in main.m, change
-	the parameters in tests_battery.m and run it.
+	For a battery of tests: 
+		- Comment the first line in main.m
+		- Change the parameters in tests_battery.m and run it.
 	
-	If you want to use the Multiscale Combinatorial Grouping (MCG) 
-	Objectness [4]:
+	If you want to use the Multiscale Combinatorial Grouping (MCG) Objectness [4]:
 		- Download from the authors page: http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/mcg/
 		- Configure installation path in loadParameters.m
 	
@@ -26,25 +27,25 @@ Explanation and additional features:
 
 	This function is inspired by the pipeline proposed by 
        	K. Grauman in [1] with the following modifications:
-           - Added Ferrari's Objectness [2], BING Objectness [3],
-               Multiscale Combinatorial Grouping (MCG) [4] and
-               Selective Search [6].
-           - Added iterative Scene-Object discovery by turns.
-           - Added Scene Awareness to the set of features.
-           - Added Scene Score to the set of easiness scores.
-           - Added Dimensionality Reduction based on LSH.
-           - Added Locality Sensitive Hashing, K-Means, LSK+K-Means and 
-               Ward instead of Complete-Link clustering for the grouping 
-               of the easiest instances.
-           - Added clustering by levels (using a different set of 
-               features at each of them.
-           - Adaptable for huge datasets (e.g. SenseCam or Narrative 
-               lifelogging data).
-           - Added CNN features [5] extraction for object candidates 
-               and scenes.
-           - Added PCA dimensionality reduction on easy objects.
-	   		- Added initial ObjVsNoObj RBF-SVM classifier for discarding
-				the majority of No Objects.
+       		- Added Ferrari's Objectness [2], BING Objectness [3],
+               		Multiscale Combinatorial Grouping (MCG) [4] and
+               		Selective Search [6].
+           	- Added iterative Scene-Object discovery by turns.
+           	- Added Scene Awareness to the set of features.
+           	- Added Scene Score to the set of easiness scores.
+           	- Added Dimensionality Reduction based on LSH.
+           	- Added Locality Sensitive Hashing, K-Means, LSK+K-Means and 
+               		Ward instead of Complete-Link clustering for the grouping 
+               		of the easiest instances.
+           	- Added clustering by levels (using a different set of 
+               		features at each of them.
+           	- Adaptable for huge datasets (e.g. SenseCam or Narrative 
+               		lifelogging data).
+           	- Added CNN features [5] extraction for object candidates 
+               		and scenes.
+           	- Added PCA dimensionality reduction on easy objects.
+           	- Added initial ObjVsNoObj RBF-SVM classifier for discarding
+			the majority of No Objects.
 
 References:
 
