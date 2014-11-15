@@ -6,3 +6,4 @@ Objects Recognition/ObjVSNoObj SVM/*.mat
 *.log
 *.obj
 *~
+*.caffemodel
