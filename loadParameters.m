@@ -2,10 +2,12 @@
 
 % volume_path = 'D:';
 % volume_path = 'C:';
-volume_path = '/Volumes/SHARED HD';
+% volume_path = '/Volumes/SHARED HD';
+volume_path = '/media/lifelogging';
 
 % Location where all the tests results will be stored
-tests_path = [volume_path '/Video Summarization Tests'];
+% tests_path = [volume_path '/Video Summarization Tests'];
+tests_path = [volume_path '/HDD 2TB/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
@@ -31,7 +33,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 4; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -119,8 +121,8 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional MAIN processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = true; % Calculates the objectness and the objects candidates
-reload_features = false; % CNN ONLY VALID IN LINUX! recalculate features of each object candidate
+reload_objectness = false; % Calculates the objectness and the objects candidates
+reload_features = true; % recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
 % retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
@@ -173,7 +175,8 @@ histClasses = zeros(0);
 
 %% Features extraction (features location)
 % feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
-feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
+feat_path = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Objects/Features/Data PASCAL_12 Ferrari']; % folder where we want to store the features for each object
+% feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
 has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
 % Grauman's features
@@ -187,10 +190,11 @@ feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
 feature_params.use_gpu = 1; % determines if we want to use the GPU for the CNN extraction
 feature_params.batch_size = 10; % batch size for CNN extraction (given by the trained network)
-features_params.caffe_path = '/usr/local/caffe-dev/matlab/caffe'; % path to caffe MEX
+feature_params.parallel = false; % defines if we want to load the batches in parallel or not
+feature_params.caffe_path = '/usr/local/caffe-dev/matlab/caffe'; % path to caffe MEX
 % Path to CNN model files (for features extraction)
-features_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_features.prototxt'];
-features_params.model_file = [pwd '/Caffe Src/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel'];
+feature_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_features.prototxt'];
+feature_params.model_file = [pwd '/Caffe Src/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel'];
 
 %% Scene Awareness version
 feature_params.scene_version = 1; % {1 or 2}
@@ -240,6 +244,7 @@ load('Objects Recognition/Vocabulary/max_norm.mat');
 %% Supress some warnings
 warning('off', 'MATLAB:rmpath:DirNotFound');
 warning('off', 'MATLAB:MKDIR:DirectoryExists');
+warning('off', 'parallel:cluster:FileStorageUnableToReadMetadata');
 
 %% Set default parameters for objectness measures and paths to other functions
 if(strcmp(objectness.type, 'Ferrari'))
@@ -279,17 +284,11 @@ results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);
 
 %% Folder Parsing Parameters (images location)
-
-%%% LINUX
-% path_folders = '/home/marc/Desktop/Data Object Recognition';
-% path_labels = '';
-
-%%% WINDOWS & MAC
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
-path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
-
+path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+% path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
+path_labels = ''; % path to the scene labels
 
 %%%%%% Datasets
 
@@ -310,13 +309,13 @@ path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code
 %     'VOCtest_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages'};
 % format = '.jpg';
 
-% %% PASCAL_12
-% folders = {'JPEGImages'};
-% format = '.jpg';
-
-%% MSRC
+%% PASCAL_12
 folders = {'JPEGImages'};
-format = '.JPG';
+format = '.jpg';
+
+% %% MSRC
+% folders = {'JPEGImages'};
+% format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

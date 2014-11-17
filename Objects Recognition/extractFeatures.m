@@ -28,12 +28,11 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     lenCNN = feat_params.lenCNN;
     use_gpu = feat_params.use_gpu;
     batch_size = feat_params.batch_size;
+    parallel = feat_params.parallel;
     
     if(strcmp(features_type, 'cnn'))
-        addpath(feat_params.caffe_path);
-        cd(caffe_path)
         matcaffe_init(use_gpu, feat_params.model_def_file, feat_params.model_file);
-        this_path = pwd;
+        addpath(feat_params.caffe_path);
     end
 
     features_params = struct('bLAB', bLAB, 'wSIFT', wSIFT, 'dSIFT', dSIFT, 'lHOG', lHOG, 'bHOG', bHOG, 'lenCNN', lenCNN);
@@ -42,16 +41,11 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     nImages = length(objects);
     for i = 1:nImages
         img = objects(i);
-        %%%%%
-        % LINUX
-    %     img_all = imread([path_folders '/Datasets/' img.folder '/' img.imgName]);
-        % WINDOWS & MAC
         try
             img_all = imread([path_folders '/' img.folder{1} '/' img.imgName]); 
         catch
             img_all = imread([path_folders '/' img.folder '/' img.imgName]);
         end
-        %%%%%
         
         %% Resize image
         img_all = imresize(img_all,[size(img_all,1)/prop_res size(img_all,2)/prop_res]);
@@ -142,16 +136,16 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
             %% EXTRACT CNN FEATURES
             if(strcmp(features_type, 'cnn'))
                 for j = 0:batch_size:nObjects
-                    obj = objects(i).objects(j);
                     this_batch = j+1:min(j+batch_size, nObjects);
                     batch_images = cell(1,batch_size);
                     [batch_images{:}] = deal(0);
                     count_batch = 1;
                     for k = this_batch
+                        obj = objects(i).objects(k);
                         batch_images{count_batch} = img_all(round(obj.ULy):round(obj.BRy), round(obj.ULx):round(obj.BRx), :);
                         count_batch = count_batch +1;
                     end
-                    images = {prepare_batch2(batch_images)};
+                    images = {prepare_batch2(batch_images, true, parallel)};
                     scores = caffe('forward', images);
                     scores = squeeze(scores{1});
                     scores = scores(:,1:length(this_batch))';
@@ -239,11 +233,6 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
         if(mod(i,50) == 0 || nImages == i)
             disp(['Features extracted from ' num2str(i) '/' num2str(nImages) ' images.']);
         end
-    end
-
-    
-    if(strcmp(features_type, 'cnn'))
-        cd(this_path)
     end
     
 end
