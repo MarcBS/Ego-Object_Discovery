@@ -14,17 +14,17 @@ volume_path = '/Volumes/SHARED HD/';
 %             'VOCtest_06-Nov-2007\VOCdevkit\VOC2007\Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_07']};
 
-% path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
-% path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 MCG']};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC Ferrari']};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari']};
+% path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC Ferrari']};
 
 threshold_detection = 0.5;
 
 % selects if the annotation files are from PASCAL or from the custom labeling
 % app.
-annoType = 'MSRC'; % 'PASCAL' or 'CUSTOM' or 'MSRC'
+annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM' or 'MSRC'
 
 % list of allowed GT labels
 limitAllowed = false;
