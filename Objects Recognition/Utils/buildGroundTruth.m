@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% PARAMETERS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+addpath('LabelMe Data Processing');
 
 volume_path = '/Volumes/SHARED HD/';
 % volume_path = 'D:/';
@@ -24,7 +25,7 @@ threshold_detection = 0.5;
 
 % selects if the annotation files are from PASCAL or from the custom labeling
 % app.
-annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM' or 'MSRC'
+annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM' or 'MSRC' or 'LABELME'
 
 % list of allowed GT labels
 limitAllowed = false;
@@ -61,7 +62,7 @@ for i = 1:nFolders
             %% Read xml
             xmlContent = fileread([path_folders '/' folders{i} '/' annName{1} '.xml']);
             objs = regexp(xmlContent, '<object>', 'split');
-        elseif(strcmp(annoType, 'PASCAL') || strcmp(annoType, 'MSRC'))
+        elseif(strcmp(annoType, 'PASCAL') || strcmp(annoType, 'MSRC') || strcmp(annoType, 'LABELME'))
             annName = regexp(annotations(j).name, '\.', 'split');
             
             %% Read xml
@@ -88,14 +89,23 @@ for i = 1:nFolders
             for obj = {objs{2:end}}
                 %% Get all attributes
                 objects(j+offset).ground_truth(count_obj).name = getElementXML(obj{1}, 'name');
-                objects(j+offset).ground_truth(count_obj).ULx = str2num(getElementXML(obj{1}, 'xmin'));
-                objects(j+offset).ground_truth(count_obj).ULy = str2num(getElementXML(obj{1}, 'ymin'));
-                objects(j+offset).ground_truth(count_obj).BRx = str2num(getElementXML(obj{1}, 'xmax'));
-                objects(j+offset).ground_truth(count_obj).BRy = str2num(getElementXML(obj{1}, 'ymax'));
-                if(strcmp(annoType, 'PASCAL'))
-                    objects(j+offset).ground_truth(count_obj).pose = getElementXML(obj{1}, 'pose');
-                    objects(j+offset).ground_truth(count_obj).truncated = str2num(getElementXML(obj{1}, 'truncated'));
-                    objects(j+offset).ground_truth(count_obj).difficult = str2num(getElementXML(obj{1}, 'difficult'));
+                if(strcmp(annoType, 'LABELME')) % different annotation if comes from LabelMe
+                    [xmin, ymin, xmax, ymax] = getObjectData(obj{1});
+                    objects(j+offset).ground_truth(count_obj).ULx = xmin;
+                    objects(j+offset).ground_truth(count_obj).ULy = ymin;
+                    objects(j+offset).ground_truth(count_obj).BRx = xmax;
+                    objects(j+offset).ground_truth(count_obj).BRy = ymax;
+                    objects(j+offset).ground_truth(count_obj).occluded = str2num(getElementXML(obj{1}, 'occluded'));
+                else
+                    objects(j+offset).ground_truth(count_obj).ULx = str2num(getElementXML(obj{1}, 'xmin'));
+                    objects(j+offset).ground_truth(count_obj).ULy = str2num(getElementXML(obj{1}, 'ymin'));
+                    objects(j+offset).ground_truth(count_obj).BRx = str2num(getElementXML(obj{1}, 'xmax'));
+                    objects(j+offset).ground_truth(count_obj).BRy = str2num(getElementXML(obj{1}, 'ymax'));
+                    if(strcmp(annoType, 'PASCAL'))
+                        objects(j+offset).ground_truth(count_obj).pose = getElementXML(obj{1}, 'pose');
+                        objects(j+offset).ground_truth(count_obj).truncated = str2num(getElementXML(obj{1}, 'truncated'));
+                        objects(j+offset).ground_truth(count_obj).difficult = str2num(getElementXML(obj{1}, 'difficult'));
+                    end
                 end
                 
                 %% Check if any object in objects(j).objects matches 
