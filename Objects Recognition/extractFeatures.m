@@ -31,8 +31,8 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     parallel = feat_params.parallel;
     
     if(strcmp(features_type, 'cnn'))
-        matcaffe_init(use_gpu, feat_params.model_def_file, feat_params.model_file);
         addpath(feat_params.caffe_path);
+        matcaffe_init(use_gpu, feat_params.model_def_file, feat_params.model_file);
     end
 
     features_params = struct('bLAB', bLAB, 'wSIFT', wSIFT, 'dSIFT', dSIFT, 'lHOG', lHOG, 'bHOG', bHOG, 'lenCNN', lenCNN);
