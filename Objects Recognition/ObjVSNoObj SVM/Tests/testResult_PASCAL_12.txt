@@ -1,0 +1,8375 @@
+Test Results using: 
+ 
+5-fold BALANCED validations.
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+With 3 iterations per parameter value.
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+Starting test 1/5
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.1
+C 1/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60159
+Error class 2: 0.033082
+ 
+Confusion matrix:
+    1    2    
+1  0.39841     0.60159
+2  0.033082     0.96692
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60159
+Error class 2: 0.033082
+ 
+Confusion matrix:
+    1    2    
+1  0.39841     0.60159
+2  0.033082     0.96692
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.5
+C 1/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.40239
+Error class 2: 0.049624
+ 
+Confusion matrix:
+    1    2    
+1  0.59761     0.40239
+2  0.049624     0.95038
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 3
+C 1/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.42629
+Error class 2: 0.28989
+ 
+Confusion matrix:
+    1    2    
+1  0.57371     0.42629
+2  0.28989     0.71011
+ 
+>>> Total error: 0.30034
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 10
+C 1/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 100
+C 1/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.13048
+Error class 2: 0.45364
+ 
+Confusion matrix:
+    1    2    
+1  0.86952     0.13048
+2  0.45364     0.54636
+ 
+>>> Total error: 0.42887
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.13048
+Error class 2: 0.45373
+ 
+Confusion matrix:
+    1    2    
+1  0.86952     0.13048
+2  0.45373     0.54627
+ 
+>>> Total error: 0.42894
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.13048
+Error class 2: 0.45381
+ 
+Confusion matrix:
+    1    2    
+1  0.86952     0.13048
+2  0.45381     0.54619
+ 
+>>> Total error: 0.42902
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 1000
+C 1/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.1
+C 2/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.8008
+Error class 2: 0.016541
+ 
+Confusion matrix:
+    1    2    
+1  0.1992      0.8008
+2  0.016541     0.98346
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59761
+Error class 2: 0.95038
+ 
+Confusion matrix:
+    1    2    
+1  0.40239     0.59761
+2  0.95038    0.049624
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.5
+C 2/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60159
+Error class 2: 0.033082
+ 
+Confusion matrix:
+    1    2    
+1  0.39841     0.60159
+2  0.033082     0.96692
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 3
+C 2/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59761
+Error class 2: 0.95038
+ 
+Confusion matrix:
+    1    2    
+1  0.40239     0.59761
+2  0.95038    0.049624
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.47809
+Error class 2: 0.036722
+ 
+Confusion matrix:
+    1    2    
+1  0.52191     0.47809
+2  0.036722     0.96328
+ 
+>>> Total error: 0.070561
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 10
+C 2/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99603
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99603   0.0039699
+ 
+>>> Total error: 0.91966
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 100
+C 2/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19124
+Error class 2: 0.32371
+ 
+Confusion matrix:
+    1    2    
+1  0.80876     0.19124
+2  0.32371     0.67629
+ 
+>>> Total error: 0.31355
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19124
+Error class 2: 0.32363
+ 
+Confusion matrix:
+    1    2    
+1  0.80876     0.19124
+2  0.32363     0.67637
+ 
+>>> Total error: 0.31348
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19124
+Error class 2: 0.32363
+ 
+Confusion matrix:
+    1    2    
+1  0.80876     0.19124
+2  0.32363     0.67637
+ 
+>>> Total error: 0.31348
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 1000
+C 2/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.1
+C 3/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.5
+C 3/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40239
+Error class 2: 0.049624
+ 
+Confusion matrix:
+    1    2    
+1  0.59761     0.40239
+2  0.049624     0.95038
+ 
+>>> Total error: 0.07667
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 3
+C 3/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2749
+Error class 2: 0.97056
+ 
+Confusion matrix:
+    1    2    
+1  0.7251      0.2749
+2  0.97056    0.029443
+ 
+>>> Total error: 0.91722
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 10
+C 3/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 100
+C 3/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2251
+Error class 2: 0.26962
+ 
+Confusion matrix:
+    1    2    
+1  0.7749      0.2251
+2  0.26962     0.73038
+ 
+>>> Total error: 0.26621
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2251
+Error class 2: 0.26962
+ 
+Confusion matrix:
+    1    2    
+1  0.7749      0.2251
+2  0.26962     0.73038
+ 
+>>> Total error: 0.26621
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.2251
+Error class 2: 0.2697
+ 
+Confusion matrix:
+    1    2    
+1  0.7749      0.2251
+2  0.2697      0.7303
+ 
+>>> Total error: 0.26628
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 1000
+C 3/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.17231
+Error class 2: 0.37243
+ 
+Confusion matrix:
+    1    2    
+1  0.82769     0.17231
+2  0.37243     0.62757
+ 
+>>> Total error: 0.35708
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.1
+C 4/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.40239
+Error class 2: 0.049624
+ 
+Confusion matrix:
+    1    2    
+1  0.59761     0.40239
+2  0.049624     0.95038
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.5
+C 4/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60159
+Error class 2: 0.033082
+ 
+Confusion matrix:
+    1    2    
+1  0.39841     0.60159
+2  0.033082     0.96692
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 3
+C 4/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59761
+Error class 2: 0.95038
+ 
+Confusion matrix:
+    1    2    
+1  0.40239     0.59761
+2  0.95038    0.049624
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 10
+C 4/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 100
+C 4/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.25498
+Error class 2: 0.27673
+ 
+Confusion matrix:
+    1    2    
+1  0.74502     0.25498
+2  0.27673     0.72327
+ 
+>>> Total error: 0.27507
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.25398
+Error class 2: 0.27682
+ 
+Confusion matrix:
+    1    2    
+1  0.74602     0.25398
+2  0.27682     0.72318
+ 
+>>> Total error: 0.27507
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.25398
+Error class 2: 0.2769
+ 
+Confusion matrix:
+    1    2    
+1  0.74602     0.25398
+2  0.2769      0.7231
+ 
+>>> Total error: 0.27514
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 1000
+C 4/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.16135
+Error class 2: 0.40849
+ 
+Confusion matrix:
+    1    2    
+1  0.83865     0.16135
+2  0.40849     0.59151
+ 
+>>> Total error: 0.38954
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.16135
+Error class 2: 0.40865
+ 
+Confusion matrix:
+    1    2    
+1  0.83865     0.16135
+2  0.40865     0.59135
+ 
+>>> Total error: 0.38969
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.16135
+Error class 2: 0.40865
+ 
+Confusion matrix:
+    1    2    
+1  0.83865     0.16135
+2  0.40865     0.59135
+ 
+>>> Total error: 0.38969
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.1
+C 5/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.5
+C 5/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40239
+Error class 2: 0.049624
+ 
+Confusion matrix:
+    1    2    
+1  0.59761     0.40239
+2  0.049624     0.95038
+ 
+>>> Total error: 0.07667
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 3
+C 5/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 10
+C 5/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 100
+C 5/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28558
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28558     0.71442
+ 
+>>> Total error: 0.28469
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28567
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28567     0.71433
+ 
+>>> Total error: 0.28477
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28567
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28567     0.71433
+ 
+>>> Total error: 0.28477
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 1000
+C 5/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.22211
+Error class 2: 0.28286
+ 
+Confusion matrix:
+    1    2    
+1  0.77789     0.22211
+2  0.28286     0.71714
+ 
+>>> Total error: 0.2782
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.22211
+Error class 2: 0.28286
+ 
+Confusion matrix:
+    1    2    
+1  0.77789     0.22211
+2  0.28286     0.71714
+ 
+>>> Total error: 0.2782
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.22211
+Error class 2: 0.28286
+ 
+Confusion matrix:
+    1    2    
+1  0.77789     0.22211
+2  0.28286     0.71714
+ 
+>>> Total error: 0.2782
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.1
+C 6/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60159
+Error class 2: 0.033082
+ 
+Confusion matrix:
+    1    2    
+1  0.39841     0.60159
+2  0.033082     0.96692
+ 
+>>> Total error: 0.07667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40239
+Error class 2: 0.049624
+ 
+Confusion matrix:
+    1    2    
+1  0.59761     0.40239
+2  0.049624     0.95038
+ 
+>>> Total error: 0.07667
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.5
+C 6/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39841
+Error class 2: 0.96692
+ 
+Confusion matrix:
+    1    2    
+1  0.60159     0.39841
+2  0.96692    0.033082
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 3
+C 6/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1992
+Error class 2: 0.98346
+ 
+Confusion matrix:
+    1    2    
+1  0.8008      0.1992
+2  0.98346    0.016541
+ 
+>>> Total error: 0.92333
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 10
+C 6/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99363
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99363   0.0063684
+ 
+>>> Total error: 0.91745
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99446
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99446   0.0055413
+ 
+>>> Total error: 0.91821
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 100
+C 6/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28567
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28567     0.71433
+ 
+>>> Total error: 0.28477
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28558
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28558     0.71442
+ 
+>>> Total error: 0.28469
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28567
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28567     0.71433
+ 
+>>> Total error: 0.28477
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 1000
+C 6/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27291
+Error class 2: 0.2841
+ 
+Confusion matrix:
+    1    2    
+1  0.72709     0.27291
+2  0.2841      0.7159
+ 
+>>> Total error: 0.28324
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2739
+Error class 2: 0.28393
+ 
+Confusion matrix:
+    1    2    
+1  0.7261      0.2739
+2  0.28393     0.71607
+ 
+>>> Total error: 0.28316
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27291
+Error class 2: 0.28393
+ 
+Confusion matrix:
+    1    2    
+1  0.72709     0.27291
+2  0.28393     0.71607
+ 
+>>> Total error: 0.28309
+ 
+##################################################################
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+Rows -> Sigma, Columns -> C
+Mean error: 
+  0.3589  0.6411  0.9233  0.6411  0.9233  0.3589
+  0.6411  0.6411  0.6411  0.6411  0.6411  0.9233
+  0.7157  0.6391  0.9213  0.9233  0.9233  0.9233
+  0.9197  0.9197  0.9174  0.9174  0.9174  0.9177
+  0.4289  0.3135  0.2662  0.2751  0.2847  0.2847
+  0.3571  0.3571  0.3571  0.3896  0.2782  0.2832
+
+ 
+Std deviation: +-
+  0.4888  0.4888  0.0000  0.4888  0.0000  0.4888
+  0.4888  0.4888  0.4888  0.4888  0.4888  0.0000
+  0.3597  0.4923  0.0035  0.0000  0.0000  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0004
+  0.0001  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0000  0.0000  0.0000  0.0001  0.0000  0.0001
+
+ 
+Weighted errors (
+0.5
+ max) for class 
+Object
+
+  0.2337  0.2995  0.1328  0.1667  0.1660  0.2337
+  0.1667  0.2331  0.1999  0.1999  0.1335  0.1328
+  0.1707  0.2125  0.1122  0.1660  0.0996  0.0996
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0652  0.0956  0.1125  0.1272  0.1370  0.1370
+  0.0862  0.0862  0.0862  0.0807  0.1111  0.1366
+
+Weighted errors (
+0.5
+ max) for class 
+No Object
+
+  0.1749  0.3223  0.4890  0.3333  0.4862  0.1749
+  0.3333  0.3278  0.3306  0.3306  0.3361  0.4890
+  0.3734  0.3284  0.4896  0.4862  0.4917  0.4917
+  0.4980  0.4980  0.4968  0.4968  0.4968  0.4970
+  0.2269  0.1618  0.1348  0.1384  0.1428  0.1428
+  0.1862  0.1862  0.1862  0.2043  0.1414  0.1420
+
+ 
+Weighted errors mean sum: 
+  0.4087  0.6218  0.6218  0.5000  0.6522  0.4087
+  0.5000  0.5609  0.5304  0.5304  0.4696  0.6218
+  0.5440  0.5409  0.6018  0.6522  0.5913  0.5913
+  0.4980  0.4980  0.4968  0.4968  0.4968  0.4970
+  0.2921  0.2574  0.2474  0.2656  0.2798  0.2798
+  0.2724  0.2724  0.2724  0.2850  0.2525  0.2786
+
+ 
+Best Sigma: 100
+Best C: 3
+ 
+ 
+ >>>>>>>>>> Error class 1: 0.26493
+ >>>>>>>>>> Error class 2: 0.27478
+ 
+Confusion matrix:
+    1    2    
+1  0.73507     0.26493
+2  0.27478     0.72522
+ 
+>>>>>>>>>>>>>>>>>> Total error: 0.27398
+ 
+##################################################################
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+Starting test 2/5
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.1
+C 1/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.5
+C 1/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 3
+C 1/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 10
+C 1/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 100
+C 1/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.14648
+Error class 2: 0.43749
+ 
+Confusion matrix:
+    1    2    
+1  0.85352     0.14648
+2  0.43749     0.56251
+ 
+>>> Total error: 0.41474
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.14648
+Error class 2: 0.43749
+ 
+Confusion matrix:
+    1    2    
+1  0.85352     0.14648
+2  0.43749     0.56251
+ 
+>>> Total error: 0.41474
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.14648
+Error class 2: 0.43749
+ 
+Confusion matrix:
+    1    2    
+1  0.85352     0.14648
+2  0.43749     0.56251
+ 
+>>> Total error: 0.41474
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 1000
+C 1/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.1
+C 2/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.5
+C 2/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 3
+C 2/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.69238
+Error class 2: 0.25499
+ 
+Confusion matrix:
+    1    2    
+1  0.30762     0.69238
+2  0.25499     0.74501
+ 
+>>> Total error: 0.28919
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 10
+C 2/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99901
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99901  0.00099412
+ 
+>>> Total error: 0.92089
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 100
+C 2/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2002
+Error class 2: 0.3269
+ 
+Confusion matrix:
+    1    2    
+1  0.7998      0.2002
+2  0.3269      0.6731
+ 
+>>> Total error: 0.31699
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2002
+Error class 2: 0.3269
+ 
+Confusion matrix:
+    1    2    
+1  0.7998      0.2002
+2  0.3269      0.6731
+ 
+>>> Total error: 0.31699
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.2002
+Error class 2: 0.3269
+ 
+Confusion matrix:
+    1    2    
+1  0.7998      0.2002
+2  0.3269      0.6731
+ 
+>>> Total error: 0.31699
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 1000
+C 2/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.1
+C 3/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.5
+C 3/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 3
+C 3/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.68262
+Error class 2: 0.021622
+ 
+Confusion matrix:
+    1    2    
+1  0.31738     0.68262
+2  0.021622     0.97838
+ 
+>>> Total error: 0.07331
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 10
+C 3/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 100
+C 3/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.2334
+Error class 2: 0.26833
+ 
+Confusion matrix:
+    1    2    
+1  0.7666      0.2334
+2  0.26833     0.73167
+ 
+>>> Total error: 0.2656
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2334
+Error class 2: 0.26833
+ 
+Confusion matrix:
+    1    2    
+1  0.7666      0.2334
+2  0.26833     0.73167
+ 
+>>> Total error: 0.2656
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.2334
+Error class 2: 0.26825
+ 
+Confusion matrix:
+    1    2    
+1  0.7666      0.2334
+2  0.26825     0.73175
+ 
+>>> Total error: 0.26552
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 1000
+C 3/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.22559
+Error class 2: 0.324
+ 
+Confusion matrix:
+    1    2    
+1  0.77441     0.22559
+2  0.324       0.676
+ 
+>>> Total error: 0.3163
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.1
+C 4/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.5
+C 4/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 3
+C 4/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 10
+C 4/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 100
+C 4/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27441
+Error class 2: 0.28026
+ 
+Confusion matrix:
+    1    2    
+1  0.72559     0.27441
+2  0.28026     0.71974
+ 
+>>> Total error: 0.2798
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.27441
+Error class 2: 0.28026
+ 
+Confusion matrix:
+    1    2    
+1  0.72559     0.27441
+2  0.28026     0.71974
+ 
+>>> Total error: 0.2798
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27441
+Error class 2: 0.28034
+ 
+Confusion matrix:
+    1    2    
+1  0.72559     0.27441
+2  0.28034     0.71966
+ 
+>>> Total error: 0.27988
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 1000
+C 4/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.17285
+Error class 2: 0.40527
+ 
+Confusion matrix:
+    1    2    
+1  0.82715     0.17285
+2  0.40527     0.59473
+ 
+>>> Total error: 0.38709
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.17285
+Error class 2: 0.40527
+ 
+Confusion matrix:
+    1    2    
+1  0.82715     0.17285
+2  0.40527     0.59473
+ 
+>>> Total error: 0.38709
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.17285
+Error class 2: 0.40527
+ 
+Confusion matrix:
+    1    2    
+1  0.82715     0.17285
+2  0.40527     0.59473
+ 
+>>> Total error: 0.38709
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.1
+C 5/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.5
+C 5/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 3
+C 5/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19922
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80078     0.19922
+2  0.9831      0.0169
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 10
+C 5/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 100
+C 5/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28613
+Error class 2: 0.29103
+ 
+Confusion matrix:
+    1    2    
+1  0.71387     0.28613
+2  0.29103     0.70897
+ 
+>>> Total error: 0.29065
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28613
+Error class 2: 0.29103
+ 
+Confusion matrix:
+    1    2    
+1  0.71387     0.28613
+2  0.29103     0.70897
+ 
+>>> Total error: 0.29065
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28613
+Error class 2: 0.29103
+ 
+Confusion matrix:
+    1    2    
+1  0.71387     0.28613
+2  0.29103     0.70897
+ 
+>>> Total error: 0.29065
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 1000
+C 5/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.21582
+Error class 2: 0.28233
+ 
+Confusion matrix:
+    1    2    
+1  0.78418     0.21582
+2  0.28233     0.71767
+ 
+>>> Total error: 0.27713
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.21582
+Error class 2: 0.2825
+ 
+Confusion matrix:
+    1    2    
+1  0.78418     0.21582
+2  0.2825      0.7175
+ 
+>>> Total error: 0.27728
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.21582
+Error class 2: 0.28233
+ 
+Confusion matrix:
+    1    2    
+1  0.78418     0.21582
+2  0.28233     0.71767
+ 
+>>> Total error: 0.27713
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.1
+C 6/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.5
+C 6/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59766
+Error class 2: 0.9493
+ 
+Confusion matrix:
+    1    2    
+1  0.40234     0.59766
+2  0.9493      0.0507
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.80078
+Error class 2: 0.0169
+ 
+Confusion matrix:
+    1    2    
+1  0.19922     0.80078
+2  0.0169      0.9831
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 3
+C 6/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39844
+Error class 2: 0.9662
+ 
+Confusion matrix:
+    1    2    
+1  0.60156     0.39844
+2  0.9662      0.0338
+ 
+>>> Total error: 0.9218
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60156
+Error class 2: 0.0338
+ 
+Confusion matrix:
+    1    2    
+1  0.39844     0.60156
+2  0.0338      0.9662
+ 
+>>> Total error: 0.078198
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 10
+C 6/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067103
+ 
+>>> Total error: 0.91562
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 100
+C 6/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28516
+Error class 2: 0.29095
+ 
+Confusion matrix:
+    1    2    
+1  0.71484     0.28516
+2  0.29095     0.70905
+ 
+>>> Total error: 0.29049
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28613
+Error class 2: 0.29103
+ 
+Confusion matrix:
+    1    2    
+1  0.71387     0.28613
+2  0.29103     0.70897
+ 
+>>> Total error: 0.29065
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28613
+Error class 2: 0.29103
+ 
+Confusion matrix:
+    1    2    
+1  0.71387     0.28613
+2  0.29103     0.70897
+ 
+>>> Total error: 0.29065
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 1000
+C 6/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.29785
+Error class 2: 0.28573
+ 
+Confusion matrix:
+    1    2    
+1  0.70215     0.29785
+2  0.28573     0.71427
+ 
+>>> Total error: 0.28667
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.29785
+Error class 2: 0.28573
+ 
+Confusion matrix:
+    1    2    
+1  0.70215     0.29785
+2  0.28573     0.71427
+ 
+>>> Total error: 0.28667
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.29785
+Error class 2: 0.28573
+ 
+Confusion matrix:
+    1    2    
+1  0.70215     0.29785
+2  0.28573     0.71427
+ 
+>>> Total error: 0.28667
+ 
+##################################################################
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+Rows -> Sigma, Columns -> C
+Mean error: 
+  0.9218  0.6406  0.6406  0.3594  0.3594  0.3594
+  0.9218  0.9218  0.9218  0.6406  0.9218  0.6406
+  0.9218  0.7109  0.0766  0.9218  0.3594  0.6406
+  0.9209  0.9209  0.9156  0.9156  0.9156  0.9156
+  0.4147  0.3170  0.2656  0.2798  0.2906  0.2906
+  0.3163  0.3163  0.3163  0.3871  0.2772  0.2867
+
+ 
+Std deviation: +-
+  0.0000  0.4871  0.4871  0.4871  0.4871  0.4871
+  0.0000  0.0000  0.0000  0.4871  0.0000  0.4871
+  0.0000  0.3652  0.0028  0.0000  0.4871  0.4871
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0001
+  0.0000  0.0000  0.0000  0.0000  0.0001  0.0000
+
+ 
+Weighted errors (
+0.5
+ max) for class 
+Object
+
+  0.2988  0.3327  0.2331  0.3333  0.3333  0.3001
+  0.2988  0.2988  0.2324  0.2995  0.2656  0.3327
+  0.2988  0.3146  0.3475  0.2988  0.2669  0.2331
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0732  0.1001  0.1167  0.1372  0.1431  0.1429
+  0.1128  0.1128  0.1128  0.0864  0.1079  0.1489
+
+Weighted errors (
+0.5
+ max) for class 
+No Object
+
+  0.4746  0.3192  0.3277  0.1667  0.1667  0.1695
+  0.4746  0.4746  0.4803  0.3221  0.4775  0.3192
+  0.4746  0.3589  0.0121  0.4746  0.1723  0.3277
+  0.4995  0.4995  0.4966  0.4966  0.4966  0.4966
+  0.2187  0.1634  0.1342  0.1401  0.1455  0.1455
+  0.1620  0.1620  0.1620  0.2026  0.1412  0.1429
+
+ 
+Weighted errors mean sum: 
+  0.7735  0.6519  0.5608  0.5000  0.5000  0.4696
+  0.7735  0.7735  0.7127  0.6215  0.7431  0.6519
+  0.7735  0.6735  0.3595  0.7735  0.4392  0.5608
+  0.4995  0.4995  0.4966  0.4966  0.4966  0.4966
+  0.2920  0.2635  0.2508  0.2774  0.2886  0.2884
+  0.2748  0.2748  0.2748  0.2891  0.2491  0.2918
+
+ 
+Best Sigma: 1000
+Best C: 100
+ 
+ 
+ >>>>>>>>>> Error class 1: 0.18952
+ >>>>>>>>>> Error class 2: 0.29147
+ 
+Confusion matrix:
+    1    2    
+1  0.81048     0.18952
+2  0.29147     0.70853
+ 
+>>>>>>>>>>>>>>>>>> Total error: 0.28375
+ 
+##################################################################
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+Starting test 3/5
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.1
+C 1/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.5
+C 1/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 3
+C 1/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.68811
+Error class 2: 0.93628
+ 
+Confusion matrix:
+    1    2    
+1  0.31189     0.68811
+2  0.93628    0.063717
+ 
+>>> Total error: 0.91684
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.48246
+Error class 2: 0.9531
+ 
+Confusion matrix:
+    1    2    
+1  0.51754     0.48246
+2  0.9531    0.046897
+ 
+>>> Total error: 0.91623
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 10
+C 1/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 100
+C 1/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.12573
+Error class 2: 0.46027
+ 
+Confusion matrix:
+    1    2    
+1  0.87427     0.12573
+2  0.46027     0.53973
+ 
+>>> Total error: 0.43406
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.12573
+Error class 2: 0.46027
+ 
+Confusion matrix:
+    1    2    
+1  0.87427     0.12573
+2  0.46027     0.53973
+ 
+>>> Total error: 0.43406
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.12573
+Error class 2: 0.45994
+ 
+Confusion matrix:
+    1    2    
+1  0.87427     0.12573
+2  0.45994     0.54006
+ 
+>>> Total error: 0.43375
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 1000
+C 1/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.1
+C 2/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.5
+C 2/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.80019
+Error class 2: 0.016986
+ 
+Confusion matrix:
+    1    2    
+1  0.19981     0.80019
+2  0.016986     0.98301
+ 
+>>> Total error: 0.078351
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 3
+C 2/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.48246
+Error class 2: 0.9531
+ 
+Confusion matrix:
+    1    2    
+1  0.51754     0.48246
+2  0.9531    0.046897
+ 
+>>> Total error: 0.91623
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 10
+C 2/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99735
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99735   0.0026514
+ 
+>>> Total error: 0.91936
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 100
+C 2/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19006
+Error class 2: 0.34758
+ 
+Confusion matrix:
+    1    2    
+1  0.80994     0.19006
+2  0.34758     0.65242
+ 
+>>> Total error: 0.33524
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19006
+Error class 2: 0.34767
+ 
+Confusion matrix:
+    1    2    
+1  0.80994     0.19006
+2  0.34767     0.65233
+ 
+>>> Total error: 0.33532
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19006
+Error class 2: 0.34767
+ 
+Confusion matrix:
+    1    2    
+1  0.80994     0.19006
+2  0.34767     0.65233
+ 
+>>> Total error: 0.33532
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 1000
+C 2/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.1
+C 3/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.5
+C 3/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.40058
+Error class 2: 0.050957
+ 
+Confusion matrix:
+    1    2    
+1  0.59942     0.40058
+2  0.050957     0.94904
+ 
+>>> Total error: 0.078351
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 3
+C 3/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 10
+C 3/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 100
+C 3/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.23684
+Error class 2: 0.27475
+ 
+Confusion matrix:
+    1    2    
+1  0.76316     0.23684
+2  0.27475     0.72525
+ 
+>>> Total error: 0.27178
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.23684
+Error class 2: 0.27475
+ 
+Confusion matrix:
+    1    2    
+1  0.76316     0.23684
+2  0.27475     0.72525
+ 
+>>> Total error: 0.27178
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.23684
+Error class 2: 0.27475
+ 
+Confusion matrix:
+    1    2    
+1  0.76316     0.23684
+2  0.27475     0.72525
+ 
+>>> Total error: 0.27178
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 1000
+C 3/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18421
+Error class 2: 0.37609
+ 
+Confusion matrix:
+    1    2    
+1  0.81579     0.18421
+2  0.37609     0.62391
+ 
+>>> Total error: 0.36105
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.1
+C 4/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.5
+C 4/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59942
+Error class 2: 0.94904
+ 
+Confusion matrix:
+    1    2    
+1  0.40058     0.59942
+2  0.94904    0.050957
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 3
+C 4/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 10
+C 4/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 100
+C 4/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27583
+Error class 2: 0.27268
+ 
+Confusion matrix:
+    1    2    
+1  0.72417     0.27583
+2  0.27268     0.72732
+ 
+>>> Total error: 0.27293
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.27583
+Error class 2: 0.27276
+ 
+Confusion matrix:
+    1    2    
+1  0.72417     0.27583
+2  0.27276     0.72724
+ 
+>>> Total error: 0.273
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27485
+Error class 2: 0.27268
+ 
+Confusion matrix:
+    1    2    
+1  0.72515     0.27485
+2  0.27268     0.72732
+ 
+>>> Total error: 0.27285
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 1000
+C 4/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.16179
+Error class 2: 0.40177
+ 
+Confusion matrix:
+    1    2    
+1  0.83821     0.16179
+2  0.40177     0.59823
+ 
+>>> Total error: 0.38297
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.16082
+Error class 2: 0.40177
+ 
+Confusion matrix:
+    1    2    
+1  0.83918     0.16082
+2  0.40177     0.59823
+ 
+>>> Total error: 0.38289
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.16082
+Error class 2: 0.40177
+ 
+Confusion matrix:
+    1    2    
+1  0.83918     0.16082
+2  0.40177     0.59823
+ 
+>>> Total error: 0.38289
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.1
+C 5/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.5
+C 5/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 3
+C 5/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2729
+Error class 2: 0.97009
+ 
+Confusion matrix:
+    1    2    
+1  0.7271      0.2729
+2  0.97009    0.029911
+ 
+>>> Total error: 0.91546
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 10
+C 5/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 100
+C 5/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.2832
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.2832      0.7168
+ 
+>>> Total error: 0.2837
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.28312
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.28312     0.71688
+ 
+>>> Total error: 0.28362
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.28312
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.28312     0.71688
+ 
+>>> Total error: 0.28362
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 1000
+C 5/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.20955
+Error class 2: 0.29762
+ 
+Confusion matrix:
+    1    2    
+1  0.79045     0.20955
+2  0.29762     0.70238
+ 
+>>> Total error: 0.29072
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.20955
+Error class 2: 0.29762
+ 
+Confusion matrix:
+    1    2    
+1  0.79045     0.20955
+2  0.29762     0.70238
+ 
+>>> Total error: 0.29072
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.20955
+Error class 2: 0.29762
+ 
+Confusion matrix:
+    1    2    
+1  0.79045     0.20955
+2  0.29762     0.70238
+ 
+>>> Total error: 0.29072
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.1
+C 6/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.5
+C 6/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 3
+C 6/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39961
+Error class 2: 0.96603
+ 
+Confusion matrix:
+    1    2    
+1  0.60039     0.39961
+2  0.96603    0.033971
+ 
+>>> Total error: 0.92165
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19981
+Error class 2: 0.98301
+ 
+Confusion matrix:
+    1    2    
+1  0.80019     0.19981
+2  0.98301    0.016986
+ 
+>>> Total error: 0.92165
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 10
+C 6/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.9942
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.9942      0.0058
+ 
+>>> Total error: 0.91646
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99379
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99379   0.0062143
+ 
+>>> Total error: 0.91607
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.0019493
+Error class 2: 0.99379
+ 
+Confusion matrix:
+    1    2    
+1  0.99805   0.0019493
+2  0.99379   0.0062143
+ 
+>>> Total error: 0.91607
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 100
+C 6/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.2832
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.2832      0.7168
+ 
+>>> Total error: 0.2837
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.2832
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.2832      0.7168
+ 
+>>> Total error: 0.2837
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.2832
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.2832      0.7168
+ 
+>>> Total error: 0.2837
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 1000
+C 6/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.27508
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.27508     0.72492
+ 
+>>> Total error: 0.27621
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.275
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.275       0.725
+ 
+>>> Total error: 0.27614
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28947
+Error class 2: 0.275
+ 
+Confusion matrix:
+    1    2    
+1  0.71053     0.28947
+2  0.275       0.725
+ 
+>>> Total error: 0.27614
+ 
+##################################################################
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+Rows -> Sigma, Columns -> C
+Mean error: 
+  0.9216  0.9216  0.9216  0.9216  0.9216  0.9216
+  0.9216  0.6405  0.6405  0.9216  0.9216  0.9216
+  0.9182  0.9198  0.9216  0.9216  0.9196  0.9216
+  0.9194  0.9194  0.9165  0.9165  0.9165  0.9162
+  0.4340  0.3353  0.2718  0.2729  0.2836  0.2837
+  0.3611  0.3611  0.3611  0.3829  0.2907  0.2762
+
+ 
+Std deviation: +-
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0000  0.4869  0.4869  0.0000  0.0000  0.0000
+  0.0030  0.0031  0.0000  0.0000  0.0036  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0002
+  0.0002  0.0000  0.0000  0.0001  0.0000  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+
+ 
+Weighted errors (
+0.5
+ max) for class 
+Object
+
+  0.2997  0.2997  0.1332  0.1665  0.1332  0.1665
+  0.2997  0.3332  0.1334  0.1665  0.0666  0.1332
+  0.2950  0.2802  0.1665  0.0999  0.1121  0.1665
+  0.0010  0.0010  0.0010  0.0010  0.0010  0.0010
+  0.0629  0.0950  0.1184  0.1378  0.1447  0.1447
+  0.0921  0.0921  0.0921  0.0806  0.1048  0.1447
+
+Weighted errors (
+0.5
+ max) for class 
+No Object
+
+  0.4745  0.4745  0.4887  0.4858  0.4887  0.4858
+  0.4745  0.3192  0.3362  0.4858  0.4943  0.4887
+  0.4731  0.4752  0.4858  0.4915  0.4894  0.4858
+  0.4987  0.4987  0.4971  0.4971  0.4971  0.4970
+  0.2301  0.1738  0.1374  0.1364  0.1416  0.1416
+  0.1880  0.1880  0.1880  0.2009  0.1488  0.1375
+
+ 
+Weighted errors mean sum: 
+  0.7742  0.7742  0.6219  0.6523  0.6219  0.6523
+  0.7742  0.6523  0.4695  0.6523  0.5609  0.6219
+  0.7681  0.7554  0.6523  0.5914  0.6014  0.6523
+  0.4996  0.4996  0.4981  0.4981  0.4981  0.4979
+  0.2929  0.2688  0.2558  0.2741  0.2863  0.2863
+  0.2801  0.2801  0.2801  0.2815  0.2536  0.2823
+
+ 
+Best Sigma: 1000
+Best C: 100
+ 
+ 
+ >>>>>>>>>> Error class 1: 0.21951
+ >>>>>>>>>> Error class 2: 0.29657
+ 
+Confusion matrix:
+    1    2    
+1  0.78049     0.21951
+2  0.29657     0.70343
+ 
+>>>>>>>>>>>>>>>>>> Total error: 0.29078
+ 
+##################################################################
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+Starting test 4/5
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.1
+C 1/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.5
+C 1/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80039
+Error class 2: 0.016897
+ 
+Confusion matrix:
+    1    2    
+1  0.19961     0.80039
+2  0.016897      0.9831
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 3
+C 1/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.80039
+Error class 2: 0.016897
+ 
+Confusion matrix:
+    1    2    
+1  0.19961     0.80039
+2  0.016897      0.9831
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 10
+C 1/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 100
+C 1/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.13699
+Error class 2: 0.45473
+ 
+Confusion matrix:
+    1    2    
+1  0.86301     0.13699
+2  0.45473     0.54527
+ 
+>>> Total error: 0.42994
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.13699
+Error class 2: 0.45465
+ 
+Confusion matrix:
+    1    2    
+1  0.86301     0.13699
+2  0.45465     0.54535
+ 
+>>> Total error: 0.42986
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.13699
+Error class 2: 0.45473
+ 
+Confusion matrix:
+    1    2    
+1  0.86301     0.13699
+2  0.45473     0.54527
+ 
+>>> Total error: 0.42994
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 1000
+C 1/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.1
+C 2/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80039
+Error class 2: 0.016897
+ 
+Confusion matrix:
+    1    2    
+1  0.19961     0.80039
+2  0.016897      0.9831
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.5
+C 2/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 3
+C 2/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.80039
+Error class 2: 0.016897
+ 
+Confusion matrix:
+    1    2    
+1  0.19961     0.80039
+2  0.016897      0.9831
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.58219
+Error class 2: 0.26679
+ 
+Confusion matrix:
+    1    2    
+1  0.41781     0.58219
+2  0.26679     0.73321
+ 
+>>> Total error: 0.29141
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 10
+C 2/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99627
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99627   0.0037273
+ 
+>>> Total error: 0.91852
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 100
+C 2/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18297
+Error class 2: 0.35194
+ 
+Confusion matrix:
+    1    2    
+1  0.81703     0.18297
+2  0.35194     0.64806
+ 
+>>> Total error: 0.33876
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18297
+Error class 2: 0.35194
+ 
+Confusion matrix:
+    1    2    
+1  0.81703     0.18297
+2  0.35194     0.64806
+ 
+>>> Total error: 0.33876
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18297
+Error class 2: 0.35186
+ 
+Confusion matrix:
+    1    2    
+1  0.81703     0.18297
+2  0.35186     0.64814
+ 
+>>> Total error: 0.33868
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 1000
+C 2/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.1
+C 3/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.5
+C 3/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 3
+C 3/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 10
+C 3/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 100
+C 3/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.23581
+Error class 2: 0.27549
+ 
+Confusion matrix:
+    1    2    
+1  0.76419     0.23581
+2  0.27549     0.72451
+ 
+>>> Total error: 0.27239
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.23581
+Error class 2: 0.27541
+ 
+Confusion matrix:
+    1    2    
+1  0.76419     0.23581
+2  0.27541     0.72459
+ 
+>>> Total error: 0.27232
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.23581
+Error class 2: 0.27549
+ 
+Confusion matrix:
+    1    2    
+1  0.76419     0.23581
+2  0.27549     0.72451
+ 
+>>> Total error: 0.27239
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 1000
+C 3/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.18689
+Error class 2: 0.40205
+ 
+Confusion matrix:
+    1    2    
+1  0.81311     0.18689
+2  0.40205     0.59795
+ 
+>>> Total error: 0.38526
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.1
+C 4/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.5
+C 4/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 3
+C 4/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 10
+C 4/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 100
+C 4/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27984
+Error class 2: 0.2798
+ 
+Confusion matrix:
+    1    2    
+1  0.72016     0.27984
+2  0.2798      0.7202
+ 
+>>> Total error: 0.2798
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.27984
+Error class 2: 0.2798
+ 
+Confusion matrix:
+    1    2    
+1  0.72016     0.27984
+2  0.2798      0.7202
+ 
+>>> Total error: 0.2798
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27886
+Error class 2: 0.27972
+ 
+Confusion matrix:
+    1    2    
+1  0.72114     0.27886
+2  0.27972     0.72028
+ 
+>>> Total error: 0.27965
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 1000
+C 4/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1546
+Error class 2: 0.4134
+ 
+Confusion matrix:
+    1    2    
+1  0.8454      0.1546
+2  0.4134      0.5866
+ 
+>>> Total error: 0.3932
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1546
+Error class 2: 0.4134
+ 
+Confusion matrix:
+    1    2    
+1  0.8454      0.1546
+2  0.4134      0.5866
+ 
+>>> Total error: 0.3932
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1546
+Error class 2: 0.4134
+ 
+Confusion matrix:
+    1    2    
+1  0.8454      0.1546
+2  0.4134      0.5866
+ 
+>>> Total error: 0.3932
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.1
+C 5/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.5
+C 5/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 3
+C 5/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 10
+C 5/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 100
+C 5/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29181
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29181     0.70819
+ 
+>>> Total error: 0.29057
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29181
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29181     0.70819
+ 
+>>> Total error: 0.29057
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29164
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29164     0.70836
+ 
+>>> Total error: 0.29042
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 1000
+C 5/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.20841
+Error class 2: 0.29322
+ 
+Confusion matrix:
+    1    2    
+1  0.79159     0.20841
+2  0.29322     0.70678
+ 
+>>> Total error: 0.2866
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.20841
+Error class 2: 0.29322
+ 
+Confusion matrix:
+    1    2    
+1  0.79159     0.20841
+2  0.29322     0.70678
+ 
+>>> Total error: 0.2866
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.20841
+Error class 2: 0.29322
+ 
+Confusion matrix:
+    1    2    
+1  0.79159     0.20841
+2  0.29322     0.70678
+ 
+>>> Total error: 0.2866
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.1
+C 6/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.19961
+Error class 2: 0.9831
+ 
+Confusion matrix:
+    1    2    
+1  0.80039     0.19961
+2  0.9831    0.016897
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.5
+C 6/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40117
+Error class 2: 0.050692
+ 
+Confusion matrix:
+    1    2    
+1  0.59883     0.40117
+2  0.050692     0.94931
+ 
+>>> Total error: 0.078045
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 3
+C 6/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60078
+Error class 2: 0.033794
+ 
+Confusion matrix:
+    1    2    
+1  0.39922     0.60078
+2  0.033794     0.96621
+ 
+>>> Total error: 0.078045
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39922
+Error class 2: 0.96621
+ 
+Confusion matrix:
+    1    2    
+1  0.60078     0.39922
+2  0.96621    0.033794
+ 
+>>> Total error: 0.92195
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 10
+C 6/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99329
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99329   0.0067092
+ 
+>>> Total error: 0.91577
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 100
+C 6/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29181
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29181     0.70819
+ 
+>>> Total error: 0.29057
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29173
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29173     0.70827
+ 
+>>> Total error: 0.29049
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.27593
+Error class 2: 0.29181
+ 
+Confusion matrix:
+    1    2    
+1  0.72407     0.27593
+2  0.29181     0.70819
+ 
+>>> Total error: 0.29057
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 1000
+C 6/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.29452
+Error class 2: 0.28584
+ 
+Confusion matrix:
+    1    2    
+1  0.70548     0.29452
+2  0.28584     0.71416
+ 
+>>> Total error: 0.28652
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.29452
+Error class 2: 0.28584
+ 
+Confusion matrix:
+    1    2    
+1  0.70548     0.29452
+2  0.28584     0.71416
+ 
+>>> Total error: 0.28652
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.29452
+Error class 2: 0.28584
+ 
+Confusion matrix:
+    1    2    
+1  0.70548     0.29452
+2  0.28584     0.71416
+ 
+>>> Total error: 0.28652
+ 
+##################################################################
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+Rows -> Sigma, Columns -> C
+Mean error: 
+  0.0780  0.0780  0.6407  0.9220  0.3593  0.6407
+  0.0780  0.0780  0.6407  0.6407  0.3593  0.3593
+  0.0780  0.1492  0.6407  0.6407  0.6407  0.3593
+  0.9185  0.9185  0.9158  0.9158  0.9158  0.9158
+  0.4299  0.3387  0.2724  0.2798  0.2905  0.2905
+  0.3853  0.3853  0.3853  0.3932  0.2866  0.2865
+
+ 
+Std deviation: +-
+  0.0000  0.0000  0.4872  0.0000  0.4872  0.4872
+  0.0000  0.0000  0.4872  0.4872  0.4872  0.4872
+  0.0000  0.1232  0.4872  0.4872  0.4872  0.4872
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0000  0.0000  0.0000  0.0001  0.0001  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+
+ 
+Weighted errors (
+0.5
+ max) for class 
+Object
+
+  0.2671  0.2671  0.1667  0.1663  0.2003  0.1999
+  0.3004  0.2671  0.2332  0.1999  0.2335  0.2335
+  0.3337  0.3306  0.1667  0.1667  0.1999  0.2668
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0685  0.0915  0.1179  0.1398  0.1380  0.1380
+  0.0934  0.0934  0.0934  0.0773  0.1042  0.1473
+
+Weighted errors (
+0.5
+ max) for class 
+No Object
+
+  0.0197  0.0197  0.3333  0.4859  0.1779  0.3305
+  0.0169  0.0197  0.3277  0.3305  0.1751  0.1751
+  0.0141  0.0529  0.3333  0.3333  0.3305  0.1723
+  0.4981  0.4981  0.4966  0.4966  0.4966  0.4966
+  0.2274  0.1760  0.1377  0.1399  0.1459  0.1459
+  0.2010  0.2010  0.2010  0.2067  0.1466  0.1429
+
+ 
+Weighted errors mean sum: 
+  0.2868  0.2868  0.5000  0.6523  0.3782  0.5305
+  0.3173  0.2868  0.5609  0.5305  0.4086  0.4086
+  0.3477  0.3835  0.5000  0.5000  0.5305  0.4391
+  0.4981  0.4981  0.4966  0.4966  0.4966  0.4966
+  0.2958  0.2674  0.2556  0.2796  0.2838  0.2839
+  0.2945  0.2945  0.2945  0.2840  0.2508  0.2902
+
+ 
+Best Sigma: 1000
+Best C: 100
+ 
+ 
+ >>>>>>>>>> Error class 1: 0.188
+ >>>>>>>>>> Error class 2: 0.27249
+ 
+Confusion matrix:
+    1    2    
+1  0.812       0.188
+2  0.27249     0.72751
+ 
+>>>>>>>>>>>>>>>>>> Total error: 0.26604
+ 
+##################################################################
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+Starting test 5/5
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.1
+C 1/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 0.5
+C 1/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.60079
+Error class 2: 0.033433
+ 
+Confusion matrix:
+    1    2    
+1  0.39921     0.60079
+2  0.033433     0.96657
+ 
+>>> Total error: 0.077276
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 3
+C 1/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.2836
+Error class 2: 0.97178
+ 
+Confusion matrix:
+    1    2    
+1  0.7164      0.2836
+2  0.97178    0.028219
+ 
+>>> Total error: 0.9186
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.29348
+Error class 2: 0.27416
+ 
+Confusion matrix:
+    1    2    
+1  0.70652     0.29348
+2  0.27416     0.72584
+ 
+>>> Total error: 0.27566
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 10
+C 1/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 100
+C 1/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.12549
+Error class 2: 0.47286
+ 
+Confusion matrix:
+    1    2    
+1  0.87451     0.12549
+2  0.47286     0.52714
+ 
+>>> Total error: 0.44601
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.12549
+Error class 2: 0.47286
+ 
+Confusion matrix:
+    1    2    
+1  0.87451     0.12549
+2  0.47286     0.52714
+ 
+>>> Total error: 0.44601
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.12549
+Error class 2: 0.47286
+ 
+Confusion matrix:
+    1    2    
+1  0.87451     0.12549
+2  0.47286     0.52714
+ 
+>>> Total error: 0.44601
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.1, sigma = 1000
+C 1/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.1
+C 2/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 0.5
+C 2/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 3
+C 2/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.16996
+Error class 2: 0.97625
+ 
+Confusion matrix:
+    1    2    
+1  0.83004     0.16996
+2  0.97625     0.02375
+ 
+>>> Total error: 0.91394
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.45652
+Error class 2: 0.24983
+ 
+Confusion matrix:
+    1    2    
+1  0.54348     0.45652
+2  0.24983     0.75017
+ 
+>>> Total error: 0.26581
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 10
+C 2/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.99487
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.99487   0.0051308
+ 
+>>> Total error: 0.91799
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 100
+C 2/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.17787
+Error class 2: 0.35386
+ 
+Confusion matrix:
+    1    2    
+1  0.82213     0.17787
+2  0.35386     0.64614
+ 
+>>> Total error: 0.34026
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.17688
+Error class 2: 0.35386
+ 
+Confusion matrix:
+    1    2    
+1  0.82312     0.17688
+2  0.35386     0.64614
+ 
+>>> Total error: 0.34018
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.17787
+Error class 2: 0.35386
+ 
+Confusion matrix:
+    1    2    
+1  0.82213     0.17787
+2  0.35386     0.64614
+ 
+>>> Total error: 0.34026
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 0.5, sigma = 1000
+C 2/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.1
+C 3/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.59881
+Error class 2: 0.94985
+ 
+Confusion matrix:
+    1    2    
+1  0.40119     0.59881
+2  0.94985    0.050149
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 0.5
+C 3/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 3
+C 3/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.47826
+Error class 2: 0.95374
+ 
+Confusion matrix:
+    1    2    
+1  0.52174     0.47826
+2  0.95374     0.04626
+ 
+>>> Total error: 0.917
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 10
+C 3/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 100
+C 3/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.23518
+Error class 2: 0.26961
+ 
+Confusion matrix:
+    1    2    
+1  0.76482     0.23518
+2  0.26961     0.73039
+ 
+>>> Total error: 0.26695
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.23419
+Error class 2: 0.26953
+ 
+Confusion matrix:
+    1    2    
+1  0.76581     0.23419
+2  0.26953     0.73047
+ 
+>>> Total error: 0.2668
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.23518
+Error class 2: 0.26945
+ 
+Confusion matrix:
+    1    2    
+1  0.76482     0.23518
+2  0.26945     0.73055
+ 
+>>> Total error: 0.2668
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 3, sigma = 1000
+C 3/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.14032
+Error class 2: 0.46888
+ 
+Confusion matrix:
+    1    2    
+1  0.85968     0.14032
+2  0.46888     0.53112
+ 
+>>> Total error: 0.44349
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.1
+C 4/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 0.5
+C 4/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.8004
+Error class 2: 0.016716
+ 
+Confusion matrix:
+    1    2    
+1  0.1996      0.8004
+2  0.016716     0.98328
+ 
+>>> Total error: 0.077276
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 3
+C 4/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 10
+C 4/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 100
+C 4/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28261
+Error class 2: 0.27598
+ 
+Confusion matrix:
+    1    2    
+1  0.71739     0.28261
+2  0.27598     0.72402
+ 
+>>> Total error: 0.2765
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28261
+Error class 2: 0.27598
+ 
+Confusion matrix:
+    1    2    
+1  0.71739     0.28261
+2  0.27598     0.72402
+ 
+>>> Total error: 0.2765
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28261
+Error class 2: 0.2759
+ 
+Confusion matrix:
+    1    2    
+1  0.71739     0.28261
+2  0.2759      0.7241
+ 
+>>> Total error: 0.27642
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 10, sigma = 1000
+C 4/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.15217
+Error class 2: 0.42767
+ 
+Confusion matrix:
+    1    2    
+1  0.84783     0.15217
+2  0.42767     0.57233
+ 
+>>> Total error: 0.40638
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.15217
+Error class 2: 0.42767
+ 
+Confusion matrix:
+    1    2    
+1  0.84783     0.15217
+2  0.42767     0.57233
+ 
+>>> Total error: 0.40638
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.15217
+Error class 2: 0.42767
+ 
+Confusion matrix:
+    1    2    
+1  0.84783     0.15217
+2  0.42767     0.57233
+ 
+>>> Total error: 0.40638
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.1
+C 5/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 0.5
+C 5/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.59881
+Error class 2: 0.94985
+ 
+Confusion matrix:
+    1    2    
+1  0.40119     0.59881
+2  0.94985    0.050149
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 3
+C 5/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.40119
+Error class 2: 0.050149
+ 
+Confusion matrix:
+    1    2    
+1  0.59881     0.40119
+2  0.050149     0.94985
+ 
+>>> Total error: 0.077276
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 10
+C 5/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 100
+C 5/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.29311
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.29311     0.70689
+ 
+>>> Total error: 0.29261
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.2932
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.2932      0.7068
+ 
+>>> Total error: 0.29268
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.29303
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.29303     0.70697
+ 
+>>> Total error: 0.29253
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 100, sigma = 1000
+C 5/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.22036
+Error class 2: 0.2956
+ 
+Confusion matrix:
+    1    2    
+1  0.77964     0.22036
+2  0.2956      0.7044
+ 
+>>> Total error: 0.28978
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.22036
+Error class 2: 0.29551
+ 
+Confusion matrix:
+    1    2    
+1  0.77964     0.22036
+2  0.29551     0.70449
+ 
+>>> Total error: 0.28971
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.22036
+Error class 2: 0.29551
+ 
+Confusion matrix:
+    1    2    
+1  0.77964     0.22036
+2  0.29551     0.70449
+ 
+>>> Total error: 0.28971
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.1
+C 6/6  ||  Sigma 1/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 0.5
+C 6/6  ||  Sigma 2/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.1996
+Error class 2: 0.98328
+ 
+Confusion matrix:
+    1    2    
+1  0.8004      0.1996
+2  0.98328    0.016716
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 3
+C 6/6  ||  Sigma 3/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 1
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  1  0
+ 
+>>> Total error: 0.92272
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.39921
+Error class 2: 0.96657
+ 
+Confusion matrix:
+    1    2    
+1  0.60079     0.39921
+2  0.96657    0.033433
+ 
+>>> Total error: 0.92272
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 10
+C 6/6  ||  Sigma 4/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0
+Error class 2: 0.9928
+ 
+Confusion matrix:
+    1    2    
+1  1  0
+2  0.9928   0.0071996
+ 
+>>> Total error: 0.91608
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 100
+C 6/6  ||  Sigma 5/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.29311
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.29311     0.70689
+ 
+>>> Total error: 0.29261
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.29303
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.29303     0.70697
+ 
+>>> Total error: 0.29253
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.28656
+Error class 2: 0.29311
+ 
+Confusion matrix:
+    1    2    
+1  0.71344     0.28656
+2  0.29311     0.70689
+ 
+>>> Total error: 0.29261
+ 
+ 
+------------------------------------------------------------------------------------------------
+ 
+C = 1000, sigma = 1000
+C 6/6  ||  Sigma 6/6
+ 
+------------------------------------------------------------------------------------------------
+ 
+Starting validation iteration 1/3...
+ 
+Error class 1: 0.30237
+Error class 2: 0.28302
+ 
+Confusion matrix:
+    1    2    
+1  0.69763     0.30237
+2  0.28302     0.71698
+ 
+>>> Total error: 0.28451
+ 
+Starting validation iteration 2/3...
+ 
+Error class 1: 0.30237
+Error class 2: 0.28294
+ 
+Confusion matrix:
+    1    2    
+1  0.69763     0.30237
+2  0.28294     0.71706
+ 
+>>> Total error: 0.28444
+ 
+Starting validation iteration 3/3...
+ 
+Error class 1: 0.30237
+Error class 2: 0.28327
+ 
+Confusion matrix:
+    1    2    
+1  0.69763     0.30237
+2  0.28327     0.71673
+ 
+>>> Total error: 0.28474
+ 
+##################################################################
+ 
+Sigma values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+C values: 
+  0.1000  0.5000  3.0000 10.0000100.00001000.0000
+
+Rows -> Sigma, Columns -> C
+Mean error: 
+  0.9227  0.9227  0.9227  0.9227  0.9227  0.9227
+  0.6409  0.9227  0.9227  0.6409  0.9227  0.9227
+  0.7057  0.7008  0.9208  0.9227  0.6409  0.9227
+  0.9180  0.9180  0.9161  0.9161  0.9161  0.9161
+  0.4460  0.3402  0.2668  0.2765  0.2926  0.2926
+  0.4435  0.4435  0.4435  0.4064  0.2897  0.2846
+
+ 
+Std deviation: +-
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.4881  0.0000  0.0000  0.4881  0.0000  0.0000
+  0.3724  0.3768  0.0033  0.0000  0.4881  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0000  0.0000  0.0001  0.0000  0.0001  0.0000
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0002
+
+ 
+Weighted errors (
+0.5
+ max) for class 
+Object
+
+  0.1663  0.1663  0.1996  0.0998  0.1996  0.1663
+  0.2332  0.1331  0.0333  0.2332  0.1996  0.0665
+  0.1294  0.1377  0.2128  0.1663  0.1667  0.1331
+  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+  0.0627  0.0888  0.1174  0.1413  0.1433  0.1433
+  0.0702  0.0702  0.0702  0.0761  0.1102  0.1512
+
+Weighted errors (
+0.5
+ max) for class 
+No Object
+
+  0.4861  0.4861  0.4833  0.4916  0.4833  0.4861
+  0.3278  0.4889  0.4972  0.3278  0.4833  0.4944
+  0.3715  0.3682  0.4811  0.4861  0.3333  0.4889
+  0.4974  0.4974  0.4964  0.4964  0.4964  0.4964
+  0.2364  0.1769  0.1348  0.1380  0.1466  0.1465
+  0.2344  0.2344  0.2344  0.2138  0.1478  0.1415
+
+ 
+Weighted errors mean sum: 
+  0.6524  0.6524  0.6829  0.5914  0.6829  0.6524
+  0.5610  0.6219  0.5305  0.5610  0.6829  0.5610
+  0.5010  0.5059  0.6939  0.6524  0.5000  0.6219
+  0.4974  0.4974  0.4964  0.4964  0.4964  0.4964
+  0.2992  0.2657  0.2522  0.2793  0.2898  0.2898
+  0.3046  0.3046  0.3046  0.2899  0.2579  0.2927
+
+ 
+Best Sigma: 100
+Best C: 3
+ 
+ 
+ >>>>>>>>>> Error class 1: 0.23077
+ >>>>>>>>>> Error class 2: 0.27481
+ 
+Confusion matrix:
+    1    2    
+1  0.76923     0.23077
+2  0.27481     0.72519
+ 
+>>>>>>>>>>>>>>>>>> Total error: 0.27131
+ 
+##################################################################
+ 
+ 
+########################################################################################
+########################################################################################
+ 
+>>>>> Sigma values chosen for each test: 
+100.00001000.00001000.00001000.0000100.0000
+
+>>>>> C values chosen for each test: 
+  3.0000100.0000100.0000100.0000  3.0000
+
+>>>>>    Rows -> Sigma, Columns -> C    <<<<<
+>>>>> Error for each test: 
+  0.2740  0.2838  0.2908  0.2660  0.2713
+
+>>>>> Test folders: 
+ 
+########################################################################################
+########################################################################################

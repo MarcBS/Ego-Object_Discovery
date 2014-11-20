@@ -63,6 +63,7 @@ end
 [~, V] = litekmeans(randSamples', vocabLen); V = V';
 
 %% Save result
-save('Vocabulary/min_norm.mat', 'V_min_norm');
-save('Vocabulary/max_norm.mat', 'V_max_norm');
-save('Vocabulary/vocabulary.mat', 'V');
+fold_name = regexp(feat_path, '/', 'split'); fold_name = fold_name{end};
+save(['../Vocabulary/' fold_name '/min_norm.mat'], 'V_min_norm');
+save(['../Vocabulary/' fold_name '/max_norm.mat'], 'V_max_norm');
+save(['../Vocabulary/' fold_name '/vocabulary.mat'], 'V');
