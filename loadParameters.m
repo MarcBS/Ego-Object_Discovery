@@ -230,16 +230,21 @@ final_params.KNN = 5;
 final_params.SVM = '-s 0 -t 0 -c 1 -q';
 
 %% Spatial Pyramid Matching
+fold_name = regexp(feat_path, '/', 'split'); fold_name = fold_name{end};
 feature_params.M = 200; % dimensionality of the vocabulary used (200)
 feature_params.L = 2; % number of levels used in the SPM (2)
 % Load Scenes vocabulary
-load('Objects Recognition/Vocabulary/vocabularyS.mat'); % load vocabulary "VS"
-load('Objects Recognition/Vocabulary/min_normS.mat');
-load('Objects Recognition/Vocabulary/max_normS.mat');
+try
+    load(['Objects Recognition/Vocabulary/' fold_name '/vocabularyS.mat']); % load vocabulary "VS"
+    load(['Objects Recognition/Vocabulary/' fold_name '/min_normS.mat']);
+    load(['Objects Recognition/Vocabulary/' fold_name '/max_normS.mat']);
+end
 % Load Objects vocabulary
-load('Objects Recognition/Vocabulary/vocabulary.mat'); % load vocabulary "V"
-load('Objects Recognition/Vocabulary/min_norm.mat');
-load('Objects Recognition/Vocabulary/max_norm.mat');
+try
+    load(['Objects Recognition/Vocabulary/' fold_name '/vocabulary.mat']); % load vocabulary "V"
+    load(['Objects Recognition/Vocabulary/' fold_name '/min_norm.mat']);
+    load(['Objects Recognition/Vocabulary/' fold_name '/max_norm.mat']);
+end
 
 %% Supress some warnings
 warning('off', 'MATLAB:rmpath:DirNotFound');
