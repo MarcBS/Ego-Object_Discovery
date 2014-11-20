@@ -138,9 +138,10 @@ show_harderInstances = false; % shows the clusters labeled and the corresponding
 
 %% Obj VS NoObj SVM classifier params
 objVSnoobj_params.kernel = 'rbf';
-%           <<< SenseCam >>>
-%   All Classes In:     C=10, Sigma=100
-%   Half Classes Out:   C=1000, Sigma=0.5       NOT WORKING!!
+%   SenseCam:       C=10    Sigma=100
+%   PASCAL_12:      C=3     Sigma=100
+%   MSRC:           C=3     Sigma=100
+%   Narrative:      C=      Sigma=
 objVSnoobj_params.C = 10;
 objVSnoobj_params.sigma = 100;
 objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'
