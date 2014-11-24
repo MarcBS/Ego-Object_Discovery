@@ -3,7 +3,7 @@
 
 obj_errors_cell = {};
 noobj_errors_cell = {};
-test_res_file = 'MSRC_shorttest'; % automatically retrieves the cell of noobj and obj errors
+test_res_file = 'MSRC_longtest'; % automatically retrieves the cell of noobj and obj errors
 
 columns = 'C';
 rows = 'Sigma';

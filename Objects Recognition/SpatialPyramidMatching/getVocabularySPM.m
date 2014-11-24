@@ -1,15 +1,21 @@
 
 %% Selects a random subset of SIFT features from all the objects and 
 %   applies clustering over them to generate a common vocabulary.
-addpath('../../K_Means')
+addpath('../../K_Means;../Utils')
+
+%% Params
+volume_path = '/media/lifelogging';
+% volume_path = 'D:';
 
 vocabLen = 200;
 nSamples = 100000; % set to 100.000 when all images available?
 nSampPerImage = 5; % set to 5 when all images available
 nSampPerObj = 5; % set to 5 when all images available
-feat_path = 'D:\Video Summarization Objects\Features\Data 1';
+feat_path = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Objects/Features/Data PASCAL_12 Ferrari'];
 SIFT_len = 128;
 
+
+%% Start execution
 % Variable for storing all the chosen SIFT samples
 randSamples = zeros(nSamples, SIFT_len);
 
@@ -64,6 +70,7 @@ end
 
 %% Save result
 fold_name = regexp(feat_path, '/', 'split'); fold_name = fold_name{end};
+mkdir(['../Vocabulary/' fold_name]);
 save(['../Vocabulary/' fold_name '/min_norm.mat'], 'V_min_norm');
 save(['../Vocabulary/' fold_name '/max_norm.mat'], 'V_max_norm');
 save(['../Vocabulary/' fold_name '/vocabulary.mat'], 'V');

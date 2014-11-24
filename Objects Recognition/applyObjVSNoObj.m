@@ -138,6 +138,10 @@ function [ objects, nObj, nNoObj ] = applyObjVSNoObj( objects, classes, objVSnoo
     %% Evaluation results
     if(objVSnoobj_params.evaluate)
         disp(['TP = ' num2str(TP) ', TN = ' num2str(TN) ', FP = ' num2str(FP) ', FN = ' num2str(FN)]);
+        objects.ObjVSNoObj_SVM.TP = TP;
+        objects.ObjVSNoObj_SVM.TN = TN;
+        objects.ObjVSNoObj_SVM.FP = FP;
+        objects.ObjVSNoObj_SVM.FN = FN;
     end
 end
 
