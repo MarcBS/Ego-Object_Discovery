@@ -15,7 +15,6 @@ objVSnoobj_params.kernel = 'rbf';
 %   SenseCam:       C=10    Sigma=100
 %   PASCAL_12:      C=3     Sigma=100
 %   MSRC:           C=3     Sigma=100
-%   Narrative:      C=      Sigma=
 objVSnoobj_params.C = 3;
 objVSnoobj_params.sigma = 100;
 objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'

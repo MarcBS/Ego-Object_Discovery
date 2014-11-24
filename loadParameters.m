@@ -122,7 +122,7 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 %% Optional MAIN processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
 reload_objectness = false; % Calculates the objectness and the objects candidates
-reload_features = true; % recalculate features of each object candidate
+reload_features = false; % recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
 % retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
@@ -141,8 +141,7 @@ objVSnoobj_params.kernel = 'rbf';
 %   SenseCam:       C=10    Sigma=100
 %   PASCAL_12:      C=3     Sigma=100
 %   MSRC:           C=3     Sigma=100
-%   Narrative:      C=      Sigma=
-objVSnoobj_params.C = 10;
+objVSnoobj_params.C = 3;
 objVSnoobj_params.sigma = 100;
 objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
