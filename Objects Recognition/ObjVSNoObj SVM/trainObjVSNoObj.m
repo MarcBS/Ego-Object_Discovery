@@ -44,6 +44,13 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
         end
     end
     
+    %% Randomly select a subsample of examples
+    if(feature_params.frac_samples < 1)
+        rand_samp = ransample(1:nInit, round(nInit*feature_params.frac_samples));
+        indices = indices(rand_samp,:);
+        labels = labels(rand_samp);
+    end
+    
     %% Balance samples
     if(params.balance)
         indices_tmp = indices;
