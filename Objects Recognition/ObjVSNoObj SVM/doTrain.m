@@ -44,6 +44,7 @@ feature_params.lHOG = 3; % number of levels used for the P-HOG (2 better 'PASCAL
 feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
 
+feature_params.frac_samples = 1/4; % fraction of random samples used for building the classifier
 
 prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1, Narrative_stnd 1) resize proportion for the loaded images --> size(img)/prop_res
 % path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
