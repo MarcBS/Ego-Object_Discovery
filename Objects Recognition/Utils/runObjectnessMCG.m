@@ -11,10 +11,10 @@ function [ boxes ] = runObjectnessMCG( img, W )
     scores = candidates_scg.scores;
     [scores, p] = sort(scores, 'descend');
     for i = 1:W
-        boxes(i,1) = candidates_scg.bboxes(p(i), 1);
-        boxes(i,2) = candidates_scg.bboxes(p(i), 2);
-        boxes(i,3) = candidates_scg.bboxes(p(i), 3);
-        boxes(i,4) = candidates_scg.bboxes(p(i), 4);
+        boxes(i,1) = candidates_scg.bboxes(p(i), 2);
+        boxes(i,2) = candidates_scg.bboxes(p(i), 1);
+        boxes(i,3) = candidates_scg.bboxes(p(i), 4);
+        boxes(i,4) = candidates_scg.bboxes(p(i), 3);
         boxes(i,5) = scores(i);
     end
 
