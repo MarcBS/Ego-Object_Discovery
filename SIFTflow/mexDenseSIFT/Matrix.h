@@ -2,7 +2,7 @@
 #define _Matrix_h
 
 #include "stdio.h"
-#include "vector.h"
+#include "Vector.h"
 #include "project.h"
 #ifdef _QT
 	#include <QFile>

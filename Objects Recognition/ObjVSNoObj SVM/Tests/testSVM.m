@@ -19,38 +19,46 @@ load('../../Vocabulary/max_norm.mat');
 
 
 %% Params
-volume_path = 'D:';
+% volume_path = 'D:';
+volume_path = '/media/lifelogging';
 
 % Load objects file
-feat_path = [volume_path '/Video Summarization Objects\Features\Data SenseCam 0BC25B01'];
-load([feat_path '/objects.mat']);
+% feat_path = [volume_path '/Video Summarization Objects\Features\Data SenseCam 0BC25B01'];
+feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data MSRC Ferrari'];
 features_type = 'cnn';
 
 classes = {'Object', 'No Object'};
 
 
-path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
-folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
-    '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
-    '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
-    'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
-    'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
-format = '.JPG';
-prop_res = 4;
+% path_folders = [volume_path '/Documentos/Vicon Revue Data'];
+path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/MSRC'];
+% path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
+path_labels = '';
 
-numTests = 10; % number of TEST divisions
-X_fold = 10; % number of cross VALIDATIONS performed
+% folders = {'0BC25B01-7420-DD20-A1C8-3B2BD6C87CB0', '16F8AB43-5CE7-08B0-FD11-BA1E372425AB', ...
+%     '2E1048A6ECT', '5FA739A3-AAC4-E84B-F7CB-2179AD879AE3', '6FD1B048-A2F2-4CAB-1EFE-266503F59CD3' ...
+%     '819DC958-7BFE-DCC8-C792-B54B9641AA75', '8B6E4826-77F5-66BF-FCBA-4054D0E84B0B', ...
+%     'A06514ED-60B5-BF77-5549-2ED885FD7788', 'B07CCAA9-FEBF-E8F3-B637-B021D652CA48', ...
+%     'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
+% format = '.JPG';
+% prop_res = 4;
+
+folders = {'JPEGImages'};
+format = '.jpg';
+prop_res = 1;
+
+numTests = 5; % number of TEST divisions
+X_fold = 5; % number of cross VALIDATIONS performed
 max_iter = 9999999999;
-M = 2; % Number of iterations through the cross validation process
+M = 3; % Number of iterations through the cross validation process
 balance = true;
 treatMethod = 'norm'; % {'norm' = normalize || 'stand' = standardize}
-usePCA = true;
+usePCA = false;
 params.minVarPCA = 0.95;
 params.standarizePCA = true;
 
 % Fraction of the total samples used on the tests
-frac_used = 1/10;
+frac_used = 1/8;
 
 %% Prepare different parameters for classification comparison
 % numParams = 10;
@@ -78,19 +86,23 @@ feature_params.lenCNN = 4096; % length of the vector of features extracted from 
 nClasses = length(classes); % number of classes
 
 
+disp('# LOADING OBJECTS FILE...');
+load([feat_path '/objects.mat']);
+
 %% Go through each folder getting list of images and labels
 disp('# PARSING FOLDERS looking for all images...');
 [ list_img, list_event, list_event2 ] = parseFolders( folders, path_folders, format, path_labels );
 
 %% Get all indices of all objects in a matrix
-indices = [];
-nImages = length(objects);
-for i = 1:nImages
-    nObjects = length(objects(i).objects);
-    for j = 1:nObjects
-        indices = [indices; i j];
-    end
-end
+indices = getAllIndices(objects);
+
+%% Randomize samples and pick only a fraction of them
+len = size(indices,1);
+rand = randsample(1:len, len);
+
+% Use only a fraction of all the samples
+len = round(len*frac_used);
+indices = indices(rand(1:len),:);
 
 
 %% Recover images features of easiest objects
@@ -130,12 +142,7 @@ for ind = indices'
     count = count+1;
 end
 
-%% Randomize samples
-len = size(all_features,1);
-rand = randsample(1:len, len);
-
-% Use only a fraction of all the samples
-len = round(len*frac_used);
+%% Split samples in divisions for cross-validation
 
 divs_ = 0:ceil(len/numTests):len;
 if(divs_(end) ~= len)
@@ -143,12 +150,13 @@ if(divs_(end) ~= len)
 end
 divs = {};
 for i = 1:numTests
-    divs{i} = rand((divs_(i)+1):divs_(i+1));
+    divs{i} = (divs_(i)+1):divs_(i+1);
 end
 
 
 %% Open file to write the result
 fid = fopen('testResult.txt', 'w');
+writeToFile(fid, ['Picking ' num2str(len) ' samples for cross-validation.'], true);
 writeToFile(fid, 'Test Results using: ', true);
 writeToFile(fid, ' ', true);
 writeToFile(fid, [num2str(X_fold) '-fold BALANCED validations.'], true);

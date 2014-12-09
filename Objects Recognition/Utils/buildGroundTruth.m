@@ -6,18 +6,19 @@
 %%% PARAMETERS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-volume_path = '/Volumes/SHARED HD/';
+% volume_path = '/Volumes/SHARED HD/';
 % volume_path = 'D:/';
+volume_path = '/media/lifelogging/';
 
 % path_folders = [volume_path 'Video Summarization Project Data Sets/PASCAL'];
 % folders = { 'VOCtrainval_06-Nov-2007\VOCdevkit\VOC2007\Annotations', ...
 %             'VOCtest_06-Nov-2007\VOCdevkit\VOC2007\Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_07']};
 
-path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+path_folders = [volume_path 'Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari']};
+path_features = {[volume_path 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG']};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC Ferrari']};
 
 threshold_detection = 0.5;

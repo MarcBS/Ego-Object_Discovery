@@ -44,6 +44,13 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
         end
     end
     
+    %% Choose a fraction of them randomly selected
+    if(feature_params.fracSamples < 1)
+        rand_sel = randsample(1:nInit, round(nInit*feature_params.fracSamples));
+        indices = indices(rand_sel,:);
+        labels = labels(rand_sel);
+    end
+    
     %% Balance samples
     if(params.balance)
         indices_tmp = indices;
@@ -59,6 +66,7 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
     end
 
     %% Recover features for training samples
+    disp('# RECOVERING SAMPLES...');
     val = zeros(size(indices,1),1); t=0; histClasses = val; show_easiest = false; tests_path = '';
     % ORIGINAL
     if(strcmp(features_type, 'original'))
@@ -81,6 +89,7 @@ function trainObjVSNoObj( objects, classes, params, features_type, V, V_min_norm
     % Normalize features first
     [features, minVal, maxVal] = normalize(features);
     
+    disp('# TRAINING CLASSIFIER...');
     classifier =  svmtrain(features, labels, 'kernel_function', params.kernel, 'rbf_sigma', params.sigma, 'boxconstraint', params.C, 'options', statset('MaxIter', 9999999999));
 
     norm_params.minValNorm = minVal; norm_params.maxValNorm = maxVal;

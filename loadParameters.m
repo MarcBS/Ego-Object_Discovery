@@ -20,11 +20,12 @@ easiness_rate = [1.25 1/1000 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'Ferrari'; 
+objectness.type = 'MCG'; 
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
-objectness.pathMCG = [volume_path '/Video Summarization Others/Objectness MCG'];
+% objectness.pathMCG = [volume_path '/Video Summarization Others/Objectness MCG'];
+objectness.pathMCG = [volume_path '/HDD 2TB/Video Summarization Others/Objectness MCG'];
 % Parameters for the Selective Search objectness measure
 objectness.selectiveSearch.k = 100;
 objectness.selectiveSearch.minSize = 100;
@@ -41,7 +42,7 @@ max_size = 300; % max size by side for each image when extracting Grauman's feat
 % 'lshDimReduc' = LSH Dimensionality  Reduction from original; 
 % 'cnn' = Convolutional NN features; 
 % 'cnn_con' = CNN object candidate + CNN scene
-features_type = 'cnn';
+features_type = 'original';
 
 %% Objects Clustering parameters (laveled clustering)
 % {'lsh' = locality sensitive hashing, 'clink' = complete-link, 
@@ -121,8 +122,8 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional MAIN processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = false; % Calculates the objectness and the objects candidates
-reload_features = true; % recalculate features of each object candidate
+reload_objectness = true; % Calculates the objectness and the objects candidates
+reload_features = false; % recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
 % retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
@@ -175,9 +176,9 @@ histClasses = zeros(0);
 
 %% Features extraction (features location)
 % feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
-feat_path = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Objects/Features/Data PASCAL_12 Ferrari']; % folder where we want to store the features for each object
+feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
-has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
+has_ground_truth = false; % Determines if the ground truth is stored in the objects.mat file
 
 % Grauman's features
 feature_params.bLAB = 15; % bins per channel of the Lab colormap histogram (15)
@@ -286,7 +287,7 @@ mkdir(results_folder);
 %% Folder Parsing Parameters (images location)
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012'];
 % path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 path_labels = ''; % path to the scene labels
 
