@@ -1,3 +1,5 @@
+Picking 16369 samples for cross-validation.
+
 Test Results using: 
  
 5-fold BALANCED validations.

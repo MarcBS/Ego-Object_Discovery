@@ -70,7 +70,7 @@ end
 
 %% Save result
 fold_name = regexp(feat_path, '/', 'split'); fold_name = fold_name{end};
-mkdir(['../Vocabulary/' fold_name ]);
+mkdir(['../Vocabulary/' fold_name]);
 save(['../Vocabulary/' fold_name '/min_norm.mat'], 'V_min_norm');
 save(['../Vocabulary/' fold_name '/max_norm.mat'], 'V_max_norm');
 save(['../Vocabulary/' fold_name '/vocabulary.mat'], 'V');

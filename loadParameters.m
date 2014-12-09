@@ -2,12 +2,12 @@
 
 % volume_path = 'D:';
 % volume_path = 'C:';
-% volume_path = '/Volumes/SHARED HD';
-volume_path = '/media/lifelogging';
+volume_path = '/Volumes/SHARED HD';
+% volume_path = '/media/lifelogging';
 
 % Location where all the tests results will be stored
-% tests_path = [volume_path '/Video Summarization Tests'];
-tests_path = [volume_path '/HDD 2TB/Video Summarization Tests'];
+tests_path = [volume_path '/Video Summarization Tests'];
+% tests_path = [volume_path '/HDD 2TB/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
@@ -34,7 +34,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 1.25; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1, Narrative_stnd 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -139,10 +139,10 @@ show_harderInstances = false; % shows the clusters labeled and the corresponding
 
 %% Obj VS NoObj SVM classifier params
 objVSnoobj_params.kernel = 'rbf';
-%           <<< SenseCam >>>
-%   All Classes In:     C=10, Sigma=100
-%   Half Classes Out:   C=1000, Sigma=0.5       NOT WORKING!!
-objVSnoobj_params.C = 10;
+%   SenseCam:       C=10    Sigma=100
+%   PASCAL_12:      C=3     Sigma=100
+%   MSRC:           C=3     Sigma=100
+objVSnoobj_params.C = 3;
 objVSnoobj_params.sigma = 100;
 objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
@@ -231,16 +231,21 @@ final_params.KNN = 5;
 final_params.SVM = '-s 0 -t 0 -c 1 -q';
 
 %% Spatial Pyramid Matching
+fold_name = regexp(feat_path, '/', 'split'); fold_name = fold_name{end};
 feature_params.M = 200; % dimensionality of the vocabulary used (200)
 feature_params.L = 2; % number of levels used in the SPM (2)
 % Load Scenes vocabulary
-load('Objects Recognition/Vocabulary/vocabularyS.mat'); % load vocabulary "VS"
-load('Objects Recognition/Vocabulary/min_normS.mat');
-load('Objects Recognition/Vocabulary/max_normS.mat');
+try
+    load(['Objects Recognition/Vocabulary/' fold_name '/vocabularyS.mat']); % load vocabulary "VS"
+    load(['Objects Recognition/Vocabulary/' fold_name '/min_normS.mat']);
+    load(['Objects Recognition/Vocabulary/' fold_name '/max_normS.mat']);
+end
 % Load Objects vocabulary
-load('Objects Recognition/Vocabulary/vocabulary.mat'); % load vocabulary "V"
-load('Objects Recognition/Vocabulary/min_norm.mat');
-load('Objects Recognition/Vocabulary/max_norm.mat');
+try
+    load(['Objects Recognition/Vocabulary/' fold_name '/vocabulary.mat']); % load vocabulary "V"
+    load(['Objects Recognition/Vocabulary/' fold_name '/min_norm.mat']);
+    load(['Objects Recognition/Vocabulary/' fold_name '/max_norm.mat']);
+end
 
 %% Supress some warnings
 warning('off', 'MATLAB:rmpath:DirNotFound');
@@ -286,6 +291,7 @@ mkdir(results_folder);
 
 %% Folder Parsing Parameters (images location)
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012'];
 % path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
@@ -310,13 +316,13 @@ path_labels = ''; % path to the scene labels
 %     'VOCtest_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages'};
 % format = '.jpg';
 
-%% PASCAL_12
-folders = {'JPEGImages'};
-format = '.jpg';
-
-% %% MSRC
+% %% PASCAL_12
 % folders = {'JPEGImages'};
-% format = '.JPG';
+% format = '.jpg';
+
+%% MSRC
+folders = {'JPEGImages'};
+format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};
