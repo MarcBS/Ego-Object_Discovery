@@ -26,7 +26,7 @@ threshold_detection = 0.5;
 
 % selects if the annotation files are from PASCAL or from the custom labeling
 % app.
-annoType = 'PASCAL'; % 'PASCAL' or 'CUSTOM' or 'MSRC' or 'LABELME'
+annoType = 'MSRC'; % 'PASCAL' or 'CUSTOM' or 'MSRC' or 'LABELME'
 
 % list of allowed GT labels
 limitAllowed = false;

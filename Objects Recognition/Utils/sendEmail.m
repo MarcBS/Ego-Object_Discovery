@@ -1,8 +1,8 @@
 function sendEmail( subject, body )
 
     try
-        myaddress = 'mark.bs.1991@gmail.com';
-        mypassword = 'Dijkalph29C&M';
+        myaddress = 'your@email.com';
+        mypassword = 'password';
 
         setpref('Internet','E_mail',myaddress);
         setpref('Internet','SMTP_Server','smtp.gmail.com');

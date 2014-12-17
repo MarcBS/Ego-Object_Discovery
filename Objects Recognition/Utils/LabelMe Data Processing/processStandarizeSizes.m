@@ -5,10 +5,12 @@
 addpath('..');
 volume_path = '/Volumes/Shared HD/';
 
-src_path = [volume_path 'Video Summarization Project Data Sets/LabelMe Dataset Test'];
-dst_path = [volume_path 'Video Summarization Project Data Sets/LabelMe Dataset Test Stand'];
+src_path = [volume_path 'Video Summarization Project Data Sets/Narrative_Dataset_Original'];
+dst_path = [volume_path 'Video Summarization Project Data Sets/Narrative_Dataset'];
 
-folders = {'maya_2'}; % must have 'Annotations' and 'JPEGImages' folders inside
+% must have 'Annotations' and 'JPEGImages' folders inside
+folders = {'Petia1', 'Petia2', 'Maya1', 'Maya2', ...
+    'Estefania1', 'Estefania2', 'Mariella1', 'Mariella2'};
 format = '.jpg';
 max_stand_size = 512;
 
