@@ -19,7 +19,7 @@ nTests__ = 2;
 nTimesTests__ = 5; % times that each test will be repeated
 
 %%% Objectness
-easiness_rate__ = {NaN, NaN};
+easiness_rate__ = {[2.35 1/1000 5000], NaN};
 objectness__type__ = {NaN, NaN}; % Ferrari
 
 %%% Dataset
@@ -30,8 +30,8 @@ results_folder__ = {    'Exec_Ferrari_CNN_concat', ...
 folders__ = {NaN, NaN};
 format__ = {NaN, NaN};
 % write path without "volume_path"!
-path_folders__ = {NaN, NaN};
-feat_path__ = {NaN, NaN};
+path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
+feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
 
 %%% Features
 features_type__ = {'cnn_con', 'cnn'};
@@ -131,3 +131,4 @@ for i_test__ = 1:nTests__
     end
 end
 
+exit;

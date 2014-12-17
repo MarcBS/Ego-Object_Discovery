@@ -9,9 +9,9 @@ volume_path = '/media/lifelogging';
 
 vocabLen = 200;
 nSamples = 100000; % set to 100.000 when all images available?
-nSampPerImage = 10; % set to 5 when all images available (10 MSRC)
-nSampPerObj = 20; % set to 5 when all images available (20 MSRC)
-feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data MSRC Ferrari'];
+nSampPerImage = 5; % set to 5 when all images available (10 MSRC)
+nSampPerObj = 5; % set to 5 when all images available (20 MSRC)
+feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'];
 SIFT_len = 128;
 
 

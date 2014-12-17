@@ -30,8 +30,8 @@ results_folder__ = {    'Exec_Ferrari_ObjVSNoObj_CNN_Refill', ...
 folders__ = {NaN, NaN};
 format__ = {NaN, NaN};
 % write path without "volume_path"!
-path_folders__ = {NaN, NaN};
-feat_path__ = {NaN, NaN};
+path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
+feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
 
 %%% Features
 features_type__ = {'cnn', 'cnn'};
@@ -131,3 +131,4 @@ for i_test__ = 1:nTests__
     end
 end
 
+exit;

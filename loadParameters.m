@@ -2,12 +2,14 @@
 
 % volume_path = 'D:';
 % volume_path = 'C:';
-volume_path = '/Volumes/SHARED HD';
+% volume_path = '/Volumes/SHARED HD';
 % volume_path = '/media/lifelogging';
+volume_path = '';
 
 % Location where all the tests results will be stored
-tests_path = [volume_path '/Video Summarization Tests'];
+% tests_path = [volume_path '/Video Summarization Tests'];
 % tests_path = [volume_path '/HDD 2TB/Video Summarization Tests'];
+tests_path = [volume_path 'D:/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
@@ -20,7 +22,7 @@ easiness_rate = [1.25 1/1000 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'MCG'; 
+objectness.type = 'Ferrari'; 
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
@@ -34,7 +36,7 @@ objectness.selectiveSearch.colorType = {'Hsv', 'Lab', 'RGI', 'H', 'Intensity'};
 objectness.selectiveSearch.simFunctionHandles = {@SSSimColourTextureSizeFillOrig, @SSSimTextureSizeFill, @SSSimBoxFillOrig, @SSSimSize};
 
 %% Image size parameters
-prop_res = 1.25; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1, Narrative_stnd 1) resize proportion for the loaded images --> size(img)/prop_res
+prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1, Narrative_stnd 1) resize proportion for the loaded images --> size(img)/prop_res
 max_size = 300; % max size by side for each image when extracting Grauman's features
 
 %% Use of alternative kinds of features
@@ -42,7 +44,7 @@ max_size = 300; % max size by side for each image when extracting Grauman's feat
 % 'lshDimReduc' = LSH Dimensionality  Reduction from original; 
 % 'cnn' = Convolutional NN features; 
 % 'cnn_con' = CNN object candidate + CNN scene
-features_type = 'original';
+features_type = 'cnn';
 
 %% Objects Clustering parameters (laveled clustering)
 % {'lsh' = locality sensitive hashing, 'clink' = complete-link, 
@@ -122,12 +124,12 @@ cluster_scn_params.Kclusters = 10; % number of clusters created
 
 %% Optional MAIN processes
 reload_objStruct = false; % Builds the objects structure for executing the whole algorithm
-reload_objectness = true; % Calculates the objectness and the objects candidates
+reload_objectness = false; % Calculates the objectness and the objects candidates
 reload_features = false; % recalculate features of each object candidate
 reload_features_scenes = false; % recalculate features of each scene candidate
 % retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
-do_discovery = false; % Applies the object discovery algorithm on the data
+do_discovery = true; % Applies the object discovery algorithm on the data
 do_final_evaluation = false; % Does a final evaluation building SVM/KNN classifiers on the initialSamplesSelection
 
 %% Optional PLOT processes
@@ -176,9 +178,9 @@ histClasses = zeros(0);
 
 %% Features extraction (features location)
 % feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
-feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG']; % folder where we want to store the features for each object
+feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari']; % folder where we want to store the features for each object
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
-has_ground_truth = false; % Determines if the ground truth is stored in the objects.mat file
+has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
 
 % Grauman's features
 feature_params.bLAB = 15; % bins per channel of the Lab colormap histogram (15)
@@ -213,7 +215,7 @@ feature_params.maxObjectAwarenessSamples = 100;
 %% Percentage of samples used for the initial Scene/Context/Event/Object awareness samples
 feature_params.initialScenesPercentage = 1; % value between 0 and 1
 feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1
-feature_params.initialObjectsClassesOut = 0.25; % percentage of classes out of the initial selection
+feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection
 
 %% OneClass SVM parameters (see LIBSVM README)
 % -s  SVM type (2 = one-class SVM)
@@ -239,6 +241,8 @@ try
     load(['Objects Recognition/Vocabulary/' fold_name '/vocabularyS.mat']); % load vocabulary "VS"
     load(['Objects Recognition/Vocabulary/' fold_name '/min_normS.mat']);
     load(['Objects Recognition/Vocabulary/' fold_name '/max_normS.mat']);
+catch
+    VS = ''; V_min_normS = ''; V_max_normS = '';
 end
 % Load Objects vocabulary
 try
@@ -293,7 +297,7 @@ mkdir(results_folder);
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012'];
+path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'];
 % path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 path_labels = ''; % path to the scene labels
 
@@ -307,9 +311,10 @@ path_labels = ''; % path to the scene labels
 %     'D3B168F2-40C8-7BAB-5DA2-4577404BAC7A'};
 % format = '.JPG';
 
-% %%% Narrative
-% folders = {'Narrative Samples'};
-% format = '.jpg';
+%%% Narrative_Dataset
+folders = {'Petia1/JPEGImages', 'Petia2/JPEGImages', 'Maya1/JPEGImages', 'Maya2/JPEGImages', ...
+	'Estefania1/JPEGImages', 'Estefania2/JPEGImages', 'Mariella1/JPEGImages', 'Mariella2/JPEGImages'};
+format = '.jpg';
 
 % %% PASCAL_07
 % folders = {%'VOCtrainval_06-Nov-2007/VOCdevkit/VOC2007/JPEGImages', ...
@@ -320,9 +325,9 @@ path_labels = ''; % path to the scene labels
 % folders = {'JPEGImages'};
 % format = '.jpg';
 
-%% MSRC
-folders = {'JPEGImages'};
-format = '.JPG';
+% %% MSRC
+% folders = {'JPEGImages'};
+% format = '.JPG';
 
 %%% Perina Short
 % folders = {'Perina Short Dataset'};

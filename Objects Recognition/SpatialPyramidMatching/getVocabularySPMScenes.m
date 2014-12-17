@@ -1,12 +1,12 @@
 
 %% Selects a random subset of SIFT features from all the scnes and 
 %   applies clustering over them to generate a common vocabulary.
-addpath('../../K_Means')
+addpath('../../K_Means;../Utils')
 
 vocabLen = 200;
 nSamples = 100000; % set to 100.000 when all images available?
 nSampPerImage = 400; % set to 5 when all images available
-feat_path = 'D:\Video Summarization Objects\Features\Data SenseCam 0BC25B01';
+feat_path = 'F:/Object Discovery Data\Video Summarization Objects\Features\Data Narrative_Dataset Ferrari';
 SIFT_len = 128;
 
 % Variable for storing all the chosen SIFT samples

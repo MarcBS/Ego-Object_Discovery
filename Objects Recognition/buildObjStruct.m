@@ -1,4 +1,4 @@
-function [ objects ] = buildObjStruct( list_img, list_event, list_event2 )
+function [ objects ] = buildObjStruct( list_path, list_img, list_event, list_event2 )
 %BUILDOBJSTRUCT Builds the objects structure for storing all the
 %   information.
 %%%%
@@ -15,7 +15,7 @@ function [ objects ] = buildObjStruct( list_img, list_event, list_event2 )
     for i = 1:lenImgs
         % Initialize info for this image
         path = regexp(list_img{i}, '/', 'split');
-        objects(i).folder = path{length(path)-1};
+        objects(i).folder = list_path{i};
         objects(i).imgName = path{length(path)};
         objects(i).idEvent = list_event(i);
         objects(i).labelEvent = list_event2(i);

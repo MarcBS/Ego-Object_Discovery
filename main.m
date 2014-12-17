@@ -1,16 +1,16 @@
 
 %% Load parameters
-loadParameters;
+% loadParameters;
 
 %% Go through each folder getting list of images and labels
 disp('# PARSING FOLDERS looking for all images...');
-[ list_img, list_event, list_event2 ] = parseFolders( folders, path_folders, format, path_labels );
+[ list_path, list_img, list_event, list_event2 ] = parseFolders( folders, path_folders, format, path_labels );
 
 
 %% Build 'objects' structure
 if(reload_objStruct)
     disp('# BUILD OBJECTS STRUCTURE.');
-    objects = buildObjStruct(list_img, list_event, list_event2);
+    objects = buildObjStruct(list_path, list_img, list_event, list_event2);
     save([feat_path '/objects.mat'], 'objects');
 else
     disp('# LOADING OBJECTS FILE...');
@@ -75,7 +75,9 @@ if(feature_params.useScene || strcmp(features_type, 'cnn_con'))
         [sceneFeatures, ~] = recoverFeatures(objects, 1:length(objects), [], VS, V_min_normS, V_max_normS, [], feature_params, feat_path, false, [], path_folders, prop_res, [1 0 1]);
     end   
     %% Get a certain percentage of true labels
-    [objects classes_scenes] = initialSamplesTrueLabels(objects, feature_params, classes_scenes, 2, []);
+    if(feature_params.useScene)
+        [objects classes_scenes] = initialSamplesTrueLabels(objects, feature_params, classes_scenes, 2, []);
+    end
 end
 
 
@@ -420,4 +422,4 @@ end
 disp('# TEST EXECUTION FINISHED!!!');
 sendEmail('Test Finished', ['Test results stored in folder ' results_folder '.']);
 
-
+% exit;

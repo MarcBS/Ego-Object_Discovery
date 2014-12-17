@@ -1,4 +1,4 @@
-function [ list_img, list_event, list_event2 ] = parseFolders( folders, path_folders, format, path_labels )
+function [ list_path, list_img, list_event, list_event2 ] = parseFolders( folders, path_folders, format, path_labels )
 %PARSEFOLDERS Gets all image paths and all image labels from the passed
 % folders.
 %   Returns the list of images found, their list of events indices
@@ -6,6 +6,7 @@ function [ list_img, list_event, list_event2 ] = parseFolders( folders, path_fol
 %   parameters with the same length as images found.
 %%%%
 
+    list_path = {}; % store all the intermediate paths
     list_img = {}; % store all image paths in this list
     list_event = []; % store event ids for each image
     list_event2 = []; % store event labels for each image
@@ -35,6 +36,7 @@ function [ list_img, list_event, list_event2 ] = parseFolders( folders, path_fol
 %         labels = [labels(1) labels];
 
         for i = 1:length(fileList)
+	    list_path{count} = f{1};
             % Store the paths to each image
             list_img{count} = [fold '/' fileList(i).name];
             % Store the event number for each image

@@ -30,7 +30,7 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
     batch_size = feat_params.batch_size;
     parallel = feat_params.parallel;
     
-    if(strcmp(features_type, 'cnn'))
+    if(strcmp(features_type, 'cnn') || strcmp(features_type, 'cnn_con'))
         addpath(feat_params.caffe_path);
         matcaffe_init(use_gpu, feat_params.model_def_file, feat_params.model_file);
     end
@@ -112,7 +112,7 @@ function extractFeatures( objects, feat_params, path_folders, prop_res, feat_pat
                 scn_feat.SIFT_feat = sift_feat;
 
             %% EXTRACT CNN FEATURES
-            elseif(strcmp(features_type, 'cnn'))
+            elseif(strcmp(features_type, 'cnn') || strcmp(features_type, 'cnn_con'))
                 %% Generate and Store features
                 [cnn_feat, ~] = matcaffe_demo(scn_img, use_gpu);
                 scn_feat.CNN_feat = cnn_feat';
