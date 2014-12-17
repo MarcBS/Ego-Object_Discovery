@@ -98,7 +98,7 @@ end
 %% Iterate for discovering all the object classes until no easy instances available
 t = 1; hasEasyObjects = true;
 if(do_discovery)
-    while(hasEasyObjects)
+    while(hasEasyObjects && easiness_rate(4) >= t)
         %% Start Scenes labeling
         disp(' ');disp(' ');
         disp('===============================================');
