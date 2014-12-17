@@ -63,7 +63,7 @@ function [ objects ] = extractObjects( path_folders, objects, prop_res, objectne
         if(mod(i,100) == 0 || lenImgs == i)
             disp(['Extracted objects from ' num2str(i) '/' num2str(lenImgs)]);
             %% TMP LINE, DELETE!!!
-%             save(['/Volumes/SHARED HD/Video Summarization Objects/Features/Data MSRC MCG' '/objects.mat'], 'objects');
+%             save(['/Volumes/SHARED HD/Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch' '/objects.mat'], 'objects');
         end
         %figure,imshow(img),drawBoxes(boxes);
     end

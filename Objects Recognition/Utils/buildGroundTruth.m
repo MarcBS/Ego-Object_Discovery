@@ -19,8 +19,13 @@ volume_path = '/media/lifelogging/';
 path_folders = [volume_path 'Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
-path_features = {[volume_path 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG']};
-% path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC Ferrari']};
+% path_folders = [volume_path 'Video Summarization Project Data Sets/Narrative_Dataset'];
+% folders = {'Petia1/Annotations', 'Petia2/Annotations', 'Maya1/Annotations', 'Maya2/Annotations', ...
+%     'Estefania1/Annotations', 'Estefania2/Annotations', 'Mariella1/Annotations', 'Mariella2/Annotations'};
+
+% path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari']};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC SelectiveSearch']};
+% path_features = {[volume_path 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch']};
 
 threshold_detection = 0.5;
 
@@ -30,7 +35,10 @@ annoType = 'MSRC'; % 'PASCAL' or 'CUSTOM' or 'MSRC' or 'LABELME'
 
 % list of allowed GT labels
 limitAllowed = false;
-allowed = {'hand', 'mobilephone', 'tvmonitor', 'person'};
+% allowed = {'hand', 'mobilephone', 'tvmonitor', 'person'};
+allowed = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
+    'person', 'sign', 'hand', 'window', 'building', 'paper', 'bottle', ...
+    'glass', 'chair', 'mobilephone', 'car'};
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% EXECUTION
@@ -88,65 +96,68 @@ for i = 1:nFolders
             %% For each object
             count_obj = 1;
             for obj = {objs{2:end}}
-                %% Get all attributes
-                objects(j+offset).ground_truth(count_obj).name = getElementXML(obj{1}, 'name');
-                if(strcmp(annoType, 'LABELME')) % different annotation if comes from LabelMe
-                    [xmin, ymin, xmax, ymax] = getObjectData(obj{1});
-                    objects(j+offset).ground_truth(count_obj).ULx = xmin;
-                    objects(j+offset).ground_truth(count_obj).ULy = ymin;
-                    objects(j+offset).ground_truth(count_obj).BRx = xmax;
-                    objects(j+offset).ground_truth(count_obj).BRy = ymax;
-                    objects(j+offset).ground_truth(count_obj).occluded = str2num(getElementXML(obj{1}, 'occluded'));
-                else
-                    objects(j+offset).ground_truth(count_obj).ULx = str2num(getElementXML(obj{1}, 'xmin'));
-                    objects(j+offset).ground_truth(count_obj).ULy = str2num(getElementXML(obj{1}, 'ymin'));
-                    objects(j+offset).ground_truth(count_obj).BRx = str2num(getElementXML(obj{1}, 'xmax'));
-                    objects(j+offset).ground_truth(count_obj).BRy = str2num(getElementXML(obj{1}, 'ymax'));
-                    if(strcmp(annoType, 'PASCAL'))
-                        objects(j+offset).ground_truth(count_obj).pose = getElementXML(obj{1}, 'pose');
-                        objects(j+offset).ground_truth(count_obj).truncated = str2num(getElementXML(obj{1}, 'truncated'));
-                        objects(j+offset).ground_truth(count_obj).difficult = str2num(getElementXML(obj{1}, 'difficult'));
-                    end
-                end
-                
-                %% Check if any object in objects(j).objects matches 
-                %  with the ground_truth for assign them the true label!
-                GT = objects(j+offset).ground_truth(count_obj);
-                GT.height = (GT.BRy - GT.ULy + 1);
-                GT.width = (GT.BRx - GT.ULx + 1);
-                GT.area = GT.height * GT.width;
-                
-                %% Check for each object candidate, if it fits the current true object
-                count_candidate = 1;
-                for w = objects(j+offset).objects
-                    
-                    % Check area and intersection on current window "w"
-                    w.height = (w.BRy - w.ULy + 1);
-                    w.width = (w.BRx - w.ULx + 1);
-                    w.area = w.height * w.width;
-
-                    % Check intersection
-                    count_intersect = rectint([GT.ULy, GT.ULx, GT.height, GT.width], [w.ULy, w.ULx, w.height, w.width]);
-                    
-                    % Calculate overlap score
-                    OS = count_intersect / (GT.area + w.area - count_intersect);
-                    
-                    if(OS > threshold_detection) % object detected!
-                        label = getElementXML(obj{1}, 'name');
-                        % If OS bigger than previous, then assign this
-                        if(max(w.OS) < OS && (~limitAllowed || sum(ismember(allowed, label))))
-                            w.trueLabel = label;
-                            w.trueLabelId = count_obj;
+                %% Limit allowed GT classes
+                if(~limitAllowed || sum(ismember(allowed, getElementXML(obj{1}, 'name'))))
+                    %% Get all attributes
+                    objects(j+offset).ground_truth(count_obj).name = getElementXML(obj{1}, 'name');
+                    if(strcmp(annoType, 'LABELME')) % different annotation if comes from LabelMe
+                        [xmin, ymin, xmax, ymax] = getObjectData(obj{1});
+                        objects(j+offset).ground_truth(count_obj).ULx = xmin;
+                        objects(j+offset).ground_truth(count_obj).ULy = ymin;
+                        objects(j+offset).ground_truth(count_obj).BRx = xmax;
+                        objects(j+offset).ground_truth(count_obj).BRy = ymax;
+                        objects(j+offset).ground_truth(count_obj).occluded = str2num(getElementXML(obj{1}, 'occluded'));
+                    else
+                        objects(j+offset).ground_truth(count_obj).ULx = str2num(getElementXML(obj{1}, 'xmin'));
+                        objects(j+offset).ground_truth(count_obj).ULy = str2num(getElementXML(obj{1}, 'ymin'));
+                        objects(j+offset).ground_truth(count_obj).BRx = str2num(getElementXML(obj{1}, 'xmax'));
+                        objects(j+offset).ground_truth(count_obj).BRy = str2num(getElementXML(obj{1}, 'ymax'));
+                        if(strcmp(annoType, 'PASCAL'))
+                            objects(j+offset).ground_truth(count_obj).pose = getElementXML(obj{1}, 'pose');
+                            objects(j+offset).ground_truth(count_obj).truncated = str2num(getElementXML(obj{1}, 'truncated'));
+                            objects(j+offset).ground_truth(count_obj).difficult = str2num(getElementXML(obj{1}, 'difficult'));
                         end
                     end
-                    w.OS(count_obj) = OS;
-                    
-                    % Store w object
-                    objects(j+offset).objects(count_candidate).OS = w.OS;
-                    objects(j+offset).objects(count_candidate).trueLabel = w.trueLabel;
-                    objects(j+offset).objects(count_candidate).trueLabelId = w.trueLabelId;
-                    
-                    count_candidate = count_candidate + 1;
+
+                    %% Check if any object in objects(j).objects matches 
+                    %  with the ground_truth for assign them the true label!
+                    GT = objects(j+offset).ground_truth(count_obj);
+                    GT.height = (GT.BRy - GT.ULy + 1);
+                    GT.width = (GT.BRx - GT.ULx + 1);
+                    GT.area = GT.height * GT.width;
+
+                    %% Check for each object candidate, if it fits the current true object
+                    count_candidate = 1;
+                    for w = objects(j+offset).objects
+
+                        % Check area and intersection on current window "w"
+                        w.height = (w.BRy - w.ULy + 1);
+                        w.width = (w.BRx - w.ULx + 1);
+                        w.area = w.height * w.width;
+
+                        % Check intersection
+                        count_intersect = rectint([GT.ULy, GT.ULx, GT.height, GT.width], [w.ULy, w.ULx, w.height, w.width]);
+
+                        % Calculate overlap score
+                        OS = count_intersect / (GT.area + w.area - count_intersect);
+
+                        if(OS > threshold_detection) % object detected!
+                            label = getElementXML(obj{1}, 'name');
+                            % If OS bigger than previous, then assign this
+                            if(max(w.OS) < OS)
+                                w.trueLabel = label;
+                                w.trueLabelId = count_obj;
+                            end
+                        end
+                        w.OS(count_obj) = OS;
+
+                        % Store w object
+                        objects(j+offset).objects(count_candidate).OS = w.OS;
+                        objects(j+offset).objects(count_candidate).trueLabel = w.trueLabel;
+                        objects(j+offset).objects(count_candidate).trueLabelId = w.trueLabelId;
+
+                        count_candidate = count_candidate + 1;
+                    end
                 end
                 
                 count_obj = count_obj + 1;

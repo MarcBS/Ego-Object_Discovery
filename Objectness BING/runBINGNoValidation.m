@@ -10,7 +10,7 @@ function runBINGNoValidation( img_path, format, workingpath, prop_res )
 %         root_path = [root_path local_path{i} '/'];
 %     end
 %     path_exe = [root_path 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
-    path_exe = [pwd 'Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
+    path_exe = [pwd '/Objectness BING/BingObjectnessCVPR14/x64/Release/Objectness.exe'];
 
     % Get all images
     images = dir([img_path '*' format]);

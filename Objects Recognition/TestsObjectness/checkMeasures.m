@@ -9,6 +9,7 @@ volume_path = '/media/lifelogging/';
 % objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
 objects_path = 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG';
 % objects_path = 'Video Summarization Objects/Features/Data MSRC Ferrari';
+objects_path = 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch';
 % objects_path = 'Video Summarization Objects/Features/Data PASCAL_07';
 
 
@@ -21,6 +22,7 @@ countTot = 0;
 countObjs = 0;
 countGT = 0;
 countFound = 0;
+count_empty = 0;
 for i = 1:length(objects)
     this_found = [];
     for j = 1:length(objects(i).objects)
@@ -32,7 +34,15 @@ for i = 1:length(objects)
     end
     this_found = unique(this_found);
     countFound = countFound + length(this_found);
-    countGT = countGT + length(objects(i).ground_truth);
+    lenGT = 0;
+    for j = 1:length(objects(i).ground_truth)
+        if(~isempty(objects(i).ground_truth(j).name))
+            lenGT = lenGT+1;
+        else
+            count_empty = count_empty+1;
+        end
+    end
+    countGT = countGT + lenGT;
 end
 
 disp(['Total number of images: ' num2str(length(objects))]);

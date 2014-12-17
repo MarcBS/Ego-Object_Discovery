@@ -13,7 +13,7 @@ tests_path = [volume_path 'D:/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
-%   1st -> times std.dev (2)
+%   1st -> times std.dev (1.25) greater for Grauman's Features (2.35)
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
 easiness_rate = [1.25 1/1000 5000];
@@ -22,7 +22,7 @@ easiness_rate = [1.25 1/1000 5000];
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
 % Ferrari: LINUX ONLY, BING: WINDOWS ONLY, MCG: LINUX or MAC ONLY!, SelectiveSearch: ??? WINDOWS works
 % kind of objectness extraction used = {'Ferrari', 'BING', 'MCG', 'SelectiveSearch'}
-objectness.type = 'Ferrari'; 
+objectness.type = 'Ferrari';
 % Working path to store the model and the results of the BING objectness
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
@@ -295,7 +295,7 @@ mkdir(results_folder);
 
 %% Folder Parsing Parameters (images location)
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/Narrative_Dataset'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'];
 % path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
