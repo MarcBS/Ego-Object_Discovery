@@ -6,35 +6,33 @@ tests_path = 'D:/Video Summarization Tests';
 
 %% Parameters 
 
-% Wrong, the scene similarities where not correctly weighted
-CNN_Scene = {'Execution_CNN_Scene_1_norm', 'Execution_CNN_Scene_2_norm', ...
-    'Execution_CNN_Scene_3_norm'};
-CNN_Scene2 = {'Execution_CNN_Scene-v2_1_norm_refill00'};
-CNN = {'Execution_CNN_NoScene_1', 'Execution_CNN_NoScene_2', ...
-    'Execution_CNN_NoScene_3', 'Execution_CNN_NoScene_4', ...
-    'Execution_CNN_NoScene_5','Execution_CNN_NoScene_6', 'Execution_CNN_NoScene_7', ...
-    'Execution_CNN_NoScene_8', 'Execution_CNN_NoScene_9', 'Execution_CNN_NoScene_10'};
-Original = {'Execution_Original_NoScene_1', 'Execution_Original_NoScene_2', ...
-    'Execution_Original_NoScene_3','Execution_Original_NoScene_4', 'Execution_Original_NoScene_5'};
-CNN_Refill = {'Execution_CNN_NoScene_1_refill02', 'Execution_CNN_NoScene_2_refill02',...
-    'Execution_CNN_NoScene_3_refill03', 'Execution_CNN_NoScene_4_refill04'};
-% CNN_Refill_ObjVSNoObj = {'Exec_CNN_Refill_Ferrari_ObjVSNoObj_1', ...
-%     'Exec_CNN_Refill_Ferrari_ObjVSNoObj_2', 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_3'};
-CNN_Refill_ObjVSNoObj = {'Exec_CNN_Refill_Ferrari_ObjVSNoObj_4'};
+Grauman_Refill = {'Exec_Ferrari_Grauman_Refill_1','Exec_Ferrari_Grauman_Refill_2',...
+    'Exec_Ferrari_Grauman_Refill_3','Exec_Ferrari_Grauman_Refill_4', ...
+    'Exec_Ferrari_Grauman_Refill_5'};
+CNN = {'Exec_Ferrari_CNN_1'};
+CNN_Refill = {'Exec_Ferrari_CNN_Refill_1', 'Exec_Ferrari_CNN_Refill_2', ...
+    'Exec_Ferrari_CNN_Refill_3', 'Exec_Ferrari_CNN_Refill_4', ...
+    'Exec_Ferrari_CNN_Refill_5'};
+CNN_concat_Refill = {'Exec_Ferrari_CNN_concat_Refill_1', 'Exec_Ferrari_CNN_concat_Refill_2', ...
+    'Exec_Ferrari_CNN_concat_Refill_3', 'Exec_Ferrari_CNN_concat_Refill_4', ...
+    'Exec_Ferrari_CNN_concat_Refill_5'};
+CNN_Refill_ObjVSNoObj = {'Exec_Ferrari_ObjVSNoObj_CNN_Refill_1'};
 
 % Test variables
-% tests = {'CNN_Scene', 'CNN_Scene2', 'Original_NoScene', 'CNN_NoScene', 'CNN_NoScene_Refill'};
-tests = {'Original', 'CNN', 'CNN_Refill', 'CNN_Refill_ObjVSNoObj'};
-test_markers = {'s', '*', '+', 'o'};
+tests = {'Grauman_Refill', 'CNN', 'CNN_Refill', 'CNN_concat_Refill', 'CNN_Refill_ObjVSNoObj'};
+test_markers = {'s', '*', '+', 'o', 'c'};
 
 % List of classes appearing in the object discovery
-classes_list = {'tvmonitor', 'mobilephone', 'hand', 'person'};
+% classes_list = {'tvmonitor', 'mobilephone', 'hand', 'person'};
+classes_list = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
+    'person', 'sign', 'hand', 'window', 'building', 'paper', 'bottle', ...
+    'glass', 'chair', 'mobilephone', 'car'};
 
 % Iteration intervals for f-measure plot
 iter_intervals = [10 20 40 60 80];
 
 % Max iterations on the fmeasure progress
-iterprogress = 1:5:125;
+iterprogress = 1:3:100;
 
 % Font size
 font_size = 14;

@@ -26,7 +26,7 @@ objectness__type__ = {NaN, NaN}; % Ferrari
 prop_res__ = {NaN, NaN}; % 1
 volume_path__ = {NaN, NaN};
 results_folder__ = {    'Exec_Ferrari_Grauman', ...
-                        'Exec_Ferrari_CNN'};
+                        'Exec_Ferrari_CNN_concat'};
 folders__ = {NaN, NaN};
 format__ = {NaN, NaN};
 % write path without "volume_path"!
@@ -34,7 +34,7 @@ path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Set
 feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
 
 %%% Features
-features_type__ = {'original', 'cnn'};
+features_type__ = {'original', 'cnn_con'};
 feature_params__initialScenesPercentage__ = {NaN, NaN}; % 1
 feature_params__initialObjectsPercentage__ = {NaN, NaN}; % 0.4
 feature_params__initialObjectsClassesOut__ = {NaN, NaN}; % 0.5

@@ -17,7 +17,7 @@ tests_path = [volume_path 'D:/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
-%   1st -> times std.dev (1.25) greater for Grauman's Features (2.35)
+%   1st -> times std.dev (1.25) or better using (2.35)?
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations

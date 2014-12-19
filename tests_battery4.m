@@ -19,7 +19,7 @@ nTests__ = 2;
 nTimesTests__ = 5; % times that each test will be repeated
 
 %%% Objectness
-easiness_rate__ = {NaN, NaN};
+easiness_rate__ = {NaN, [1.25 1/1000 5000 100]};
 objectness__type__ = {NaN, NaN}; % Ferrari
 
 %%% Dataset
