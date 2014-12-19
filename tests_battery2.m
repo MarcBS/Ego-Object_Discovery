@@ -19,7 +19,7 @@ nTests__ = 2;
 nTimesTests__ = 5; % times that each test will be repeated
 
 %%% Objectness
-easiness_rate__ = {[2.35 1/1000 5000 100], NaN};
+easiness_rate__ = {NaN, NaN};
 objectness__type__ = {NaN, NaN}; % Ferrari
 
 %%% Dataset
@@ -52,7 +52,7 @@ do_final_evaluation__ = {NaN, NaN}; % false
 has_ground_truth__ = {NaN, NaN}; % true
 feature_params__usePCA__ = {false, false};
 feature_params__minVarPCA__ = {NaN, NaN};
-refill__ = {NaN, NaN}; % 0.2
+refill__ = {0, NaN}; % 0.2
 objVSnoobj_params__SVMpath__ = {NaN, NaN}; % PASCAL_12
 cluster_params__similDist__ = {NaN, NaN}; % euclidean
 

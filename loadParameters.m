@@ -1,4 +1,8 @@
 %% Initial parameters
+%
+%   Note: always use '/' in the file paths.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % volume_path = 'D:';
 % volume_path = 'C:';
@@ -17,7 +21,7 @@ tests_path = [volume_path 'D:/Video Summarization Tests'];
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations
-easiness_rate = [1.25 1/1000 5000 100];
+easiness_rate = [2.35 1/1000 5000 100];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)

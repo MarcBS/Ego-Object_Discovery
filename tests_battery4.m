@@ -15,47 +15,48 @@
 %% Test execution 4
 
 %%% Narrative Tests
-nTests__ = 1;
+nTests__ = 2;
 nTimesTests__ = 5; % times that each test will be repeated
 
 %%% Objectness
-easiness_rate__ = {NaN};
-objectness__type__ = {NaN}; % Ferrari
+easiness_rate__ = {NaN, NaN};
+objectness__type__ = {NaN, NaN}; % Ferrari
 
 %%% Dataset
-prop_res__ = {NaN}; % 1
-volume_path__ = {NaN};
-results_folder__ = {    'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA99'};
-folders__ = {NaN};
-format__ = {NaN};
+prop_res__ = {NaN, NaN}; % 1
+volume_path__ = {NaN, NaN};
+results_folder__ = {    'Exec_Ferrari_CNN', ...
+                        'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA99'};
+folders__ = {NaN, NaN};
+format__ = {NaN, NaN};
 % write path without "volume_path"!
-path_folders__ = {NaN};
-feat_path__ = {NaN};
-path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
-feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
+path_folders__ = {NaN, NaN};
+feat_path__ = {NaN, NaN};
+path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
+feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
 
 %%% Features
-features_type__ = {'cnn'};
-feature_params__initialScenesPercentage__ = {NaN}; % 1
-feature_params__initialObjectsPercentage__ = {NaN}; % 0.4
-feature_params__initialObjectsClassesOut__ = {NaN}; % 0.5
+features_type__ = {'cnn', 'cnn'};
+feature_params__initialScenesPercentage__ = {NaN, NaN}; % 1
+feature_params__initialObjectsPercentage__ = {NaN, NaN}; % 0.4
+feature_params__initialObjectsClassesOut__ = {NaN, NaN}; % 0.5
 
 %%% Optional MAIN processes
-reload_objStruct__ = {NaN}; % false
-reload_objectness__ = {NaN}; % false
-reload_features__ = {NaN}; % false
-reload_features_scenes__ = {NaN}; % false
-apply_obj_vs_noobj__ = {true};
-do_discovery__ = {NaN}; % true
-do_final_evaluation__ = {NaN}; % false
+reload_objStruct__ = {NaN, NaN}; % false
+reload_objectness__ = {NaN, NaN}; % false
+reload_features__ = {NaN, NaN}; % false
+reload_features_scenes__ = {NaN, NaN}; % false
+apply_obj_vs_noobj__ = {false, true};
+do_discovery__ = {NaN, NaN}; % true
+do_final_evaluation__ = {NaN, NaN}; % false
 
 %%% Others
-has_ground_truth__ = {NaN}; % true
-feature_params__usePCA__ = {true};
-feature_params__minVarPCA__ = {0.99};
-refill__ = {NaN}; % 0.2
-objVSnoobj_params__SVMpath__ = {NaN}; % PASCAL_12
-cluster_params__similDist__ = {NaN}; % euclidean
+has_ground_truth__ = {NaN, NaN}; % true
+feature_params__usePCA__ = {false, true};
+feature_params__minVarPCA__ = {NaN, 0.99};
+refill__ = {0, NaN}; % 0.2
+objVSnoobj_params__SVMpath__ = {NaN, NaN}; % PASCAL_12
+cluster_params__similDist__ = {NaN, NaN}; % euclidean
 
 
 %% List of parameters defined in this section
