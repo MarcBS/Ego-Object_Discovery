@@ -122,4 +122,12 @@ xticklabel_rotate;
 legend({'GT', 'Objectness', 'Objectness (unique)'});
 set(gca, 'FontSize', 14);
 
+disp('CLASSES:');
+disp(classes);
+disp('GT:');
+disp(nObjsGT);
+disp('Objectness:');
+disp(nObjsObjectness);
+disp('Objectness Unique:');
+disp(nObjsObjectnessUnique);
 disp('Done');

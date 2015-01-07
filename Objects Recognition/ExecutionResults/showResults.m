@@ -1,10 +1,11 @@
-clear all
+% clear all
 
 % Location where all the tests results will be stored
-tests_path = '../../../../../../Video Summarization Tests';
+volume_path = '/Volumes/SHARED HD';
+tests_path = [volume_path '/Video Summarization Tests'];
 
 %% Shows the results obtained from an algorithm execution
-folder = [tests_path '/ExecutionResults/' 'Execution_CNN_NoScene_3_refill03'];
+folder = [tests_path '/ExecutionResults/Exec_CNN_Refill_Ferrari_ObjVSNoObj_3'];
 % discard_labels = {'car', 'train', 'bycicle', 'motorbike', 'bottle', 'chair', 'dish'};
 discard_labels = {};
 

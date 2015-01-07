@@ -5,11 +5,13 @@
 %% Parameters
 nSamplesPerClass = 5;
 
-volume_path = 'D:';
-% volume_path = '/Volumes/SHARED HD';
-feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01'];
-path_folders = [volume_path '/Documentos/Vicon Revue Data'];
-prop_res = 4;
+out_name = 'Narrative_Dataset';
+% volume_path = 'D:';
+volume_path = '/Volumes/SHARED HD';
+feat_path = [volume_path '/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'];
+% path_folders = [volume_path '/Documentos/Vicon Revue Data'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/Narrative_Dataset'];
+prop_res = 1;
 load([feat_path '/objects.mat']);
 
 
@@ -31,7 +33,7 @@ for i = 1:nImages
     end
 end
 
-%% Select randomply nSamplesPerClass
+%% Select randomly nSamplesPerClass
 nClasses = length(classes);
 ind = zeros(nClasses, nSamplesPerClass, 2);
 for i = 1:nClasses
@@ -40,7 +42,8 @@ for i = 1:nClasses
 end
 
 %% Save each chosen samples in a folder
-mkdir('RandomChosenSamples');
+folder_out = ['RandomChosenSamples_' out_name];
+mkdir(folder_out);
 for i = 1:nClasses
     for j = 1:nSamplesPerClass
         i1 = ind(i,j,1);
@@ -49,7 +52,7 @@ for i = 1:nClasses
         img_all = imresize(img_all,[size(img_all,1)/prop_res size(img_all,2)/prop_res]);
         obj = objects(i1).objects(i2);
         obj_img = img_all(round(obj.ULy):round(obj.BRy), round(obj.ULx):round(obj.BRx), :);
-        imwrite(obj_img, ['RandomChosenSamples' '/' classes{i} '_' num2str(j) '.jpg']);
+        imwrite(obj_img, [folder_out '/' classes{i} '_' num2str(j) '.jpg']);
     end
 end
 
