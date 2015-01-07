@@ -4,10 +4,11 @@
 % volume_path = 'D:';
 % volume_path = 'C:';
 % volume_path = '/Volumes/SHARED HD';
-volume_path = '/media/lifelogging';
+% volume_path = '/media/lifelogging';
+volume_path = '';
 
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data SenseCam 0BC25B01 Ferrari'];
-feat_path = [volume_path '/HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 Ferrari'];
+feat_path = [volume_path 'D:/Video Summarization Objects/Features/Data PASCAL_12 Ferrari'];
 
 classes = struct('name', [], 'label', []);
 classes(1).name = 'Not Analyzed'; classes(1).label = 0;
@@ -19,7 +20,7 @@ objVSnoobj_params.kernel = 'rbf';
 %   MSRC:           C=3     Sigma=100
 objVSnoobj_params.C = 3;
 objVSnoobj_params.sigma = 100;
-objVSnoobj_params.SVMpath = 'PASCAL_12'; % 'PASCAL_12' or 'MSRC'
+objVSnoobj_params.SVMpath = 'PASCAL_12_1_2_samples'; % 'PASCAL_12' or 'MSRC'
 % -t = RBF, -c = C, -g = gamma (Sigma), -e = epsilon (termination criterion) (default 0.001)
 % objVSnoobj_params.svmParameters = '-s 0 -t 2 -c 10 -g 100 -q';
 objVSnoobj_params.balance = true; % balance or not the classifier samples.
@@ -45,10 +46,10 @@ feature_params.lHOG = 3; % number of levels used for the P-HOG (2 better 'PASCAL
 feature_params.bHOG = 8; % number of bins used for the P-HOG (8)
 feature_params.lenCNN = 4096; % length of the vector of features extracted from the CNN (4096)
 
-feature_params.frac_samples = 1/4; % fraction of random samples used for building the classifier
+feature_params.fracSamples = 1/2; % fraction of random samples used for building the classifier
 
 prop_res = 1; % (SenseCam 4, PASCAL 1, MSRC 1.25, Perina 1.25, Toy Problem 1, Narrative_stnd 1) resize proportion for the loaded images --> size(img)/prop_res
-% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC/'];
+% path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/MSRC'];
 path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012'];
 
 addpath('../Utils');
@@ -59,3 +60,5 @@ load([feat_path '/objects.mat']);
 
 %% Apply training
 trainObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
+
+sendEmail('SVM Trained', ['Finished training ' objVSnoobj_params.SVMpath ' SVM classifier.']);

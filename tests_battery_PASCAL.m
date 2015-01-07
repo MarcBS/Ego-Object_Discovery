@@ -12,49 +12,50 @@
 %       file "loadParameters.m".
 %%%
 
-%% Test execution 3
+%% Test execution PASCAL
 
-%%% Narrative Tests
-nTests__ = 2;
+%%% PASCAL Tests
+nTests__ = 3;
 nTimesTests__ = 5; % times that each test will be repeated
 
 %%% Objectness
-easiness_rate__ = {NaN, NaN};
-objectness__type__ = {NaN, NaN}; % Ferrari
+easiness_rate__ = {[2.15 1/1000 5000 100], [2.15 1/1000 5000 100], [1.85 1/1000 5000 100]};
+objectness__type__ = {NaN, NaN, NaN}; % Ferrari
 
 %%% Dataset
-prop_res__ = {NaN, NaN}; % 1
-volume_path__ = {NaN, NaN};
-results_folder__ = {    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill', ...
-                        'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99'};
-folders__ = {NaN, NaN};
-format__ = {NaN, NaN};
+prop_res__ = {NaN, NaN, NaN}; % 1
+volume_path__ = {NaN, NaN, NaN};
+results_folder__ = {    'Exec_PASCAL_Ferrari_Grauman', ...
+                        'Exec_PASCAL_Ferrari_CNN_Refill', ...
+                        'Exec_PASCAL_Ferrari_ObjVSNoObj_CNN_Refill'};
+folders__ = {NaN, NaN, NaN};
+format__ = {NaN, NaN, NaN};
 % write path without "volume_path"!
-path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
-feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
+path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/', 'F:/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/', 'F:/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'};
+feat_path__ = {'D:/Video Summarization Objects/Features/Data PASCAL_12 Ferrari', 'D:/Video Summarization Objects/Features/Data PASCAL_12 Ferrari', 'D:/Video Summarization Objects/Features/Data PASCAL_12 Ferrari'};
 
 %%% Features
-features_type__ = {'cnn', 'cnn'};
-feature_params__initialScenesPercentage__ = {NaN, NaN}; % 1
-feature_params__initialObjectsPercentage__ = {NaN, NaN}; % 0.4
-feature_params__initialObjectsClassesOut__ = {NaN, NaN}; % 0.5
+features_type__ = {'original', 'cnn', 'cnn'};
+feature_params__initialScenesPercentage__ = {NaN, NaN, NaN}; % 1
+feature_params__initialObjectsPercentage__ = {NaN, NaN, NaN}; % 0.4
+feature_params__initialObjectsClassesOut__ = {NaN, NaN, NaN}; % 0.5
 
 %%% Optional MAIN processes
-reload_objStruct__ = {NaN, NaN}; % false
-reload_objectness__ = {NaN, NaN}; % false
-reload_features__ = {NaN, NaN}; % false
-reload_features_scenes__ = {NaN, NaN}; % false
-apply_obj_vs_noobj__ = {true, true};
-do_discovery__ = {NaN, NaN}; % true
-do_final_evaluation__ = {NaN, NaN}; % false
+reload_objStruct__ = {NaN, NaN, NaN}; % false
+reload_objectness__ = {NaN, NaN, NaN}; % false
+reload_features__ = {NaN, NaN, NaN}; % false
+reload_features_scenes__ = {NaN, NaN, NaN}; % false
+apply_obj_vs_noobj__ = {false, false, true};
+do_discovery__ = {NaN, NaN, NaN}; % true
+do_final_evaluation__ = {NaN, NaN, NaN}; % false
 
 %%% Others
-has_ground_truth__ = {NaN, NaN}; % true
-feature_params__usePCA__ = {false, true};
-feature_params__minVarPCA__ = {NaN, 0.99};
-refill__ = {NaN, NaN}; % 0.2
-objVSnoobj_params__SVMpath__ = {'MSRC', 'MSRC'}; % PASCAL_12
-cluster_params__similDist__ = {NaN, NaN}; % euclidean
+has_ground_truth__ = {NaN, NaN, NaN}; % true
+feature_params__usePCA__ = {false, false, false};
+feature_params__minVarPCA__ = {NaN, NaN, NaN};
+refill__ = {0, 0.2, 0.2}; % 0.2
+objVSnoobj_params__SVMpath__ = {NaN, NaN, NaN}; % MSRC
+cluster_params__similDist__ = {NaN, NaN, NaN}; % euclidean
 
 
 %% List of parameters defined in this section
@@ -79,7 +80,7 @@ for i_test__ = 1:nTests__
         disp('################################################');
         
         % Load default parameters
-        loadParameters;
+        loadParameters_PASCAL_tests;
 
         % Change test-dependent parameters
         for param__ = parameters_list__

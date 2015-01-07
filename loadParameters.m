@@ -17,11 +17,11 @@ tests_path = [volume_path 'D:/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
 % rate used when choosing easy instances
-%   1st -> times std.dev (1.25) or better using (2.35)?
+%   1st -> times std.dev (1.25) with SVM classifier (2.35)?
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations
-easiness_rate = [2.35 1/1000 5000 100];
+easiness_rate = [1.25 1/1000 5000 100];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)

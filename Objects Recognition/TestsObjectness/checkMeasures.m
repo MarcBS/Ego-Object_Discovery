@@ -3,14 +3,14 @@
 %   measure applied on a dataset with a defined ground truth.
 
 % volume_path = '/Volumes/SHARED HD/';
-% volume_path = 'D:/';
-volume_path = '/media/lifelogging/';
+volume_path = 'D:/';
+% volume_path = '/media/lifelogging/';
 
 % objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
-objects_path = 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG';
+% objects_path = 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG';
 % objects_path = 'Video Summarization Objects/Features/Data MSRC Ferrari';
-objects_path = 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch';
-% objects_path = 'Video Summarization Objects/Features/Data PASCAL_07';
+% objects_path = 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch';
+objects_path = 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari';
 
 
 %% Load Objects
@@ -18,6 +18,7 @@ load([volume_path objects_path '/objects.mat']);
 
 
 %% Start measures calculation
+list_classes = {};
 countTot = 0;
 countObjs = 0;
 countGT = 0;
@@ -38,12 +39,18 @@ for i = 1:length(objects)
     for j = 1:length(objects(i).ground_truth)
         if(~isempty(objects(i).ground_truth(j).name))
             lenGT = lenGT+1;
+            if(~sum(ismember(list_classes, objects(i).ground_truth(j).name)))
+                list_classes = {list_classes{:}, objects(i).ground_truth(j).name};
+            end
         else
             count_empty = count_empty+1;
         end
     end
     countGT = countGT + lenGT;
 end
+
+disp('True objects list:');
+disp(list_classes);
 
 disp(['Total number of images: ' num2str(length(objects))]);
 disp(['Total number of object candidates: ' num2str(countTot)]);
