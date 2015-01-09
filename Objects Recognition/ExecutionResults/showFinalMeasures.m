@@ -1,8 +1,11 @@
 
 %% This script plots the final measures obtained by each method
 
+volume_path = 'D:';
+volume_path = '/Volumes/SHARED HD';
+
 % Location where all the tests results will be stored
-tests_path = 'D:/Video Summarization Tests';
+tests_path = [volume_path '/Video Summarization Tests'];
 
 %% Parameters 
 
@@ -26,17 +29,31 @@ CNN_concat_Refill = {'Exec_Ferrari_CNN_concat_Refill_1', 'Exec_Ferrari_CNN_conca
 CNN_Refill_ObjVSNoObj = {'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_1', ...
     'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_2', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_3', ...
     'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_4', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_5'};
-% CNN_Refill_ObjVSNoObj_PCA95 = {'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_1', ...
-%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_2', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_3', ...
-%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_4', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_5'};
 CNN_Refill_ObjVSNoObj_PCA99 = {'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_1', ...
     'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_2', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_3', ...
     'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_4', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_5'};
+CNN_Refill_ObjVSNoObj_MSRC = {'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_1', ...
+    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_2', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_3', ...
+    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_4', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_5'};
+CNN_Refill_ObjVSNoObj_MSRC_PCA99 = {'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_1', ...
+    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_2', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_3', ...
+    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_4', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_5'};
+
+% CNN_Refill_ObjVSNoObj_PCA95 = {'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_1', ...
+%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_2', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_3', ...
+%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_4', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_5'};
+
 
 % Test variables
-tests = {'Grauman', 'Grauman_Refill', 'CNN', 'CNN_Refill', 'CNN_concat', ...
-    'CNN_concat_Refill', 'CNN_Refill_ObjVSNoObj', ...% 'CNN_Refill_ObjVSNoObj_PCA95', ...
-    'CNN_Refill_ObjVSNoObj_PCA99'};
+tests = {'Grauman', ...% 'Grauman_Refill', 
+    'CNN', 'CNN_Refill', ...% 'CNN_concat', ...
+    'CNN_concat_Refill', ...
+    'CNN_Refill_ObjVSNoObj_MSRC', 'CNN_Refill_ObjVSNoObj_MSRC_PCA99'}; %, ...
+%     'CNN_Refill_ObjVSNoObj', 'CNN_Refill_ObjVSNoObj_PCA99', 'CNN_Refill_ObjVSNoObj_PCA95'};
+tests_legend_names = {'Grauman', ...% 'Grauman_Refill', 
+    'CNN', 'CNN Refill', ...% 'CNN_concat', ...
+    'CNN concat Refill', ...
+    'CNN Refill Filter', 'CNN Refill Filter PCA99'};
 test_markers = {'s', '*', '+', 'o', 'd', '-', '.', 'x', 'v'};
 
 % List of classes appearing in the object discovery
@@ -51,8 +68,9 @@ iter_intervals = [10 20 40 60 80];
 % Max iterations on the fmeasure progress
 iterprogress = 1:3:100;
 
-% Font size
-font_size = 14;
+% Plot params
+font_size = 18;
+line_width = 3;
 
 %% Initialize variables for storing results
 
@@ -186,8 +204,11 @@ bar(out);
 colormap(summer);
 set(gca,'xticklabel', {'F-Measure', 'Purity', 'Accuracy'}, 'FontSize', font_size)
 
-legend(test_names, 4);
+legend(tests_legend_names, 4);
 
+disp('F-Measures:');
+disp(tests_legend_names);
+disp(outf);
 
 %% Plot F-Measure by iterations
 out = [];
@@ -210,7 +231,7 @@ end
 figure(2);
 bar(out);
 colormap(summer);
-set(gca,'xticklabel', test_names)
+set(gca,'xticklabel', tests_legend_names)
 
 iter_names = {};
 for inter = iter_intervals
@@ -236,10 +257,10 @@ for i = 1:length(tests)
         end
         group_test = [group_test nanmean(this_iterf)];
     end
-    plot(iterprogress, group_test, '--', 'Marker', 'v');
+    plot(iterprogress, group_test, '--', 'Marker', 'v', 'LineWidth', line_width);
     hold all;
 end
-legend(test_names, 4);
+legend(tests_legend_names, 4);
 xlabel('Iterations', 'FontSize', font_size);
 ylabel('F-Measure', 'FontSize', font_size);
 set(gca, 'FontSize', font_size);
@@ -260,7 +281,7 @@ bar(out);
 colormap(jet);
 set(gca,'xticklabel', {'SVM Clustering', 'KNN Clustering', 'SVM Supervised', 'KNN Supervised'})
 
-legend(test_names, 4);
+legend(tests_legend_names, 4);
 ylabel('Accuracy', 'FontSize', font_size);
 set(gca, 'FontSize', font_size);
 
@@ -272,8 +293,8 @@ for j = 1:length(classes_list)
     for i = 1:length(tests)
         out(j,i*2-1) = mean(precisions{i}{j}); % precision
         out(j,i*2) = mean(recalls{i}{j}); % recall
-        leg = {leg{:}, ['Precision - ' test_names{i}]};
-        leg = {leg{:}, ['Recall - ' test_names{i}]};
+        leg = {leg{:}, ['Precision - ' tests_legend_names{i}]};
+        leg = {leg{:}, ['Recall - ' tests_legend_names{i}]};
     end
 end
 

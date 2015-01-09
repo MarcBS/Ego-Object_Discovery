@@ -5,7 +5,7 @@ volume_path = '/Volumes/SHARED HD';
 tests_path = [volume_path '/Video Summarization Tests'];
 
 %% Shows the results obtained from an algorithm execution
-folder = [tests_path '/ExecutionResults/Exec_CNN_Refill_Ferrari_ObjVSNoObj_3'];
+folder = [tests_path '/ExecutionResults/Exec_Ferrari_CNN_Refill_1'];
 % discard_labels = {'car', 'train', 'bycicle', 'motorbike', 'bottle', 'chair', 'dish'};
 discard_labels = {};
 

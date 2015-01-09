@@ -59,6 +59,8 @@ function [ objects ] = classifyHarderInstances( objects, appearance_feat, foundL
                 % Label if not belongs to the initial selection
                 if(isempty(objects(ind(1)).objects(ind(2)).initialSelection))
                     objects(ind(1)).objects(ind(2)).label = models(i).labelId;
+                    objects(ind(1)).objects(ind(2)).iteration = t;
+                	objects(ind(1)).objects(ind(2)).iterationCluster = i;
                 end
                 
                 if(show_harderInstances)

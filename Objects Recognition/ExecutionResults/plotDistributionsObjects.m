@@ -6,7 +6,7 @@ volume_path = '/Volumes/SHARED HD/';
 objects_path = [volume_path 'Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'];
 
 %% Load object counts
-classes = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
+classes_base = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
     'person', 'sign', 'hand', 'window', 'building', 'paper', 'bottle', ...
     'glass', 'chair', 'mobilephone', 'car', 'train', 'motorbike', ...
     'bicycle', 'dish'};
@@ -14,42 +14,52 @@ classes = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
 users_list = {'Petia', 'Maya', 'Estefania', 'Mariella'};
 doNormalize = true;
 
-% users.Petia = [1198 302 305 520 110 150 273 93 243 46 51 83 14 38 0 13 7 ...
-%     1 5 0 0];
-% users.Maya = [184 25 7 624 71 142 397 114 429 65 38 230 12 47 134 108 47 ...
-%     3 2 2 5];
-% users.Estefania = [184 9 27 1 5 230 363 146 397 25 477 18 175 707 2 6 179 ...
-%     0 16 1 48];
+%% Execution results parameters
+showExecution = true;
+execs_path = [volume_path 'Video Summarization Tests/ExecutionResults/'];
+this_execs = {'Exec_Ferrari_CNN_Refill_1'};
+markers_execs = {'x'};
+
 
 %% Initialize counters
 for u = users_list
-    eval(['usersGT.' u{1} ' = zeros(1, ' num2str(length(classes)) ');']);
-    eval(['usersObjectness.' u{1} ' = zeros(1, ' num2str(length(classes)) ');']);
-    eval(['usersObjectnessUnique.' u{1} ' = zeros(1, ' num2str(length(classes)) ');']);
+    eval(['usersGT.' u{1} ' = zeros(1, ' num2str(length(classes_base)) ');']);
+    eval(['usersObjectness.' u{1} ' = zeros(1, ' num2str(length(classes_base)) ');']);
+    eval(['usersObjectnessUnique.' u{1} ' = zeros(1, ' num2str(length(classes_base)) ');']);
+    if(showExecution)
+        for i = 1:length(this_execs)
+            eval(['usersExec' num2str(i) '.' u{1} ' = zeros(1, ' num2str(length(classes_base)) ');']);
+        end
+    end
 end
 
 
 %% Get classes for each user
 load([objects_path '/objects.mat']);
-nImages = length(objects); count_empty = 0;
+objects_base = objects; clear objects;
+nImages = length(objects_base); count_empty = 0;
 for i = 1:nImages
-    user = objects(i).folder;
+    user = objects_base(i).folder;
     user = regexp(user, '/', 'split');
     user = user{1}(1:end-1);
-    nGT = length(objects(i).ground_truth);
+    
+    % Ground Truth
+    nGT = length(objects_base(i).ground_truth);
     for j = 1:nGT
-        if(~isempty(objects(i).ground_truth(j).name))
-            id = find(ismember(classes, objects(i).ground_truth(j).name));
+        if(~isempty(objects_base(i).ground_truth(j).name))
+            id = find(ismember(classes_base, objects_base(i).ground_truth(j).name));
             eval(['usersGT.' user '(' num2str(id) ') = usersGT.' user '(' num2str(id) ') +1;']);
         else
             count_empty = count_empty+1;
         end
     end
-    nObj = length(objects(i).objects);
+    
+    % Objectness results
+    nObj = length(objects_base(i).objects);
     gt_ids = zeros(1,nObj);
     for j = 1:nObj
-        id = find(ismember(classes, objects(i).objects(j).trueLabel));
-        gt_id = objects(i).objects(j).trueLabelId;
+        id = find(ismember(classes_base, objects_base(i).objects(j).trueLabel));
+        gt_id = objects_base(i).objects(j).trueLabelId;
         if(~isempty(id))
             if(isempty(find(gt_ids==gt_id)))
                 gt_ids(j) = gt_id;
@@ -60,31 +70,87 @@ for i = 1:nImages
     end
 end
 
+%% Get classes for each user: Executions results
+if(showExecution)
+    for k = 1:length(this_execs)
+        load([execs_path this_execs{k} '/objects_results.mat']); % objects
+        load([execs_path this_execs{k} '/classes_results.mat']); % classes
+        nImages = length(objects_base);
+        for i = 1:nImages
+            user = objects_base(i).folder;
+            user = regexp(user, '/', 'split');
+            user = user{1}(1:end-1);
+            
+            nObj = length(objects(i).objects);
+            for j = 1:nObj
+                if(isempty(objects(i).objects(j).initialSelection))
+                    id = find(ismember(classes_base, classes(objects(i).objects(j).label + 1).name));
+    %                 gt_id = objects(i).objects(j).trueLabelId;
+                    if(~isempty(id))
+    %                     if(isempty(find(gt_ids==gt_id)))
+    %                         gt_ids(j) = gt_id;
+    %                         eval(['usersObjectnessUnique.' user '(' num2str(id) ') = usersObjectnessUnique.' user '(' num2str(id) ') +1;']);
+    %                     end
+                        eval(['usersExec' num2str(k) '.' user '(' num2str(id) ') = usersExec' num2str(k) '.' user '(' num2str(id) ') +1;']);
+                    end
+                end
+            end
+        end
+    end
+end
+
+
 %% Check distribution of objects among users
 nUsers = length(users_list);
-nClasses = length(classes);
+nClasses = length(classes_base);
 objsGT = zeros(nUsers, nClasses);
 objsObjectness = zeros(nUsers, nClasses);
 objsObjectnessUnique = zeros(nUsers, nClasses);
+if(showExecution)
+    for k = 1:length(this_execs)
+        eval(['objsExec' num2str(k) ' = zeros(nUsers, nClasses);']);
+    end
+end
 
 for i = 1:nUsers
     objsGT(i,:) = eval(['usersGT.' users_list{i}]);
     objsObjectness(i,:) = eval(['usersObjectness.' users_list{i}]);
     objsObjectnessUnique(i,:) = eval(['usersObjectnessUnique.' users_list{i}]);
+    if(showExecution)
+        for k = 1:length(this_execs)
+            eval(['objsExec' num2str(k) '(i,:) = usersExec' num2str(k) '.' users_list{i} ';']);
+        end
+    end
 end
 
 % Sort objects by number of samples
 nObjsGT = sum(objsGT);
 nObjsObjectness = sum(objsObjectness);
 nObjsObjectnessUnique = sum(objsObjectnessUnique);
+if(showExecution)
+    for k = 1:length(this_execs)
+        eval(['nObjsExec' num2str(k) ' = sum(objsExec' num2str(k) ');']);
+    end
+end
 [nObjsGT, p] = sort(nObjsGT, 'descend');
 nObjsObjectness = nObjsObjectness(p);
 nObjsObjectnessUnique = nObjsObjectnessUnique(p);
+if(showExecution)
+    for k = 1:length(this_execs)
+        eval(['nObjsExec' num2str(k) ' = nObjsExec' num2str(k) '(p);']);
+    end
+end
 
 if(doNormalize)
     objsGT = normalizeHistograms(objsGT(:,p));
     objsObjectness = normalizeHistograms(objsObjectness(:,p));
     objsObjectnessUnique = normalizeHistograms(objsObjectnessUnique(:,p));
+    if(showExecution)
+        for k = 1:length(this_execs)
+            eval(['objsExec' num2str(k) ' = normalizeHistograms(objsExec' num2str(k) '(:,p));']);
+        end
+    end
+
 %     objs = normalize(objs(:,p));
 end
 
@@ -93,8 +159,32 @@ c = colormap(jet);
 close(gcf);
 c = c(round(linspace(1,size(c,1)/10*8, nUsers)),:);
 
-%% Plot
-f = figure(1); hold on;
+%% Plot users separately
+for i = 1:nUsers
+    f = figure(i); hold on;
+    plot(1:nClasses, objsGT(i,:), 'Color', c(i,:), 'Marker', '+', 'LineWidth', 2, 'MarkerSize', 10);
+    plot(1:nClasses, objsObjectnessUnique(i,:), 'Color', c(i,:), 'Marker', 'o', 'LineWidth', 2, 'MarkerSize', 10);
+    leg = {'GT', 'Objectness (unique)'};
+    if(showExecution)
+        for k = 1:length(this_execs)
+            plot(1:nClasses, eval(['objsExec' num2str(k) '(i,:)']), 'Color', c(i,:), 'Marker', markers_execs{k}, 'LineWidth', 2, 'MarkerSize', 10);
+            leg = {leg{:}, ['Execution ' num2str(k)]};
+        end
+    end
+    %% Set labels
+    title([users_list{i} ' Objects Distribution']);
+    ylabel('Relative %', 'FontSize', 14);
+    set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
+    xticklabel_rotate;
+    legend(leg);
+    set(gca, 'FontSize', 14);
+end
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Plot all users together
+f = figure(length(users_list)+1); hold on;
 for i = 1:nUsers
     plot(1:nClasses, objsGT(i,:), 'Color', c(i,:), 'Marker', '+', 'LineWidth', 2, 'MarkerSize', 10);
 end
@@ -105,29 +195,53 @@ for i = 1:nUsers
     plot(1:nClasses, objsObjectnessUnique(i,:), 'Color', c(i,:), 'Marker', 'o', 'LineWidth', 2, 'MarkerSize', 10);
 end
 
+if(showExecution)
+    for k = 1:length(this_execs)
+        for i = 1:nUsers
+            plot(1:nClasses, eval(['objsExec' num2str(k) '(i,:)']), 'Color', c(i,:), 'Marker', markers_execs{k}, 'LineWidth', 2, 'MarkerSize', 10);
+        end
+    end
+end
+
 %% Set labels
-ylabel('Relative %');
-set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes{p}});
+ylabel('Relative %', 'FontSize', 14);
+set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
 xticklabel_rotate;
 legend(users_list);
+set(gca, 'FontSize', 14);
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Plot total number of objects
-f = figure(2);
-bar([nObjsGT; nObjsObjectness; nObjsObjectnessUnique]');
+f = figure(length(users_list)+2);
+toplot = [nObjsGT; nObjsObjectness; nObjsObjectnessUnique];
+leg = {'GT', 'Objectness', 'Objectness (unique)'};
+if(showExecution)
+    for k = 1:length(this_execs)
+        toplot = [toplot; eval(['nObjsExec' num2str(k)])];
+        leg = {leg{:}, ['Execution ' num2str(k)]};
+    end
+end
+bar(toplot');
 ylabel('Number of instances', 'FontSize', 14);
-set(gca,'XLim', [0 nClasses+1], 'XTick', 1:nClasses, 'XTickLabel',{classes{p}}, 'FontSize', 14);
+set(gca,'XLim', [0 nClasses+1], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
 xticklabel_rotate;
-legend({'GT', 'Objectness', 'Objectness (unique)'});
+legend(leg);
 set(gca, 'FontSize', 14);
 
 disp('CLASSES:');
-disp(classes);
+disp(classes_base);
 disp('GT:');
 disp(nObjsGT);
 disp('Objectness:');
 disp(nObjsObjectness);
 disp('Objectness Unique:');
 disp(nObjsObjectnessUnique);
+if(showExecution)
+    for k = 1:length(this_execs)
+        disp(['Execution ' num2str(k) ', ' this_execs{k} ':']);
+        disp(eval(['nObjsExec' num2str(k)]));
+    end
+end
 disp('Done');

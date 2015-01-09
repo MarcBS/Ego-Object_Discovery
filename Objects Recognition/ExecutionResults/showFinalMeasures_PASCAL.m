@@ -1,8 +1,11 @@
 
 %% This script plots the final measures obtained by each method
 
+volume_path = 'D:';
+volume_path = '/Volumes/SHARED HD';
+
 % Location where all the tests results will be stored
-tests_path = 'D:/Video Summarization Tests';
+tests_path = [volume_path '/Video Summarization Tests'];
 
 %% Parameters 
 
@@ -170,6 +173,9 @@ set(gca,'xticklabel', {'F-Measure', 'Purity', 'Accuracy'}, 'FontSize', font_size
 
 legend(test_names, 4);
 
+disp('F-Measures:');
+disp(test_names);
+disp(outf);
 
 %% Plot F-Measure by iterations
 out = [];
