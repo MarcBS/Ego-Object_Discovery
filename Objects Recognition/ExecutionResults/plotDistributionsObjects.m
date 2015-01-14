@@ -8,17 +8,20 @@ objects_path = [volume_path 'Video Summarization Objects/Features/Data Narrative
 %% Load object counts
 classes_base = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
     'person', 'sign', 'hand', 'window', 'building', 'paper', 'bottle', ...
-    'glass', 'chair', 'mobilephone', 'car', 'train', 'motorbike', ...
-    'bicycle', 'dish'};
+    'glass', 'chair', 'mobilephone', 'car'};%, 'train', 'motorbike', ...
+%     'bicycle', 'dish'};
 
 users_list = {'Petia', 'Maya', 'Estefania', 'Mariella'};
 doNormalize = true;
 
+font_size = 18;
+
 %% Execution results parameters
 showExecution = true;
 execs_path = [volume_path 'Video Summarization Tests/ExecutionResults/'];
-this_execs = {'Exec_Ferrari_CNN_Refill_1'};
-markers_execs = {'x'};
+this_execs = {'Exec_Ferrari_Grauman_6', 'Exec_Ferrari_CNN_Refill_6', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_6'};
+this_execs_names = {'Grauman', 'CNN + Refill', 'CNN + Refill + Filter'};
+markers_execs = {'x', 'o', 'v'};
 
 
 %% Initialize counters
@@ -163,21 +166,21 @@ c = c(round(linspace(1,size(c,1)/10*8, nUsers)),:);
 for i = 1:nUsers
     f = figure(i); hold on;
     plot(1:nClasses, objsGT(i,:), 'Color', c(i,:), 'Marker', '+', 'LineWidth', 2, 'MarkerSize', 10);
-    plot(1:nClasses, objsObjectnessUnique(i,:), 'Color', c(i,:), 'Marker', 'o', 'LineWidth', 2, 'MarkerSize', 10);
+    plot(1:nClasses, objsObjectnessUnique(i,:), 'Color', c(i,:), 'Marker', 's', 'LineWidth', 2, 'MarkerSize', 10);
     leg = {'GT', 'Objectness (unique)'};
     if(showExecution)
         for k = 1:length(this_execs)
             plot(1:nClasses, eval(['objsExec' num2str(k) '(i,:)']), 'Color', c(i,:), 'Marker', markers_execs{k}, 'LineWidth', 2, 'MarkerSize', 10);
-            leg = {leg{:}, ['Execution ' num2str(k)]};
+            leg = {leg{:}, this_execs_names{k}};
         end
     end
     %% Set labels
-    title([users_list{i} ' Objects Distribution']);
-    ylabel('Relative %', 'FontSize', 14);
-    set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
+    title([users_list{i} ' Objects Distribution'], 'FontSize', font_size);
+    ylabel('Relative %', 'FontSize', font_size);
+    set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', font_size);
     xticklabel_rotate;
     legend(leg);
-    set(gca, 'FontSize', 14);
+    set(gca, 'FontSize', font_size);
 end
 
 
@@ -204,31 +207,33 @@ if(showExecution)
 end
 
 %% Set labels
-ylabel('Relative %', 'FontSize', 14);
-set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
+ylabel('Relative %', 'FontSize', font_size);
+set(gca,'XLim', [1 nClasses], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', font_size);
 xticklabel_rotate;
 legend(users_list);
-set(gca, 'FontSize', 14);
+set(gca, 'FontSize', font_size);
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Plot total number of objects
 f = figure(length(users_list)+2);
-toplot = [nObjsGT; nObjsObjectness; nObjsObjectnessUnique];
-leg = {'GT', 'Objectness', 'Objectness (unique)'};
+% toplot = [nObjsGT; nObjsObjectness; nObjsObjectnessUnique];
+% leg = {'GT', 'Objectness', 'Objectness (unique)'};
+toplot = [nObjsGT; nObjsObjectnessUnique];
+leg = {'GT', 'Objectness (unique)'};
 if(showExecution)
     for k = 1:length(this_execs)
         toplot = [toplot; eval(['nObjsExec' num2str(k)])];
-        leg = {leg{:}, ['Execution ' num2str(k)]};
+        leg = {leg{:}, this_execs_names{k}};
     end
 end
-bar(toplot');
-ylabel('Number of instances', 'FontSize', 14);
-set(gca,'XLim', [0 nClasses+1], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', 14);
+bar(toplot', 1.5, 'histc');
+ylabel('Number of instances', 'FontSize', font_size);
+set(gca,'XLim', [1 nClasses+1], 'XTick', 1:nClasses, 'XTickLabel',{classes_base{p}}, 'FontSize', font_size);
 xticklabel_rotate;
 legend(leg);
-set(gca, 'FontSize', 14);
+set(gca, 'FontSize', font_size);
 
 disp('CLASSES:');
 disp(classes_base);
@@ -240,7 +245,7 @@ disp('Objectness Unique:');
 disp(nObjsObjectnessUnique);
 if(showExecution)
     for k = 1:length(this_execs)
-        disp(['Execution ' num2str(k) ', ' this_execs{k} ':']);
+        disp([this_execs_names{k} ', ' this_execs{k} ':']);
         disp(eval(['nObjsExec' num2str(k)]));
     end
 end

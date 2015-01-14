@@ -1,66 +1,21 @@
 
 %% This script plots the final measures obtained by each method
 
-volume_path = 'D:';
+% volume_path = 'D:';
 volume_path = '/Volumes/SHARED HD';
 
 % Location where all the tests results will be stored
 tests_path = [volume_path '/Video Summarization Tests'];
 
-%% Parameters 
+%% Dataset-specific Parameters 
+loadFinalMeasuresELUB;
+% loadFinalMeasuresMSRC;
+% loadFinalMeasuresPASCAL;
 
-Grauman = {'Exec_Ferrari_Grauman_1','Exec_Ferrari_Grauman_2',...
-    'Exec_Ferrari_Grauman_3','Exec_Ferrari_Grauman_4', ...
-    'Exec_Ferrari_Grauman_5'};
-Grauman_Refill = {'Exec_Ferrari_Grauman_Refill_1','Exec_Ferrari_Grauman_Refill_2',...
-    'Exec_Ferrari_Grauman_Refill_3','Exec_Ferrari_Grauman_Refill_4', ...
-    'Exec_Ferrari_Grauman_Refill_5'};
-CNN = {'Exec_Ferrari_CNN_1', 'Exec_Ferrari_CNN_2', 'Exec_Ferrari_CNN_3', ...
-    'Exec_Ferrari_CNN_4', 'Exec_Ferrari_CNN_5'};
-CNN_Refill = {'Exec_Ferrari_CNN_Refill_1', 'Exec_Ferrari_CNN_Refill_2', ...
-    'Exec_Ferrari_CNN_Refill_3', 'Exec_Ferrari_CNN_Refill_4', ...
-    'Exec_Ferrari_CNN_Refill_5'};
-CNN_concat = {'Exec_Ferrari_CNN_concat_1', 'Exec_Ferrari_CNN_concat_2', ...
-    'Exec_Ferrari_CNN_concat_3', 'Exec_Ferrari_CNN_concat_4', ...
-    'Exec_Ferrari_CNN_concat_5'};
-CNN_concat_Refill = {'Exec_Ferrari_CNN_concat_Refill_1', 'Exec_Ferrari_CNN_concat_Refill_2', ...
-    'Exec_Ferrari_CNN_concat_Refill_3', 'Exec_Ferrari_CNN_concat_Refill_4', ...
-    'Exec_Ferrari_CNN_concat_Refill_5'};
-CNN_Refill_ObjVSNoObj = {'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_1', ...
-    'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_2', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_3', ...
-    'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_4', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_5'};
-CNN_Refill_ObjVSNoObj_PCA99 = {'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_1', ...
-    'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_2', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_3', ...
-    'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_4', 'Exec_Ferrari_ObjVSNoObj_half_CNN_Refill_PCA99_5'};
-CNN_Refill_ObjVSNoObj_MSRC = {'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_1', ...
-    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_2', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_3', ...
-    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_4', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_5'};
-CNN_Refill_ObjVSNoObj_MSRC_PCA99 = {'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_1', ...
-    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_2', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_3', ...
-    'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_4', 'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill_PCA99_5'};
+%% Parameters
 
-% CNN_Refill_ObjVSNoObj_PCA95 = {'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_1', ...
-%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_2', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_3', ...
-%     'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_4', 'Exec_Ferrari_ObjVSNoObj_CNN_Refill_PCA95_5'};
-
-
-% Test variables
-tests = {'Grauman', ...% 'Grauman_Refill', 
-    'CNN', 'CNN_Refill', ...% 'CNN_concat', ...
-    'CNN_concat_Refill', ...
-    'CNN_Refill_ObjVSNoObj_MSRC', 'CNN_Refill_ObjVSNoObj_MSRC_PCA99'}; %, ...
-%     'CNN_Refill_ObjVSNoObj', 'CNN_Refill_ObjVSNoObj_PCA99', 'CNN_Refill_ObjVSNoObj_PCA95'};
-tests_legend_names = {'Grauman', ...% 'Grauman_Refill', 
-    'CNN', 'CNN Refill', ...% 'CNN_concat', ...
-    'CNN concat Refill', ...
-    'CNN Refill Filter', 'CNN Refill Filter PCA99'};
 test_markers = {'s', '*', '+', 'o', 'd', '-', '.', 'x', 'v'};
-
-% List of classes appearing in the object discovery
-% classes_list = {'tvmonitor', 'mobilephone', 'hand', 'person'};
-classes_list = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
-    'person', 'sign', 'hand', 'window', 'building', 'paper', 'bottle', ...
-    'glass', 'chair', 'mobilephone', 'car'};
+test_colours = {'r', 'g', 'b', 'm', 'c', 'black', 'y'};
 
 % Iteration intervals for f-measure plot
 iter_intervals = [10 20 40 60 80];
@@ -201,14 +156,31 @@ out = [outf; outp; outa];
 
 figure(1);
 bar(out);
-colormap(summer);
+colormap(jet);
 set(gca,'xticklabel', {'F-Measure', 'Purity', 'Accuracy'}, 'FontSize', font_size)
+
+legend(tests_legend_names, 4);
+
+%% Plot F-measure results only
+figure(2); hold on;
+outf = [];
+for i = 1:length(tests)
+    outf = [outf mean(fmeasures{i})];
+end
+outf = [outf; zeros(1, length(outf))];
+bar(outf);    
+
+colormap(jet);
+set(gca, 'xticklabel', '');
+ylabel('F-Measure', 'FontSize', font_size);
+xlim([0.6, 1.4]);
+set(gca, 'FontSize', font_size);
 
 legend(tests_legend_names, 4);
 
 disp('F-Measures:');
 disp(tests_legend_names);
-disp(outf);
+disp(outf(1,:));
 
 %% Plot F-Measure by iterations
 out = [];
@@ -228,9 +200,9 @@ for i = 1:length(tests)
     out = [out; group_test];
 end
 
-figure(2);
+figure(3);
 bar(out);
-colormap(summer);
+colormap(jet);
 set(gca,'xticklabel', tests_legend_names)
 
 iter_names = {};
@@ -243,7 +215,9 @@ set(gca, 'FontSize', font_size);
 
 
 %% Plot F-Measure progress
-figure(3);
+figure(4);
+c = colormap(jet);
+colours = c(round(linspace(1, size(c,1), length(tests_legend_names))), :);
 for i = 1:length(tests)
     group_test = [];
     for inter = iterprogress
@@ -257,7 +231,7 @@ for i = 1:length(tests)
         end
         group_test = [group_test nanmean(this_iterf)];
     end
-    plot(iterprogress, group_test, '--', 'Marker', 'v', 'LineWidth', line_width);
+    plot(iterprogress, group_test, '--', 'Marker', 'v', 'LineWidth', line_width, 'Color', colours(i,:));
     hold all;
 end
 legend(tests_legend_names, 4);
@@ -276,7 +250,7 @@ for i = 1:length(tests)
 end
 out = [outSVMc; outKNNc; outSVMt; outKNNt];
 
-figure(4);
+figure(5);
 bar(out);
 colormap(jet);
 set(gca,'xticklabel', {'SVM Clustering', 'KNN Clustering', 'SVM Supervised', 'KNN Supervised'})
@@ -298,7 +272,7 @@ for j = 1:length(classes_list)
     end
 end
 
-figure(5);
+figure(6);
 bar(out);
 colormap(jet);
 set(gca,'xticklabel', classes_list);
@@ -312,7 +286,7 @@ set(gca, 'FontSize', font_size);
 c = colormap(jet);
 col = c(round(linspace(1,size(c,1)*0.8, length(classes_list))),:);
 
-figure(6); hold all;
+figure(7); hold all;
 for i = 1:length(tests) 
     plot_group = zeros(2, length(classes_list));
     for j = 1:length(classes_list)
