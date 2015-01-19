@@ -236,7 +236,7 @@ legend(leg);
 set(gca, 'FontSize', font_size);
 
 disp('CLASSES:');
-disp(classes_base);
+disp({classes_base{p}});
 disp('GT:');
 disp(nObjsGT);
 disp('Objectness:');

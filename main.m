@@ -1,4 +1,10 @@
 
+%%%%%%%%%%
+%
+% Uncomment the first line "loadParameters;" if you are not applying a
+% test_battery.
+%
+%%%%%%%%%%
 %% Load parameters
 % loadParameters;
 
