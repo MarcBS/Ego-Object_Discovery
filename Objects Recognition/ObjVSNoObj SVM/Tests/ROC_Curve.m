@@ -10,6 +10,9 @@ rows = 'Sigma';
 columns_vals = [0.1000  0.5000  3.0000 10.0000  100.0000    1000.0000];
 rows_vals = [0.1000  0.5000  3.0000 10.0000 100.0000 1000.0000];
 
+text_size = 16;
+line_width = 3;
+
 %% Retrieve errors cell-matrix
 file = fileread(['testResult_' test_res_file '.txt']);
 file = regexp(file, 'Weighted errors', 'split');
@@ -82,15 +85,17 @@ c = c(round(linspace(1,size(c,1),nRows)), :);
 f = figure; hold on;
 leg = {};
 for i = 1:nRows
-    plot(1-specificity(i,:), sensitivity(i,:), 'Color', colormap(c(i,:)), 'LineWidth', 2, 'Marker', '+');
+    plot(1-specificity(i,:), sensitivity(i,:), 'Color', colormap(c(i,:)), 'LineWidth', line_width, 'Marker', '+');
     for j = 1:nCols
-        text(1-specificity(i,j)+0.005, sensitivity(i,j)+0.005, num2str(columns_vals(j)), 'Color', colormap(c(i,:)));
+        h = text(1-specificity(i,j)-0.01, sensitivity(i,j)+0.01, num2str(columns_vals(j)), 'Color', colormap(c(i,:)));
+        set(h, 'FontSize', text_size);
     end
     leg{i} = ['Sigma ' num2str(rows_vals(i))];
 end
 legend(leg, 4);
-xlabel('1 - Specificity');
-ylabel('Sensitivity');
+xlabel('1 - Specificity', 'FontSize', text_size);
+ylabel('Sensitivity', 'FontSize', text_size);
+set(gca, 'FontSize', text_size);
 
 saveas(f, ['roc_curve_' test_res_file '.jpg']);
 

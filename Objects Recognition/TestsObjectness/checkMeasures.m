@@ -2,15 +2,15 @@
 %% Extracts some measures for evaluating the performance of any objectness 
 %   measure applied on a dataset with a defined ground truth.
 
-% volume_path = '/Volumes/SHARED HD/';
-volume_path = 'D:/';
+volume_path = '/Volumes/SHARED HD/';
+% volume_path = 'D:/';
 % volume_path = '/media/lifelogging/';
 
 % objects_path = 'Video Summarization Objects/Features/Data SenseCam 0BC25B01 SelectiveSearch';
 % objects_path = 'HDD 2TB/Video Summarization Objects/Features/Data PASCAL_12 MCG';
-% objects_path = 'Video Summarization Objects/Features/Data MSRC Ferrari';
+objects_path = 'Video Summarization Objects/Features/Data MSRC Ferrari';
 % objects_path = 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch';
-objects_path = 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari';
+% objects_path = 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari';
 
 
 %% Load Objects
@@ -55,6 +55,7 @@ disp(list_classes);
 disp(['Total number of images: ' num2str(length(objects))]);
 disp(['Total number of object candidates: ' num2str(countTot)]);
 disp(['Total number of GT objects: ' num2str(countGT)]);
+disp(['Total number of classes: ' num2str(length(list_classes))]);
 disp(['Fraction of No Objects found: ' num2str(1-countObjs/countTot)]);
 disp(['Detection Rate (DR) of unique objects: ' num2str(countFound/countGT)]);
     

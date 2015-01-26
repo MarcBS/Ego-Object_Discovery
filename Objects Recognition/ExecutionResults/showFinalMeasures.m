@@ -1,4 +1,4 @@
-
+clear all,clc
 %% This script plots the final measures obtained by each method
 
 % volume_path = 'D:';
@@ -8,9 +8,9 @@ volume_path = '/Volumes/SHARED HD';
 tests_path = [volume_path '/Video Summarization Tests'];
 
 %% Dataset-specific Parameters 
-loadFinalMeasuresELUB;
+% loadFinalMeasuresELUB;
 % loadFinalMeasuresMSRC;
-% loadFinalMeasuresPASCAL;
+loadFinalMeasuresPASCAL;
 
 %% Parameters
 

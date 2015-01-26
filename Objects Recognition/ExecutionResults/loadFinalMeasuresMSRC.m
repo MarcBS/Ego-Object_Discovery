@@ -14,6 +14,7 @@ CNN_Refill_ObjVSNoObj = {'Exec_MSRC_Ferrari_ObjVSNoObj_half_CNN_Refill_1', ...
 
 % Test variables
 tests = {'Grauman', 'CNN_Refill', 'CNN_Refill_ObjVSNoObj'};
+tests_legend_names = {'Grauman', 'CNN Refill', 'CNN Refill Filter'};
 
 % List of classes appearing in the object discovery
 classes_list = {'tree','bird','flower','building','leaf','bicycle','car', ...
