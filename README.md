@@ -1,7 +1,13 @@
-Object_Discovery
+Ego-Object Discovery
 ================
 
 Object Discovery Algorithm on Egocentric Images.
+This semi-supervised algorithm is inspired by the work in [1], and it offers the following contributions:
+	1) Use of a powerful CNN-based feature extraction.
+	2) Refill strategy by the use of a previously acquired knowledge base with 
+		image labels (bag of refill) for creating purer and more compact clusters.
+	3) SVM 'Object' VS 'No Object' Filtering strategy for trimming most of the FP
+		instances produced by any object detector.
 
 Usage:
 
