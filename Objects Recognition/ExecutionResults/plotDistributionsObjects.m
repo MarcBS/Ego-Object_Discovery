@@ -14,7 +14,7 @@ classes_base = {'lamp', 'aircon', 'cupboard', 'tvmonitor', 'door', 'face', ...
 users_list = {'Petia', 'Maya', 'Estefania', 'Mariella'};
 doNormalize = true;
 
-font_size = 18;
+font_size = 20;
 
 %% Execution results parameters
 showExecution = true;

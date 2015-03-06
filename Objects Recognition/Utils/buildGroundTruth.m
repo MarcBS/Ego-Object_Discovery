@@ -7,25 +7,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath('LabelMe Data Processing');
 
-% volume_path = '/Volumes/SHARED HD/';
+volume_path = '/Volumes/SHARED HD/';
 % volume_path = 'D:/';
-volume_path = '/media/lifelogging/';
+% volume_path = '/media/lifelogging/';
 
 % path_folders = [volume_path 'Video Summarization Project Data Sets/PASCAL'];
 % folders = { 'VOCtrainval_06-Nov-2007\VOCdevkit\VOC2007\Annotations', ...
 %             'VOCtest_06-Nov-2007\VOCdevkit\VOC2007\Annotations'};
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_07']};
 
-path_folders = [volume_path 'Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
-% path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
+% path_folders = [volume_path 'Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
+path_folders = [volume_path '/Video Summarization Project Data Sets/MSRC'];
 folders = {'Annotations'};
 % path_folders = [volume_path 'Video Summarization Project Data Sets/Narrative_Dataset'];
 % folders = {'Petia1/Annotations', 'Petia2/Annotations', 'Maya1/Annotations', 'Maya2/Annotations', ...
 %     'Estefania1/Annotations', 'Estefania2/Annotations', 'Mariella1/Annotations', 'Mariella2/Annotations'};
 
 % path_features = {[volume_path 'Video Summarization Objects/Features/Data PASCAL_12 Ferrari']};
-path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC SelectiveSearch']};
-% path_features = {[volume_path 'Video Summarization Objects/Features/Data Narrative_Dataset SelectiveSearch']};
+path_features = {[volume_path 'Video Summarization Objects/Features/Data MSRC BING']};
+% path_features = {[volume_path 'Video Summarization Objects/Features/Data Narrative_Dataset MCG']};
 
 threshold_detection = 0.5;
 

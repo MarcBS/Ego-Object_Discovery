@@ -398,7 +398,7 @@ for nExec = 1:length(folders_names)
     plot([appearances{nExec,2:end}], nExec, ['-' folders_plot_marker{nExec} folders_plot_colour{nExec}], 'LineWidth', 3);
     for i = 2:size(appearances,2)
         if(~isempty(appearances{nExec,i}))
-            t = text(appearances{nExec,i}, nExec+0.1, classes{i}, 'FontSize', 18);
+            t = text(appearances{nExec,i}, nExec+0.1, classes{i}, 'FontSize', 22);
             set(t, 'rotation', 60)
         end
     end
@@ -406,9 +406,9 @@ for nExec = 1:length(folders_names)
 end
 ylim([0.8 length(folders_names)+0.8]);
 set(gca,'YTick',[0.8 1:length(folders_names) length(folders_names)+0.6],'YTickLabel',{'', folders_plot_names{:}, ''});
-title('Classes first discovery', 'FontSize', 18);
-xlabel('Iterations', 'FontSize', 18);
-set(gca, 'FontSize', 18);
+title('Classes first discovery', 'FontSize', 22);
+xlabel('Iterations', 'FontSize', 22);
+set(gca, 'FontSize', 22);
 %% Print number of clusters per class
 disp(classes);
 disp(nAppearances);

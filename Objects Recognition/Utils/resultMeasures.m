@@ -14,15 +14,15 @@ function [ record ] = resultMeasures( labels, topCounts, names, showConf )
     recalls = zeros(1, nClasses);
     purities = zeros(1, nClasses-1);
     for n = 1:nClasses
-        
         this_labels = labels{n};
         % confusion matrix calculation
         for m = 1:nClasses
             confMatrix(n,m) = sum(this_labels==m);
             confMatrixPercentage(n,m) = sum(this_labels==m)/length(this_labels);
         end
+    end
         
-        
+    for n = 1:nClasses
         %% accuracy for each class
         denom = sum(sum(confMatrix));
         if(denom == 0)
