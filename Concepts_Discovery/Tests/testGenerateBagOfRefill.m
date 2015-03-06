@@ -1,6 +1,6 @@
 
-addpath('../Objects Recognition/Utils');
-addpath('../Objects Recognition');
+addpath('../../Objects Recognition/Utils');
+addpath('../../Objects Recognition');
 
 %% Parameters
 volume_path = '/media/lifelogging';
