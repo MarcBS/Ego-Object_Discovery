@@ -23,16 +23,14 @@ function [ list_path, list_img, list_event, list_event2 ] = parseFolders( folder
         if(iscell(format))
             fileList = []; 
             nFormat = 1;
+            fileList = dir([fold '/*' format{nFormat}]);
             while(isempty(fileList))
-                try
-                    fileList = dir([fold '/*' format{nFormat}]);
-                catch
-                    nFormat = nFormat+1;
-                    nFormat = mod(nFormat, length(format)+1);
-                    if(nFormat == 0)
-                        nFormat = 1;
-                    end
+                nFormat = nFormat+1;
+                nFormat = mod(nFormat, length(format)+1);
+                if(nFormat == 0)
+                    nFormat = 1;
                 end
+                fileList = dir([fold '/*' format{nFormat}]);
             end
         else
             fileList = dir([fold '/*' format]);
