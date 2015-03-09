@@ -6,13 +6,13 @@
 
 % volume_path = 'D:';
 % volume_path = 'C:';
-volume_path = '/Volumes/SHARED HD';
-% volume_path = '/media/lifelogging';
+% volume_path = '/Volumes/SHARED HD';
+volume_path = '/media/lifelogging';
 % volume_path = '';
 
 % Location where all the tests results will be stored
-tests_path = [volume_path '/Video Summarization Tests'];
-% tests_path = [volume_path '/HDD 2TB/Video Summarization Tests'];
+% tests_path = [volume_path '/Video Summarization Tests'];
+tests_path = [volume_path '/HDD_2TB/Video Summarization Tests'];
 % tests_path = [volume_path 'D:/Video Summarization Tests'];
 % tests_path = [volume_path '/Users/Lifelogging/Desktop/Video Summarization Tests'];
 
@@ -22,7 +22,7 @@ tests_path = [volume_path '/Video Summarization Tests'];
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations
 % easiness_rate = [1.25 1/1000 5000 100];
-easiness_rate = [Inf 1/1000 5000 Inf];
+easiness_rate = [-Inf 1/1000 5000 Inf];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
@@ -72,7 +72,7 @@ cluster_params.EventAwareFeaturesLevels = {[]};
 % ContextAware features used at each clustering level
 cluster_params.ContextAwareFeaturesLevels = {[]};
 % Maximum number of clusters to label in each iteration of the algorithm (1)
-cluster_params.nMaxLabelClusters = Inf;
+cluster_params.nMaxLabelClusters = 5;
 % Minimum percentage of purity of the refilled concepts for labeling (only
 % used with abstract concept labeling, when do_abstract_concept_discovery = true)
 cluster_params.minPerPurityConcept = 0.8;
@@ -188,10 +188,10 @@ histClasses = zeros(0);
 
 %% Features extraction (features location)
 % feat_path = [volume_path '/Users/Lifelogging/Desktop/Obj_Disc PASCAL/Data SenseCam 0BC25B01 Ferrari']; % folder where we want to store the features for each object
-% feat_path = [volume_path '/HDD_2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari']; % folder where we want to store the features for each object
-feat_path = [volume_path '/Video Summarization Objects/Features/Data R-Clustering Ferrari'];
+feat_path = [volume_path '/HDD_2TB/Video Summarization Objects/Features/Data R-Clustering Ferrari']; % folder where we want to store the features for each object
+% feat_path = [volume_path '/Video Summarization Objects/Features/Data R-Clustering Ferrari'];
 % feat_path = [volume_path '/Video Summarization Objects/Features/Data MSRC Ferrari']; % folder where we want to store the features for each object
-has_ground_truth = true; % Determines if the ground truth is stored in the objects.mat file
+has_ground_truth = false; % Determines if the ground truth is stored in the objects.mat file
 
 % Grauman's features
 feature_params.bLAB = 15; % bins per channel of the Lab colormap histogram (15)
@@ -225,8 +225,8 @@ feature_params.maxObjectAwarenessSamples = 100;
 
 %% Percentage of samples used for the initial Scene/Context/Event/Object awareness samples
 feature_params.initialScenesPercentage = 1; % value between 0 and 1 (1)
-feature_params.initialObjectsPercentage = 1; % value between 0 and 1 (0.4)
-feature_params.initialObjectsClassesOut = 0; % percentage of classes out of the initial selection (0.5)
+feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1 (0.4)
+feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection (0.5)
 
 %% OneClass SVM parameters (see LIBSVM README)
 % -s  SVM type (2 = one-class SVM)
@@ -291,15 +291,15 @@ addpath('Objects Recognition/LocalitySensitiveHashing');
 addpath('Objects Recognition/Complete-LinkClustering');
 % Add paths auxiliar libraries
 addpath('K_Means;Locality Sensitive Hashing;PHOG;SIFTflow/mexDenseSIFT');
-addpath('Caffe Src');
-path_svm = 'libsvm-3.18/windows';
+addpath('Caffe Src;Concepts_Discovery');
+path_svm = 'libsvm-3.18/matlab';
 
 
 rmpath(path_svm);
 
 %% Results storing folder
-% results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
-results_folder = 'Exec_ConceptDiscovery';
+results_folder = 'Exec_CNN_Refill_Ferrari_ObjVSNoObj_5';
+% results_folder = 'Exec_ConceptDiscovery';
 
 results_folder = [tests_path '/ExecutionResults/' results_folder];
 mkdir(results_folder);
@@ -307,9 +307,11 @@ mkdir(results_folder);
 %% Folder Parsing Parameters (images location)
 % path_folders = [volume_path '/Documentos/Vicon Revue Data'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/Narrative_Dataset'];
-path_folders = [volume_path '/Video Summarization Project Data Sets/R-Clustering'];
+% path_folders = [volume_path '/Video Summarization Project Data Sets/R-Clustering'];
 % path_folders = [volume_path '/Video Summarization Project Data Sets/PASCAL_12/VOCdevkit/VOC2012/'];
 % path_folders = [volume_path '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'];
+path_folders = [volume_path '/HDD_2TB/LIFELOG_DATASETS'];
+
 % path_labels = [volume_path '/Documentos/Dropbox/Video Summarization Project/Code/Subshot Segmentation/EventsDivision_SenseCam/Datasets'];
 path_labels = ''; % path to the scene labels
 

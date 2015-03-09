@@ -61,7 +61,7 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easiness_rate, all_i
     p = p';
     v = v(ind);
 
-    %% Get only the first easines_rate(3) instances if too many
+    %% Get only the first easiness_rate(3) instances if too many
     if(length(v) > easiness_rate(3))
         v = v(1:easiness_rate(3));
         p = p(1:easiness_rate(3));
@@ -70,10 +70,6 @@ function [ hasEasy, v, p ] = getEasyObjects( objects, t, W, easiness_rate, all_i
     %% Show how many elements returns
     disp(['Returning top ' num2str(length(v)) ' easiest samples.']);
     
-    if(~isempty(v))
-        hasEasy = true;
-    else
-        hasEasy = false;
-    end
+    hasEasy = ~isempty(v);
 end
 

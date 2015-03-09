@@ -1,7 +1,12 @@
-function [ objects, classes, found_labels ] = automaticLabeling(objects, clusters, nMaxLabelClusters, indices, classes, t)
+function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(objects, clusters, cluster_params, indices, classes, t, do_abstract_concept_discovery)
 %AUTOMATICLABELING Automatically labels the first "nMaxLabelClusters"
 %clusters assigning them the majority label.
     
+    nMaxLabelClusters = cluster_params.nMaxLabelClusters;
+    % only used for abstract concept discovery
+    % (do_abstract_concept_discovery == true)
+    minPerPurityConcept = cluster_params.minPerPurityConcept;
+
     % Newly labeled samples indexed by their label
     found_labels = {};
     
@@ -27,10 +32,15 @@ function [ objects, classes, found_labels ] = automaticLabeling(objects, cluster
             ind = indices(el, :);
             k = ind(1); j = ind(2);
             obj = objects(k).objects(j);
-%             if(~strcmp(obj.trueLabel,'No Object') || consider_NoObject)
-            labels{count_el} = obj.trueLabel; % insert label in list
-            count_el = count_el +1;
-%             end
+            if(do_abstract_concept_discovery)
+                if(~isempty(obj.label))
+                    labels{count_el} = obj.label; % insert abstract concept label in list
+                    count_el = count_el +1;
+                end
+            else
+                labels{count_el} = obj.trueLabel; % insert label in list
+                count_el = count_el +1;
+            end
         end
         %% Store majorityVoting result
         % Get majority label
@@ -39,52 +49,77 @@ function [ objects, classes, found_labels ] = automaticLabeling(objects, cluster
         for iy = 1:length(un_labels)
           n(iy) = length(find(strcmp(un_labels{iy}, labels)));
         end
-%             if(~isempty(n)) % if any sample that isn't No Object
         [v, p] = sort(n, 'descend');
-        % Store {majorityLabel, allLabels, #majority}
-        majorityLabel = un_labels(p(1));
-        result{i} = {majorityLabel{1}, labels, v(1)};
-%             end
+        
+        if(do_abstract_concept_discovery)
+            % The current cluster does not have any refilled sample, we
+            % must create a new concept
+            if(isempty(v))
+                last_concept = regexp(classes(end).name, '_', 'split');
+                new_concept = sprintf('concept_%0.4d', str2num(last_concept{2})+1);
+                result{i} = {new_concept, labels, v(1)};
+            else
+                % We must hava a minimum percentage of samples from the
+                % majority label
+                if(v(1)/sum(v) >= minPerPurityConcept)
+                    % Store {majorityLabel, allLabels, #majority}
+                    majorityLabel = un_labels(p(1));
+                    result{i} = {majorityLabel{1}, labels, v(1)};
+                % If we do not have more than minPerPurityConcept, then we
+                % do not label the cluster
+                else
+                    result{i} = {[], [], 0};
+                end
+            end
+        else
+            % Store {majorityLabel, allLabels, #majority}
+            majorityLabel = un_labels(p(1));
+            result{i} = {majorityLabel{1}, labels, v(1)};
+        end
     end
     
     %% Store resulting labels
+    labeled_clus = 0;
     for i = 1:nClus
         labelName = result{i}{1};
-        found_names = [found_names ' "' labelName '"'];
-        labelId = find(ismember(labNames,labelName));
-        % New Label
-        if(isempty(labelId))
-            labelId = length(classes);
-            classes(labelId+1).name = labelName;
-            classes(labelId+1).label = labelId;
-            labNames{labelId+1} = labelName;
-        % Previously introduced Label
-        else
-            labelId = classes(labelId).label;
-        end
-        
-        
-        %% Insert label id to all samples in i-th cluster
-        clus = clusters{i};
-        for el = clus
-            ind = indices(el, :);
-            k = ind(1); j = ind(2);
-            % Only change label if it is not part of the initialSelection
-            % (see doRefill.m)
-            if(isempty(objects(k).objects(j).initialSelection))
-                objects(k).objects(j).label = labelId;
-                objects(k).objects(j).iteration = t;
-                objects(k).objects(j).iterationCluster = i;
+        if(~isempty(labelName))
+            labeled_clus = labeled_clus+1;
+            found_names = [found_names ' "' labelName '"'];
+            labelId = find(ismember(labNames,labelName));
+            % New Label
+            if(isempty(labelId))
+                labelId = length(classes);
+                classes(labelId+1).name = labelName;
+                classes(labelId+1).label = labelId;
+                labNames{labelId+1} = labelName;
+            % Previously introduced Label
+            else
+                labelId = classes(labelId).label;
             end
-            try
-                found_labels{labelId} = [found_labels{labelId}; el];
-            catch
-                found_labels{labelId} = [el];
+
+
+            %% Insert label id to all samples in i-th cluster
+            clus = clusters{i};
+            for el = clus
+                ind = indices(el, :);
+                k = ind(1); j = ind(2);
+                % Only change label if it is not part of the initialSelection
+                % (see doRefill.m)
+                if(isempty(objects(k).objects(j).initialSelection))
+                    objects(k).objects(j).label = labelId;
+                    objects(k).objects(j).iteration = t;
+                    objects(k).objects(j).iterationCluster = i;
+                end
+                try
+                    found_labels{labelId} = [found_labels{labelId}; el];
+                catch
+                    found_labels{labelId} = [el];
+                end
             end
         end
     end
 
     %% Show how many clusters have been labeled
-    disp(['Labeled ' num2str(nClus) ' clusters:' found_names]);
+    disp(['Labeled ' num2str(labeled_clus) ' clusters:' found_names]);
 end
 

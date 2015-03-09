@@ -22,6 +22,7 @@ tests_path = [volume_path 'D:/Video Summarization Tests'];
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations
 easiness_rate = [1.25 1/1000 5000 100];
+% easiness_rate = [-Inf 1/1000 5000 Inf];
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
@@ -72,6 +73,9 @@ cluster_params.EventAwareFeaturesLevels = {[]};
 cluster_params.ContextAwareFeaturesLevels = {[]};
 % Maximum number of clusters to label in each iteration of the algorithm
 cluster_params.nMaxLabelClusters = 1;
+% Minimum percentage of purity of the refilled concepts for labeling (only
+% used with abstract concept labeling, when do_abstract_concept_discovery = true)
+cluster_params.minPerPurityConcept = 0.8;
 % Minimum number of samples for selecting a cluster (unused)
 cluster_params.minCluster = 10;
 
@@ -135,6 +139,7 @@ reload_features_scenes = false; % recalculate features of each scene candidate
 % retrain_obj_vs_noobj = false; % Rebuilds the SVM classifier ObjVSNoObj (DEPRECATED)
 apply_obj_vs_noobj = false; % Applies the Obj VS NoObj SVM classifier as an initial filtering.
 do_discovery = true; % Applies the object discovery algorithm on the data
+do_abstract_concept_discovery = true; % Applies the abstract concept discovery instead of the normal object discovery
 do_final_evaluation = false; % Does a final evaluation building SVM/KNN classifiers on the initialSamplesSelection
 
 %% Optional PLOT processes
@@ -219,8 +224,8 @@ feature_params.maxObjectAwarenessSamples = 100;
 
 %% Percentage of samples used for the initial Scene/Context/Event/Object awareness samples
 feature_params.initialScenesPercentage = 1; % value between 0 and 1
-feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1
-feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection
+feature_params.initialObjectsPercentage = 0.4; % value between 0 and 1  (0.4)
+feature_params.initialObjectsClassesOut = 0.5; % percentage of classes out of the initial selection  (0.5)
 
 %% OneClass SVM parameters (see LIBSVM README)
 % -s  SVM type (2 = one-class SVM)
@@ -285,8 +290,8 @@ addpath('Objects Recognition/LocalitySensitiveHashing');
 addpath('Objects Recognition/Complete-LinkClustering');
 % Add paths auxiliar libraries
 addpath('K_Means;Locality Sensitive Hashing;PHOG;SIFTflow/mexDenseSIFT');
-addpath('Caffe Src');
-path_svm = 'libsvm-3.18/windows';
+addpath('Caffe Src;Concepts_Discovery');
+path_svm = 'libsvm-3.18/matlab';
 
 
 rmpath(path_svm);

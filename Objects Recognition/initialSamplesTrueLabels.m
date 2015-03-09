@@ -20,7 +20,7 @@ function [ objects, classes ] = initialSamplesTrueLabels( objects, feature_param
     %% For each selected object sample
     if(type == 1)
         nImages = length(objects);
-        % Initialize initialSelection filed in objects structure
+        % Initialize initialSelection filled in objects structure
         for i = 1:nImages
             objects(i).objects(1).initialSelection = [];
         end

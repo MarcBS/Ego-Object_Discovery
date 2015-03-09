@@ -14,7 +14,7 @@ disp('# PARSING FOLDERS looking for all images...');
 
 
 %% Build 'objects' structure
-if(reload_objStruct)
+if(reload_objStruct && ~do_abstract_concept_discovery)
     disp('# BUILD OBJECTS STRUCTURE.');
     objects = buildObjStruct(list_path, list_img, list_event, list_event2);
     save([feat_path '/objects.mat'], 'objects');
@@ -24,7 +24,7 @@ else
 end
 
 %% Extract W objects (using objectness) for each image
-if(reload_objectness)
+if(reload_objectness && ~do_abstract_concept_discovery)
     disp(['# EXTRACTING ' num2str(objectness.W) ' OBJECTS and objectness per image for all images...']);
     tic %%%%%%%%%%%%%%%%%%%%%%%
     objects = extractObjects(path_folders, objects, prop_res, objectness, format, objectness.workingpath);
@@ -46,14 +46,8 @@ all_indices = getAllIndices(objects);
 if(has_ground_truth)
     %% Get a certain percentage of objects' true labels
     disp('# INITIAL SAMPLES SELECTION...');
-    [objects classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
-%     % DEPRECATED function
-%     if(retrain_obj_vs_noobj)
-%         disp('# TRAINING Obj VS NoObj SVM classifier...');
-%         tic %%%%%%%%%%%%%%%%%%%%%%%
-%         trainObjVSNoObj(objects, classes, objVSnoobj_params, features_type, V, V_min_norm, V_max_norm, feature_params, feat_path, path_folders, prop_res);
-%         toc %%%%%%%%%%%%%%%%%%%%%%%
-%     end
+    [objects, classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
+
     if(apply_obj_vs_noobj)
         disp('# APPLYING Obj VS NoObj SVM classifier...');
         tic %%%%%%%%%%%%%%%%%%%%%%%
@@ -187,8 +181,13 @@ if(do_discovery)
 
         %% Get all scores for all objects, sort them and get only the easiest
         disp('# GETTING EASY OBJECTS...');
-        [ hasEasyObjects, val, pos ] = getEasyObjects( objects, t, objectness.W, easiness_rate, all_indices);
-
+        if(do_abstract_concept_discovery)
+            [ hasEasyObjects, val, pos_test ] = getEasyObjects( objects, t, objectness.W, easiness_rate, ind_test);
+            pos = [];
+        else
+            [ hasEasyObjects, val, pos ] = getEasyObjects( objects, t, objectness.W, easiness_rate, all_indices);
+        end
+            
         % Only continue if there is any easy object
         if(hasEasyObjects)
 
@@ -198,6 +197,12 @@ if(do_discovery)
             %% Get indices from easiest instances
             indices = zeros(length(val), 2); % image and object indices for each selected object
             count = 1;
+            if(do_abstract_concept_discovery)
+                for p = pos_test
+                    indices(count, :) = ind_test(p, :);
+                    count = count+1;
+                end
+            end
             for p = pos
                 indices(count, :) = all_indices(p, :);
                 count = count+1;
@@ -281,10 +286,9 @@ if(do_discovery)
                 showClustering( objects, path_folders, prop_res, indices, clusters, cluster_params, cluster_params.clustering_type{1}, silhouetteCoeffs, evalResults, t, tests_path )
             end
 
-
             if(has_ground_truth)
                 %% Label best clusters
-                [ objects, classes, foundLabels ] = automaticLabeling(objects, clusters, cluster_params.nMaxLabelClusters, indices, classes, t);
+                [ objects, classes, foundLabels, Nlabeled_clus ] = automaticLabeling(objects, clusters, cluster_params, indices, classes, t, do_abstract_concept_discovery);
             else
                 %% TODO: Manually label!
             end
@@ -297,6 +301,13 @@ if(do_discovery)
             disp('# CLASSIFYING HARDER INSTANCES...');
             objects = classifyHarderInstances( objects, appearance_feat, foundLabels, indices, models, classes, show_harderInstances, prop_res, path_folders, t, tests_path );
 
+            %% Change clustering criteria if all the following conditions are accomplished:
+            %       - do_abstract_concept_discovery
+            %       - we have less than easiness_rate(3) samples left
+            %       - Nlabeled_clus < cluster_params.nMaxLabelClusters
+            if(do_abstract_concept_discovery && size(pos_test,1) < easiness_rate(3) && Nlabeled_clus < cluster_params.nMaxLabelClusters)
+                cluster_params.wardStdTimes = cluster_params.wardStdTimes*0.2;
+            end
         end
 
         %% Check labeled instances
@@ -316,14 +327,6 @@ if(do_discovery)
     save([results_folder '/classes_scenes_results.mat'], 'classes_scenes');
     
 end
-
-
-%% temp testing lines (change "hasEasyObjects = true;" at line 93)
-% load([results_folder '/objects_results.mat']);
-% load([results_folder '/classes_results.mat']);
-% load([results_folder '/classes_scenes_results.mat']);
-% % [objects classes] = initialSamplesTrueLabels(objects, feature_params, classes, 1, all_indices);
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
