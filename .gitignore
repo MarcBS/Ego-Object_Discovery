@@ -7,3 +7,4 @@ Objects Recognition/ObjVSNoObj SVM/*/*.mat
 *.obj
 *~
 *.caffemodel
+Objectness Ferrari/objectness-release-v2.2/Data/params.mat
