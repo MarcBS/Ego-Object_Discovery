@@ -49,7 +49,6 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
     disp('## Starting clustering...');
     Z = linkage(simil, 'ward');    
     clustersId = cluster(Z, 'maxclust', nConcepts, 'criterion', 'distance');
-    final_clusters = unique(clustersId);
     
     %% Store resulting clusters in objects structure
     nImages = length(objects);
@@ -59,7 +58,7 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
     end
     count = 1;
     for ind = ind_train_selected'
-        this_label = sprintf('concept_%0.4d', final_clusters(count));
+        this_label = sprintf('concept_%0.4d', clustersId(count));
         found = false;
         % Look for its labelID in the list of labels
         for j = 1:length(classes)
