@@ -15,9 +15,9 @@
 %% Test execution 5
 
 %%% Narrative Tests
-nTests__ = 3;
+nTests__ = 2;
 nTimesTests__ = 1; % times that each test will be repeated
-offset__ = 5; % offset value for the number of already executed tests
+offset__ = 6; % offset value for the number of already executed tests
 
 %%% Objectness
 easiness_rate__ = {NaN, NaN, NaN};
@@ -26,19 +26,20 @@ objectness__type__ = {NaN, NaN, NaN}; % Ferrari
 %%% Dataset
 prop_res__ = {NaN, NaN, NaN}; % 1
 volume_path__ = {NaN, NaN, NaN};
-results_folder__ = {    'Exec_Ferrari_Grauman', ...
-                        'Exec_Ferrari_CNN_Refill', ...
+% results_folder__ = {    'Exec_Ferrari_Grauman', ...
+results_folder__ = {    'Exec_Ferrari_CNN_Refill', ...
                         'Exec_Ferrari_ObjVSNoObj_MSRC_CNN_Refill'};
 folders__ = {NaN, NaN, NaN};
 format__ = {NaN, NaN, NaN};
 % write path without "volume_path"!
 path_folders__ = {NaN, NaN, NaN};
 feat_path__ = {NaN, NaN, NaN};
-path_folders__ = {'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', 'F:/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
-feat_path__ = {'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', 'F:/Object Discovery Data/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
+path_folders__ = {'/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset', '/Shared SSD/Object Discovery Data/Video Summarization Project Data Sets/Narrative_Dataset'};
+feat_path__ = {'/HDD_2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', '/HDD_2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari', '/HDD_2TB/Video Summarization Objects/Features/Data Narrative_Dataset Ferrari'};
 
 %%% Features
-features_type__ = {'original', 'cnn', 'cnn'};
+% features_type__ = {'original', 'cnn', 'cnn'};
+features_type__ = {'cnn', 'cnn'};
 feature_params__initialScenesPercentage__ = {NaN, NaN, NaN}; % 1
 feature_params__initialObjectsPercentage__ = {NaN, NaN, NaN}; % 0.4
 feature_params__initialObjectsClassesOut__ = {NaN, NaN, NaN}; % 0.5
@@ -48,7 +49,8 @@ reload_objStruct__ = {NaN, NaN, NaN}; % false
 reload_objectness__ = {NaN, NaN, NaN}; % false
 reload_features__ = {NaN, NaN, NaN}; % false
 reload_features_scenes__ = {NaN, NaN, NaN}; % false
-apply_obj_vs_noobj__ = {false, false, true};
+% apply_obj_vs_noobj__ = {false, false, true};
+apply_obj_vs_noobj__ = {false, true};
 do_discovery__ = {NaN, NaN, NaN}; % true
 do_final_evaluation__ = {NaN, NaN, NaN}; % false
 
@@ -56,8 +58,10 @@ do_final_evaluation__ = {NaN, NaN, NaN}; % false
 has_ground_truth__ = {NaN, NaN, NaN}; % true
 feature_params__usePCA__ = {false, false, false};
 feature_params__minVarPCA__ = {NaN, NaN, NaN};
-refill__ = {0, NaN, NaN}; % 0.2
-objVSnoobj_params__SVMpath__ = {NaN, NaN, 'MSRC'}; % PASCAL_12
+% refill__ = {0, NaN, NaN}; % 0.2
+refill__ = {NaN, NaN};
+% objVSnoobj_params__SVMpath__ = {NaN, NaN, 'MSRC'}; % PASCAL_12
+objVSnoobj_params__SVMpath__ = {NaN, 'MSRC'};
 cluster_params__similDist__ = {NaN, NaN, NaN}; % euclidean
 
 
