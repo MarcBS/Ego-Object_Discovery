@@ -20,7 +20,23 @@ function [ list_path, list_img, list_event, list_event2 ] = parseFolders( folder
         %%%%%
 
         % Load images list
-        fileList = dir([fold '/*' format]);
+        if(iscell(format))
+            fileList = []; 
+            nFormat = 1;
+            while(isempty(fileList))
+                try
+                    fileList = dir([fold '/*' format{nFormat}]);
+                catch
+                    nFormat = nFormat+1;
+                    nFormat = mod(nFormat, length(format)+1);
+                    if(nFormat == 0)
+                        nFormat = 1;
+                    end
+                end
+            end
+        else
+            fileList = dir([fold '/*' format]);
+        end
         fileList = fileList(arrayfun(@(x) ~strcmp(x.name(1),'.'),fileList));
 
         % Load labels
@@ -36,7 +52,7 @@ function [ list_path, list_img, list_event, list_event2 ] = parseFolders( folder
 %         labels = [labels(1) labels];
 
         for i = 1:length(fileList)
-	    list_path{count} = f{1};
+            list_path{count} = f{1};
             % Store the paths to each image
             list_img{count} = [fold '/' fileList(i).name];
             % Store the event number for each image
