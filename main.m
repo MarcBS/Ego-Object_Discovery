@@ -288,7 +288,7 @@ if(do_discovery)
                 showClustering( objects, path_folders, prop_res, indices, clusters, cluster_params, cluster_params.clustering_type{1}, silhouetteCoeffs, evalResults, t, tests_path )
             end
 
-            if(has_ground_truth)
+            if(has_ground_truth || do_abstract_concept_discovery)
                 %% Label best clusters
                 [ objects, classes, foundLabels, Nlabeled_clus ] = automaticLabeling(objects, clusters, cluster_params, indices, classes, t, do_abstract_concept_discovery);
             else
