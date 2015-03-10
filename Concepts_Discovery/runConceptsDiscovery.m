@@ -37,16 +37,6 @@ for i_test__ = 1:nDatasets__
         % Load default parameters
         loadParameters_ConceptDiscovery;
 
-        % Reload dynamic parameters
-        if(strcmp(objectness.type, 'Ferrari'))
-            run 'Objectness Ferrari/objectness-release-v2.2/startup'
-        elseif(strcmp(objectness.type, 'MCG'))
-            thispath = pwd;
-            cd(objectness.pathMCG)
-            run install
-            cd(thispath)
-        end
-
         results_folder = [tests_path '/ExecutionResults/' results_folder__ '_' num2str(i_test__)];
         mkdir(results_folder);
         

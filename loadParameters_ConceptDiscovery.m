@@ -260,6 +260,8 @@ try
     load(['Objects Recognition/Vocabulary/' fold_name '/vocabulary.mat']); % load vocabulary "V"
     load(['Objects Recognition/Vocabulary/' fold_name '/min_norm.mat']);
     load(['Objects Recognition/Vocabulary/' fold_name '/max_norm.mat']);
+catch
+    V = ''; V_min_norm = ''; V_max_norm = '';
 end
 
 %% Supress some warnings
