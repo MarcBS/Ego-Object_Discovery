@@ -33,7 +33,7 @@ objectness.type = 'Ferrari';
 objectness.workingpath = [tests_path '/BING model/'];
 % Path to the location of the MCG code
 % objectness.pathMCG = [volume_path '/Video Summarization Others/Objectness MCG'];
-objectness.pathMCG = [volume_path '/HDD 2TB/Video Summarization Others/Objectness MCG'];
+objectness.pathMCG = [volume_path '/HDD_2TB/Video Summarization Others/Objectness MCG'];
 % Parameters for the Selective Search objectness measure
 objectness.selectiveSearch.k = 100;
 objectness.selectiveSearch.minSize = 100;

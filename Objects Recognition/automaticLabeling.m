@@ -33,7 +33,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             k = ind(1); j = ind(2);
             obj = objects(k).objects(j);
             if(do_abstract_concept_discovery)
-                if(~isempty(obj.label))
+                if(~isempty(obj.label) && obj.label ~= 0)
                     labels{count_el} = classes(obj.label+1).name; % insert abstract concept label in list
                     count_el = count_el +1;
                 end
