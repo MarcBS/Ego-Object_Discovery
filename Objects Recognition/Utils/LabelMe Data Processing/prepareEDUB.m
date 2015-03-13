@@ -4,7 +4,7 @@
 %
 %%%%%%%%%%%%%%%%
 
-title_result = 'ELUB 2015';
+title_result = 'EDUB 2015';
 title_original = 'Narrative_Dataset';
 dir_original = '/Volumes/SHARED HD/Video Summarization Project Data Sets/';
 

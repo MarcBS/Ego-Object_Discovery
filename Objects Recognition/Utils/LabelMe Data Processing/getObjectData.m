@@ -1,9 +1,9 @@
 function [ xmin, ymin, xmax, ymax ] = getObjectData( obj )
 
-    xmin = 99999999;
-    ymin = 99999999;
-    xmax = -1;
-    ymax = -1;
+    xmin = Inf;
+    ymin = Inf;
+    xmax = -Inf;
+    ymax = -Inf;
 
     pts = regexp(obj, '<pt>', 'split'); pts = {pts{2:end}};
     for pt = pts
