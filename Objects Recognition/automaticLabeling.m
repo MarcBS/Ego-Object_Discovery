@@ -57,7 +57,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             if(isempty(v))
                 last_concept = regexp(classes(end).name, '_', 'split');
                 new_concept = sprintf('concept_%0.4d', str2num(last_concept{2})+1);
-                result{i} = {new_concept, labels, v(1)};
+                result{i} = {new_concept, labels, 0};
             else
                 % We must hava a minimum percentage of samples from the
                 % majority label

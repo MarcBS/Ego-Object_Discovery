@@ -217,7 +217,7 @@ feature_params.scene_version = 1; % {1 or 2}
 % Maximum percentage of samples from the ones clustered that will 
 % be refilled from the labeled pool (distributed between all classes 
 % but "No Object")
-refill = 0.2;
+refill = 0.5;
 
 %% Maximum number of samples used to calculate the SceneAwareness
 feature_params.maxSceneAwarenessSamples = 100;

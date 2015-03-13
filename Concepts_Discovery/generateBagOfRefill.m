@@ -44,7 +44,8 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
     
     %% Clustering
     disp('## Calculate similarity matrix...');
-    simil = squareform(pdist(features, 'euclidean'));
+%     simil = squareform(pdist(features, 'euclidean'));
+    simil = pdist(features, 'euclidean');
 
     disp('## Starting clustering...');
     Z = linkage(simil, 'ward');    

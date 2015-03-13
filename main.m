@@ -313,8 +313,10 @@ if(do_discovery)
         end
 
         %% Check labeled instances
-        record = checkLabeledInstances(objects, classes);
-        save([results_folder '/resultsObjects_' num2str(t) '.mat'], 'record');
+        if(has_ground_truth)
+	    record = checkLabeledInstances(objects, classes);
+            save([results_folder '/resultsObjects_' num2str(t) '.mat'], 'record');
+	end
 
         %% Increment iteration
         t = t+1;

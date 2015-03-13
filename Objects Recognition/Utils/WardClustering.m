@@ -4,6 +4,7 @@ function [ clusters ] = WardClustering( similarities, cluster_params )
     timesStd = cluster_params.wardStdTimes;
 
     %% Clustering
+    similarities = squareform(similarities, 'tovector');
     Z = linkage(similarities, 'ward');
     
     

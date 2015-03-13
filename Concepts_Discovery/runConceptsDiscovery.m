@@ -48,6 +48,10 @@ for i_test__ = 1:nDatasets__
         save([results_folder '/ind_train.mat'], 'ind_train');
         save([results_folder '/ind_test.mat'], 'ind_test');
         
+        %%%%%% DELETE THESE LINES
+        save([results_folder '/initial_objects.mat'], 'objects');
+        save([results_folder '/initial_classes.mat'], 'classes');
+        
         % Run test
         main;
         disp(' ');disp(' ');

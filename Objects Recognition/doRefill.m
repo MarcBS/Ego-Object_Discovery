@@ -34,7 +34,7 @@ function [ v, p ] = doRefill(v, p, objects, all_indices, refill, classes )
             end
             
             %% Get indices of already labeled samples
-            allLabels = 2:(nClasses-1);
+            allLabels = 2:(nClasses+1);
             ind_labeled = {};
             for l = allLabels
                 this_ind = find(labels==l);
