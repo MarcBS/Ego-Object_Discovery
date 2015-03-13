@@ -12,6 +12,8 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
     
     % Label names of newly labeled samples
     found_names = '';
+    % Number of labeled clusters
+    labeled_clus = 0;
 
     nClus = length(clusters);
     nClus = min(nClus, nMaxLabelClusters); % truncate to nMaxLabelClusters if more
@@ -47,7 +49,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
         un_labels = unique(labels);
         n = zeros(length(un_labels), 1);
         for iy = 1:length(un_labels)
-          n(iy) = length(find(strcmp(un_labels{iy}, labels)));
+          n(iy) = sum(strcmp(un_labels{iy}, labels));
         end
         [v, p] = sort(n, 'descend');
         
@@ -55,9 +57,8 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             % The current cluster does not have any refilled sample, we
             % must create a new concept
             if(isempty(v))
-                last_concept = regexp(classes(end).name, '_', 'split');
-                new_concept = sprintf('concept_%0.4d', str2num(last_concept{2})+1);
-                result{i} = {new_concept, labels, 0};
+                new_concept = sprintf('concept_%0.4d', length(classes)-2+1);
+                result{i} = {new_concept, {}, 0};
             else
                 % We must hava a minimum percentage of samples from the
                 % majority label
@@ -68,7 +69,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 % If we do not have more than minPerPurityConcept, then we
                 % do not label the cluster
                 else
-                    result{i} = {[], [], 0};
+                    result{i} = {[], {}, 0};
                 end
             end
         else
@@ -76,11 +77,8 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             majorityLabel = un_labels(p(1));
             result{i} = {majorityLabel{1}, labels, v(1)};
         end
-    end
-    
-    %% Store resulting labels
-    labeled_clus = 0;
-    for i = 1:nClus
+        
+        %% Store resulting labels
         labelName = result{i}{1};
         if(~isempty(labelName))
             labeled_clus = labeled_clus+1;
