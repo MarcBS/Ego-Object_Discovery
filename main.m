@@ -303,11 +303,10 @@ if(do_discovery)
             disp('# CLASSIFYING HARDER INSTANCES...');
             objects = classifyHarderInstances( objects, appearance_feat, foundLabels, indices, models, classes, show_harderInstances, prop_res, path_folders, t, tests_path );
 
-            %% Change clustering criteria if all the following conditions are accomplished:
+            %% Change clustering cutoff if all the following conditions are accomplished:
             %       - do_abstract_concept_discovery
-            %       - we have less than easiness_rate(3) samples left
             %       - Nlabeled_clus < cluster_params.nMaxLabelClusters
-            if(do_abstract_concept_discovery && length(pos_test) < easiness_rate(3) && Nlabeled_clus < cluster_params.nMaxLabelClusters)
+            if(do_abstract_concept_discovery && Nlabeled_clus < cluster_params.nMaxLabelClusters)
                 cluster_params.wardStdTimes = cluster_params.wardStdTimes - cluster_params.wardStdTimes*cluster_params.wardStdTimesIncreaseConcepts;	
             end
         end

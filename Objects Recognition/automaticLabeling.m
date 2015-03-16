@@ -16,7 +16,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
     labeled_clus = 0;
 
     nClus = length(clusters);
-    nClus = min(nClus, nMaxLabelClusters); % truncate to nMaxLabelClusters if more
+%     nClus = min(nClus, nMaxLabelClusters); % truncate to nMaxLabelClusters if more
     
     labNames = {};
     for i = 1:length(classes)
@@ -25,7 +25,8 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
     
     %% Evaluate on each cluster
     result = {};
-    for i = 1:nClus
+    i = 1;
+    while(i <= nClus && labeled_clus < nMaxLabelClusters)
         clus = clusters{i};
         labels = {};
         %% For each element in the cluster
@@ -77,11 +78,11 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             majorityLabel = un_labels(p(1));
             result{i} = {majorityLabel{1}, labels, v(1)};
         end
-	result{i}{4} = length(clus);
+        result{i}{4} = length(clus);
         
         %% Store resulting labels
         labelName = result{i}{1};
-	if(~isempty(labelName))
+        if(~isempty(labelName))
             labeled_clus = labeled_clus+1;
             found_names = [found_names ' "' labelName ' (MajorityLabel:' num2str(result{i}{3}) ' | Total:' num2str(result{i}{4}) ')"'];
             labelId = find(ismember(labNames,labelName));
@@ -95,7 +96,6 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             else
                 labelId = classes(labelId).label;
             end
-
 
             %% Insert label id to all samples in i-th cluster
             clus = clusters{i};
