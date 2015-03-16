@@ -80,9 +80,10 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
         
         %% Store resulting labels
         labelName = result{i}{1};
-        if(~isempty(labelName))
+        nNewSamples = result{i}{3};
+	if(~isempty(labelName))
             labeled_clus = labeled_clus+1;
-            found_names = [found_names ' "' labelName '"'];
+            found_names = [found_names ' "' labelName ' (' num2str(nNewSamples) ')"'];
             labelId = find(ismember(labNames,labelName));
             % New Label
             if(isempty(labelId))

@@ -111,7 +111,8 @@ cluster_params.nMaxIter = 50 ; % maximum iterations for stopping if convergence 
 cluster_params.Kclusters = 60; % number of clusters created
 
 %%%% Only used with Ward
-cluster_params.wardStdTimes = 1.5; % std_deviation times used for the clustering cut criterion
+cluster_params.wardStdTimes = 4; % std_deviation times used for the clustering cut criterion
+cluster_params.wardStdTimesIncreaseConcepts = 0.1; % percentage of decrease used for the concept discovery when we have a low number of samples
 
 %% Scene Clustering parameters (laveled clustering)
 cluster_scn_params.AppFeaturesLevels = {'all'};
@@ -217,7 +218,7 @@ feature_params.scene_version = 1; % {1 or 2}
 % Maximum percentage of samples from the ones clustered that will 
 % be refilled from the labeled pool (distributed between all classes 
 % but "No Object")
-refill = 0.5;
+refill = 0.3;
 
 %% Maximum number of samples used to calculate the SceneAwareness
 feature_params.maxSceneAwarenessSamples = 100;

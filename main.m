@@ -307,8 +307,8 @@ if(do_discovery)
             %       - do_abstract_concept_discovery
             %       - we have less than easiness_rate(3) samples left
             %       - Nlabeled_clus < cluster_params.nMaxLabelClusters
-            if(do_abstract_concept_discovery && size(pos_test,1) < easiness_rate(3) && Nlabeled_clus < cluster_params.nMaxLabelClusters)
-                cluster_params.wardStdTimes = cluster_params.wardStdTimes*0.2;
+            if(do_abstract_concept_discovery && length(pos_test) < easiness_rate(3) && Nlabeled_clus < cluster_params.nMaxLabelClusters)
+                cluster_params.wardStdTimes = cluster_params.wardStdTimes - cluster_params.wardStdTimes*cluster_params.wardStdTimesIncreaseConcepts;	
             end
         end
 
