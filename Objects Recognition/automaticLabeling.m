@@ -77,13 +77,13 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             majorityLabel = un_labels(p(1));
             result{i} = {majorityLabel{1}, labels, v(1)};
         end
+	result{i}{4} = length(clus);
         
         %% Store resulting labels
         labelName = result{i}{1};
-        nNewSamples = result{i}{3};
 	if(~isempty(labelName))
             labeled_clus = labeled_clus+1;
-            found_names = [found_names ' "' labelName ' (' num2str(nNewSamples) ')"'];
+            found_names = [found_names ' "' labelName ' (MajorityLabel:' num2str(result{i}{3}) ' | Total:' num2str(result{i}{4}) ')"'];
             labelId = find(ismember(labNames,labelName));
             % New Label
             if(isempty(labelId))
