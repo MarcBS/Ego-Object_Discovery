@@ -116,6 +116,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 end
             end
         end
+    	i = i+1;
     end
 
     %% Show how many clusters have been labeled

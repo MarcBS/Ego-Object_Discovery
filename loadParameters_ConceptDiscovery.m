@@ -112,7 +112,7 @@ cluster_params.Kclusters = 60; % number of clusters created
 
 %%%% Only used with Ward
 cluster_params.wardStdTimes = 5; % std_deviation times used for the clustering cut criterion
-cluster_params.wardStdTimesIncreaseConcepts = 0.1; % percentage of decrease used for the concept discovery when we have a low number of samples
+cluster_params.wardStdTimesIncreaseConcepts = 0.01; % percentage of decrease used for the concept discovery when we have a low number of samples
 
 %% Scene Clustering parameters (laveled clustering)
 cluster_scn_params.AppFeaturesLevels = {'all'};

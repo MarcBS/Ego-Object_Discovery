@@ -35,6 +35,7 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
     end
     
     %% Randomly select a subset
+    nSamplesUsed = min(nSamplesUsed, size(ind_train,1));
     ind_train_selected = ind_train(randsample(1:size(ind_train,1),nSamplesUsed),:);
 
     %% Recover features from all samples

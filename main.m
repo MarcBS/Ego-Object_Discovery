@@ -305,9 +305,10 @@ if(do_discovery)
 
             %% Change clustering cutoff if all the following conditions are accomplished:
             %       - do_abstract_concept_discovery
-            %       - Nlabeled_clus < cluster_params.nMaxLabelClusters
-            if(do_abstract_concept_discovery && Nlabeled_clus < cluster_params.nMaxLabelClusters)
-                cluster_params.wardStdTimes = cluster_params.wardStdTimes - cluster_params.wardStdTimes*cluster_params.wardStdTimesIncreaseConcepts;	
+	    %       - Nlabeled_clus == 0
+            % if(do_abstract_concept_discovery && Nlabeled_clus < cluster_params.nMaxLabelClusters)
+            if(do_abstract_concept_discovery && Nlabeled_clus < cluster_params.nMaxLabelClusters/2)
+	        cluster_params.wardStdTimes = cluster_params.wardStdTimes - cluster_params.wardStdTimes*cluster_params.wardStdTimesIncreaseConcepts;	
             end
         end
 
