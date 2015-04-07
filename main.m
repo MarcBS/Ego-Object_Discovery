@@ -18,6 +18,7 @@ if(~do_abstract_concept_discovery)
     if(reload_objStruct)
         disp('# BUILD OBJECTS STRUCTURE.');
         objects = buildObjStruct(list_path, list_img, list_event, list_event2);
+        mkdir(feat_path);
         save([feat_path '/objects.mat'], 'objects');
     else
         disp('# LOADING OBJECTS FILE...');

@@ -51,9 +51,6 @@ offset = 0;
 
 nFolders = length(folders);
 for i = 1:nFolders
-%     %% Load objects file
-%     disp(['# LOADING OBJECTS file ' num2str(i) '/' num2str(nFolders) '...']);
-%     load([path_features{i} '/objects.mat']);
 
     %% List all .xml files with annotations
     disp('# LISTING all annotations files');
@@ -177,9 +174,6 @@ for i = 1:nFolders
     disp(' ');
     
     offset = offset+lenAnn;
-    
-%     %% Save objects again
-%     save([path_features{i} '/objects.mat'], 'objects');
 end
 
 %% Save objects
