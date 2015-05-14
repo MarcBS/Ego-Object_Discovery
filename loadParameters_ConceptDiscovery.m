@@ -20,9 +20,9 @@ tests_path = [volume_path '/HDD_2TB/Video Summarization Tests'];
 %   1st -> times std.dev (1.25) with SVM classifier (2.35)?
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
-%   4th -> max number of iterations
-% easiness_rate = [1.25 1/1000 5000 100];
-easiness_rate = [-Inf 1/1000 5000 Inf];
+%   4th -> max number of iterations (100)
+easiness_rate = [1.25 1/1000 4000 200];
+% easiness_rate = [-Inf 1/1000 5000 Inf]; % complete analysis (all object candidates)
 
 %% Objectness parameters
 objectness.W = 50; % number of object windows extracted for each image using the objectness measure (50)
@@ -74,9 +74,13 @@ cluster_params.ContextAwareFeaturesLevels = {[]};
 % Maximum number of clusters to label in each iteration of the algorithm (1)
 cluster_params.nMaxLabelClusters = 5;
 % Minimum percentage of purity of the refilled concepts for labeling (only
-% used with abstract concept labeling, when do_abstract_concept_discovery = true)
+% used with abstract concept labeling, do_abstract_concept_discovery = true)
 cluster_params.minPerPurityConcept = 0.8;
-% Minimum number of samples for selecting a cluster (unused)
+% If true, forces a new cluster with a refill sample assigned to it, to
+% have a minimum similarity w.r.t. the concept cluster in the Bag of Refill (only
+% used with abstract concept labeling, do_abstract_concept_discovery = true)
+cluster_params.minSimilarityRefillConcept = true;
+% Minimum number of samples for selecting a cluster (DEPRECATED)
 cluster_params.minCluster = 10;
 
 %%% Testing only
@@ -218,7 +222,7 @@ feature_params.scene_version = 1; % {1 or 2}
 % Maximum percentage of samples from the ones clustered that will 
 % be refilled from the labeled pool (distributed between all classes 
 % but "No Object")
-refill = 0.3;
+refill = 0.5;
 
 %% Maximum number of samples used to calculate the SceneAwareness
 feature_params.maxSceneAwarenessSamples = 100;

@@ -1,4 +1,4 @@
-function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( objects, folders, i_test, nConcepts, nSamplesUsed, classes, feature_params, feat_path, path_folders, prop_res )
+function [ objects, classes, ind_train, ind_test, cluster_params ] = generateBagOfRefill( objects, folders, i_test, nConcepts, nSamplesUsed, classes, feature_params, feat_path, path_folders, prop_res, cluster_params )
 %GENERATEBAGOFREFILL Generates the bag of refill on the training folders
 % selecting nConcepts by clustering them.
 
@@ -52,7 +52,7 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
     Z = linkage(simil, 'ward');    
     clustersId = cluster(Z, 'maxclust', nConcepts, 'criterion', 'distance');
     
-    %% Store resulting clusters in objects structure
+    %% Store resulting clusters in objects structure and objects indices in class structure
     nImages = length(objects);
     % Initialize initialSelection filled in objects structure
     for i = 1:nImages
@@ -73,14 +73,36 @@ function [ objects, classes, ind_train, ind_test ] = generateBagOfRefill( object
         if(~found)
             classes(length(classes)+1).name = this_label;
             classes(length(classes)).label = length(classes)-1;
+            classes(length(classes)).indices = [];
+            classes(length(classes)).mean = NaN;
             id = length(classes)-1;
         end
+        % Store object indices in classes structure
+        classes(id+1).indices = [classes(id+1).indices; [ind(1) ind(2)]];
         % Stores the label
         objects(ind(1)).objects(ind(2)).label = id;
         % Stores a flag to indicate that it has been initially labeled
         objects(ind(1)).objects(ind(2)).initialSelection = true;
 
         count = count+1;
+    end
+    
+    %% Calculate cluster mean for each class
+    if(cluster_params.minSimilarityRefillConcept)
+        nClasses = length(classes);
+        classes(1).mean = NaN;
+        classes(2).mean = NaN;
+        all_means = [];
+        for i = 3:nClasses
+            classes(i).mean = classMean(classes(i).indices, features, ind_train_selected);
+            all_means = [all_means; classes(i).mean];
+        end
+        
+        % We define the minimum distance to validate the refilled samples
+        % as the mean distance - standard deviation of all the initial
+        % clusters.
+        dists = pdist(all_means);
+        cluster_params.minSimilarityRefillConcept_value = mean(dists)-std(dists);
     end
     
 end

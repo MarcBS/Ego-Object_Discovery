@@ -291,7 +291,7 @@ if(do_discovery)
 
             if(has_ground_truth || do_abstract_concept_discovery)
                 %% Label best clusters
-                [ objects, classes, foundLabels, Nlabeled_clus ] = automaticLabeling(objects, clusters, cluster_params, indices, classes, t, do_abstract_concept_discovery);
+                [ objects, classes, foundLabels, Nlabeled_clus ] = automaticLabeling(objects, clusters, appearance_feat, cluster_params, indices, classes, t, do_abstract_concept_discovery, feature_params, feat_path, path_folders, prop_res);
             else
                 %% TODO: Manually label!
             end

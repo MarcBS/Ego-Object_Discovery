@@ -1,4 +1,4 @@
-function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(objects, clusters, cluster_params, indices, classes, t, do_abstract_concept_discovery)
+function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(objects, clusters, features, cluster_params, indices, classes, t, do_abstract_concept_discovery, feature_params, feat_path, path_folders, prop_res)
 %AUTOMATICLABELING Automatically labels the first "nMaxLabelClusters"
 %clusters assigning them the majority label.
     
@@ -6,6 +6,12 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
     % only used for abstract concept discovery
     % (do_abstract_concept_discovery == true)
     minPerPurityConcept = cluster_params.minPerPurityConcept;
+    minSimilarityRefillConcept = cluster_params.minSimilarityRefillConcept;
+    minSimilarityRefillConcept_value = cluster_params.minSimilarityRefillConcept_value;
+    
+    if(minSimilarityRefillConcept)
+        clusters_means = [];
+    end
 
     % Newly labeled samples indexed by their label
     found_labels = {};
@@ -31,9 +37,11 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
         labels = {};
         %% For each element in the cluster
         count_el = 1;
+        this_ind = [];
         for el = clus
             ind = indices(el, :);
             k = ind(1); j = ind(2);
+            this_ind = [this_ind; k j];
             obj = objects(k).objects(j);
             if(do_abstract_concept_discovery)
                 if(~isempty(obj.label) && obj.label ~= 0)
@@ -44,6 +52,10 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 labels{count_el} = obj.trueLabel; % insert label in list
                 count_el = count_el +1;
             end
+        end
+        % Store cluster mean
+        if(minSimilarityRefillConcept)
+            clusters_means(i) = classMean( this_ind, features, indices );
         end
         %% Store majorityVoting result
         % Get majority label
@@ -64,9 +76,24 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 % We must hava a minimum percentage of samples from the
                 % majority label
                 if(v(1)/sum(v) >= minPerPurityConcept)
-                    % Store {majorityLabel, allLabels, #majority}
-                    majorityLabel = un_labels(p(1));
-                    result{i} = {majorityLabel{1}, labels, v(1)};
+                    
+                    check = true;
+                    if(minSimilarityRefillConcept)
+                        lab = un_labels(p(1)); lab = lab{1};
+                        labelId = find(ismember(labNames,lab));
+                        dist = pdist(clusters_means(i), classes(labelId).mean);
+                        if(dist >= minSimilarityRefillConcept_value)
+                            check = false;
+                        end
+                    end
+                    
+                    if(check)
+                        % Store {majorityLabel, allLabels, #majority}
+                        majorityLabel = un_labels(p(1));
+                        result{i} = {majorityLabel{1}, labels, v(1)};
+                    else
+                        result{i} = {[], {}, 0};
+                    end
                 % If we do not have more than minPerPurityConcept, then we
                 % do not label the cluster
                 else
@@ -91,6 +118,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 labelId = length(classes);
                 classes(labelId+1).name = labelName;
                 classes(labelId+1).label = labelId;
+                classes(labelId+1).indices = [];
                 labNames{labelId+1} = labelName;
             % Previously introduced Label
             else
@@ -108,12 +136,22 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                     objects(k).objects(j).label = labelId;
                     objects(k).objects(j).iteration = t;
                     objects(k).objects(j).iterationCluster = i;
+                    classes(labelId+1).indices = [classes(labelId+1).indices; [k j]];
                 end
                 try
                     found_labels{labelId} = [found_labels{labelId}; el];
                 catch
                     found_labels{labelId} = [el];
                 end
+            end
+            
+            %% Recalculate class mean
+            if(minSimilarityRefillConcept)
+                disp('## Recovering features to recalculate class mean...');
+                [this_feat, ~] = recoverFeatures(objects, classes(labelId+1).indices, ones(1,size(classes(labelId+1).indices,1)), NaN, NaN, NaN, NaN, feature_params, feat_path, false, 0, path_folders, prop_res, [2 0], NaN);
+                this_feat = normalize(this_feat);
+                
+                classes(labelId+1).mean = classMean(classes(labelId+1).indices, this_feat, classes(labelId+1).indices);
             end
         end
     	i = i+1;

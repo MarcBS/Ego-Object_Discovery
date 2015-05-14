@@ -42,7 +42,7 @@ for i_test__ = 1:nDatasets__
         
         % Load objects file
         load([feat_path '/objects.mat']);
-        [objects, classes, ind_train, ind_test] = generateBagOfRefill(objects, folders__, i_test__, nConcepts__, nSamplesUsed__, classes, feature_params, feat_path, path_folders, prop_res);
+        [objects, classes, ind_train, ind_test, cluster_params] = generateBagOfRefill(objects, folders__, i_test__, nConcepts__, nSamplesUsed__, classes, feature_params, feat_path, path_folders, prop_res, cluster_params);
 
         % Save current training/test split
         save([results_folder '/ind_train.mat'], 'ind_train');

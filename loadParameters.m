@@ -74,9 +74,13 @@ cluster_params.ContextAwareFeaturesLevels = {[]};
 % Maximum number of clusters to label in each iteration of the algorithm
 cluster_params.nMaxLabelClusters = 1;
 % Minimum percentage of purity of the refilled concepts for labeling (only
-% used with abstract concept labeling, when do_abstract_concept_discovery = true)
+% used with abstract concept labeling, do_abstract_concept_discovery = true)
 cluster_params.minPerPurityConcept = 0.8;
-% Minimum number of samples for selecting a cluster (unused)
+% If true, forces a new cluster with a refill sample assigned to it, to
+% have a minimum similarity w.r.t. the concept cluster in the Bag of Refill (only
+% used with abstract concept labeling, do_abstract_concept_discovery = true)
+cluster_params.minSimilarityRefillConcept = true;
+% Minimum number of samples for selecting a cluster (DEPRECATED)
 cluster_params.minCluster = 10;
 
 %%% Testing only
