@@ -81,7 +81,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                     if(minSimilarityRefillConcept)
                         lab = un_labels(p(1)); lab = lab{1};
                         labelId = find(ismember(labNames,lab));
-                        dist = pdist(clusters_means(i,:), classes(labelId).mean);
+                        dist = pdist([clusters_means(i,:); classes(labelId).mean]);
                         if(dist >= minSimilarityRefillConcept_value)
                             check = false;
                         end
