@@ -131,8 +131,8 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                 ind = indices(el, :);
                 k = ind(1); j = ind(2);
                 % Only change label if it is not part of the initialSelection
-                % (see doRefill.m)
-                if(isempty(objects(k).objects(j).initialSelection))
+                % (see doRefill.m) and wasn't prevously labeled
+                if(isempty(objects(k).objects(j).initialSelection) && objects(k).objects(j).label == 0)
                     objects(k).objects(j).label = labelId;
                     objects(k).objects(j).iteration = t;
                     objects(k).objects(j).iterationCluster = i;

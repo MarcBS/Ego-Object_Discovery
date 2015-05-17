@@ -6,7 +6,7 @@ function [ mean ] = classMean( indices, features, feat_indices )
     nIndices = size(indices,1);
     for i = 1:nIndices
         pos = find(ismember(feat_indices,indices(i,:),'rows'));
-        if(~pos)
+        if(isempty(pos))
             error('Element not found in features indices.');
         else
             sumFeatures = sumFeatures + features(pos,:);
