@@ -212,7 +212,10 @@ feature_params.batch_size = 10; % batch size for CNN extraction (given by the tr
 feature_params.parallel = false; % defines if we want to load the batches in parallel or not
 feature_params.caffe_path = '/usr/local/caffe-dev/matlab/caffe'; % path to caffe MEX
 % Path to CNN model files (for features extraction)
-feature_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_features.prototxt'];
+% after RELU
+% feature_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_features.prototxt'];
+% before RELU (signed)
+feature_params.model_def_file = [pwd '/Caffe Src/bvlc_reference_caffenet/deploy_signed_features.prototxt'];
 feature_params.model_file = [pwd '/Caffe Src/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel'];
 
 %% Scene Awareness version
