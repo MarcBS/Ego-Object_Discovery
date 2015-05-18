@@ -20,11 +20,27 @@ nConcepts__ = 200;
 % Number of samples used in the concrept grouping chosen randomly from all
 % of them.
 nSamplesUsed__ = 20000;
-results_folder__ = 'Exec_ConceptDiscovery';
+results_folder__ = 'Exec_ConceptDiscovery_v3';
 folders__ = {'Narrative/imageSets/Estefania1_resized', 'Narrative/imageSets/Estefania2_resized', ...
         'Narrative/imageSets/Petia1_resized', 'Narrative/imageSets/Petia2_resized', ...
         'Narrative/imageSets/Mariella_resized', 'SenseCam/imageSets/Day1', 'SenseCam/imageSets/Day2', ...
         'SenseCam/imageSets/Day3', 'SenseCam/imageSets/Day4', 'SenseCam/imageSets/Day6'};
+    
+re_extract_features__ = true; % re-extracts the features for all the object candidates in all the sets
+
+
+%% Extract features
+if(re_extract_features__)
+    % Load default parameters
+    loadParameters_ConceptDiscovery;
+    % Load objects file
+    disp('# LOADING OBJECTS FILE...');
+    load([feat_path '/objects.mat']);
+    disp('# EXTRACTING FEATURES for each object of each image...');
+    tic %%%%%%%%%%%%%%%%%%%%%%%
+    extractFeatures(objects, feature_params, path_folders, prop_res, feat_path, max_size, features_type, [0 1]);
+    toc %%%%%%%%%%%%%%%%%%%%%%%
+end
 
 %% Tests Run
 cd ..

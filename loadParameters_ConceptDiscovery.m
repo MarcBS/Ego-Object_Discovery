@@ -21,7 +21,7 @@ tests_path = [volume_path '/HDD_2TB/Video Summarization Tests'];
 %   2nd -> increased each interation (1/1000)
 %   3rd -> max instances picked (1000, **5000** or 10000)
 %   4th -> max number of iterations (100)
-easiness_rate = [2.25 1/1000 4000 200];
+easiness_rate = [5 1/1000 5000 400];
 % easiness_rate = [-Inf 1/1000 5000 Inf]; % complete analysis (all object candidates)
 
 %% Objectness parameters

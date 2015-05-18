@@ -99,10 +99,10 @@ function [ objects, classes, ind_train, ind_test, cluster_params ] = generateBag
         end
         
         % We define the minimum distance to validate the refilled samples
-        % as the mean distance - standard deviation of all the initial
+        % as the mean distance - 1.5*standard deviation of all the initial
         % clusters.
         dists = pdist(all_means);
-        cluster_params.minSimilarityRefillConcept_value = mean(dists)-std(dists);
+        cluster_params.minSimilarityRefillConcept_value = mean(dists)-1.5*std(dists);
     end
     
 end
