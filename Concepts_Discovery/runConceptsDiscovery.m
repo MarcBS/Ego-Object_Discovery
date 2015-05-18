@@ -29,6 +29,7 @@ folders__ = {'Narrative/imageSets/Estefania1_resized', 'Narrative/imageSets/Este
 re_extract_features__ = true; % re-extracts the features for all the object candidates in all the sets
 
 
+cd ..
 %% Extract features
 if(re_extract_features__)
     % Load default parameters
@@ -43,7 +44,6 @@ if(re_extract_features__)
 end
 
 %% Tests Run
-cd ..
 for i_test__ = 1:nDatasets__
     
         disp('################################################');
