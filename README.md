@@ -9,6 +9,11 @@ This semi-supervised algorithm is inspired by the work in [1], and it offers the
 	3) SVM 'Object' VS 'No Object' Filtering strategy for trimming most of the FP
 		instances produced by any object detector.
 
+If you use this code, please cite the following papers:
+
+	Bolaños, M. & Radeva, P. (2015). “Ego-object discovery”. Pre-print: http://arxiv.org/abs/1504.01639
+	Bolaños, M., Garolera, M., & Radeva, P. (2015). “Object Discovery using CNN Features in Egocentric Videos”. In 7th Iberian Conference on Pattern Recognition and Image Analysis (IbPRIA) (in press).
+
 Usage:
 
 	For a single object discovery execution: 
