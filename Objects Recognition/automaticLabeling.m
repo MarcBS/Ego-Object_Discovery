@@ -7,10 +7,10 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
     % (do_abstract_concept_discovery == true)
     minPerPurityConcept = cluster_params.minPerPurityConcept;
     minSimilarityRefillConcept = cluster_params.minSimilarityRefillConcept;
-    minSimilarityRefillConcept_value = cluster_params.minSimilarityRefillConcept_value;
     
-    if(minSimilarityRefillConcept)
+    if(do_abstract_concept_discovery && minSimilarityRefillConcept)
         clusters_means = [];
+        minSimilarityRefillConcept_value = cluster_params.minSimilarityRefillConcept_value;
     end
 
     % Newly labeled samples indexed by their label
@@ -54,7 +54,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             end
         end
         % Store cluster mean
-        if(minSimilarityRefillConcept)
+        if(do_abstract_concept_discovery && minSimilarityRefillConcept)
             clusters_means(i,:) = classMean( this_ind, features, indices );
         end
         %% Store majorityVoting result
@@ -136,7 +136,9 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
                     objects(k).objects(j).label = labelId;
                     objects(k).objects(j).iteration = t;
                     objects(k).objects(j).iterationCluster = i;
-                    classes(labelId+1).indices = [classes(labelId+1).indices; [k j]];
+                    if(do_abstract_concept_discovery && minSimilarityRefillConcept)
+                        classes(labelId+1).indices = [classes(labelId+1).indices; [k j]];
+                    end
                 end
                 try
                     found_labels{labelId} = [found_labels{labelId}; el];
@@ -146,7 +148,7 @@ function [ objects, classes, found_labels, labeled_clus ] = automaticLabeling(ob
             end
             
             %% Recalculate class mean
-            if(minSimilarityRefillConcept)
+            if(do_abstract_concept_discovery && minSimilarityRefillConcept)
                 disp('## Recovering features to recalculate class mean...');
                 [this_feat, ~] = recoverFeatures(objects, classes(labelId+1).indices, ones(1,size(classes(labelId+1).indices,1)), NaN, NaN, NaN, NaN, feature_params, feat_path, false, 0, path_folders, prop_res, [2 0], NaN);
                 this_feat = normalize(this_feat);

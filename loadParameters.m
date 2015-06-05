@@ -115,7 +115,7 @@ cluster_params.nMaxIter = 50 ; % maximum iterations for stopping if convergence 
 cluster_params.Kclusters = 60; % number of clusters created
 
 %%%% Only used with Ward
-cluster_params.wardStdTimes = 1.5; % std_deviation times used for the clustering cut criterion
+cluster_params.wardStdTimes = 3; % std_deviation times used for the clustering cut criterion
 cluster_params.wardStdTimesIncreaseConcepts = 0.1; % percentage of increase used for the concept discovery when we have a low number of samples
 
 %% Scene Clustering parameters (laveled clustering)
