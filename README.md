@@ -16,6 +16,10 @@ If you use this code, please cite the following papers:
 	Bolaños, M., Garolera, M., & Radeva, P. (2015). “Object Discovery using CNN Features in Egocentric Videos”. 
 	In 7th Iberian Conference on Pattern Recognition and Image Analysis (IbPRIA) (in press).
 
+The dataset published in the most recent work can be found here:
+
+	http://marcbolanos.wix.com/curriculum#!projects/c24sk
+
 Usage:
 
 	For a single object discovery execution: 
