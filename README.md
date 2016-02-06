@@ -18,7 +18,7 @@ If you use this code, please cite the following papers:
 
 The dataset published in the most recent work can be found here:
 
-	http://marcbolanos.wix.com/curriculum#!projects/c24sk
+	http://marcbolanos.wix.com/home#!projects/c24sk
 
 Usage:
 
